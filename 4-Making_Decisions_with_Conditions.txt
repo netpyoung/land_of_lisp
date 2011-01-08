@@ -1,0 +1,63 @@
+
+2막-Lisp는 대칭이다.
+
+제 4장. 조건에서 결정내리기
+
+이전 장에서는, 기본적인 Lisp명령어 뿐만 아니라 몇몇 Lisp의 철학에 대해서 배웠습니다.
+이번 장에서는, 조건을 다루는 명령어에 대해 살펴볼 것입니다.
+우아한 이 명령어는 색다른 철학과 Lisp의 디자인이 실로 실용적인 이점을 지닌다는 것을 보여줍니다.
+
+
+The Symmetry of nil and ()
+Lisp명령어와 데이터 구조의 일을 살펴볼때 유독 한가지가 눈에 들어옵니다: 모든 가능한 방법들이 대칭으로 가득차 있습니다.
+
+
+
+이 대칭은 다른 언어들이 가지지 못한 우아함을 여러분의 Lisp코드에 줄 수 있으며, Lisp의 간단한 문법은 이러한 대칭을 가능케 만들어 주는 중요한 요인입니다.
+
+Empty Equals False
+
+Lisp철학은 정보의 저장과 조작을 위한 list의 사용을 강력하게 강조하기 때문에,
+
+놀랄만한 것은 아닙니다
+Common Lisp
+Since the Lisp philosophy strongly emphasizes the use of lists to store and 
+manipulate information, it will come as no surprise that the design of Common 
+Lisp favors behaviors that make it easy to slice and dice such lists.
+
+Common Lisp를 만듬에 있어 list에 관한 가장 심오한 디자인 결정은, 조건문에서 평가할때 빈 list를  자동적으로 false 값으로 다루도록하는 것입니다 :
+
+
+이 예제는 if 문에 빈리스트 ()를 넣으면 false 값으로 평가되며, 항목을 담고 있는 list는 true로 평가됩니다.
+
+쉽게 빈 list를 쉽게 찾을 수 있게 때문에, 재귀를 사용함으로써 list를 를 처리할 수 있습니다.
+
+이 기법은, list의 앞쪽 item을 취하고 list가 빈 상태가 될때까지 나머지 list는 같은 함수로 보냅니다.
+
+(
+이것은
+비어있는 list를 찾기 매우 쉽기에 괜찮은 방법이며,
+따라서 List의 많은 함수들이 list-eaters로 끝이 나게 됩니다)
+list의 길이를 구하는 일반적인 list-eating함수를 살펴봅시다
+이 함수는 전통적인 Lisp형식으로 쓰여졌습니다.
+이것은 자기자신을 재귀적으로 호출하여 list의 앞을 잘라 먹습니다.
+
+이런 방법으로 자신을 호출하는 것은 오직 Lisp만이 허용하는 것은 아니지만, 강력히 권장되어 집니다.
+ Calling yourself in this way is not only 
+allowed in Lisp, but is often strongly encouraged. Lists in Lisp are recursive 
+(conses of conses of conses . . .), so the act of consuming a list maps naturally 
+onto functions that are recursive.
+
+
+The Four Disguises of ()
+Not only does the empty list evaluate to false, but it is the only false value in 
+Common Lisp. Any value not equivalent to an empty list will be considered a true 
+value. This explains why the expression '(1) in the earlier example was treated as 
+true. However, there are some other expressions in Lisp that are disguises for 
+the one and only empty list:
+
+
+We can see that the expressions in this table are equivalent by comparing 
+them with one another:
+
+

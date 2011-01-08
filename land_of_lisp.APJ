@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AcroEditProject Version="1.0">
+  <Options>
+    <UserTools Value=""/>
+    <BaseFolder Value=""/>
+    <GenerateFunctionList Value="False"/>
+    <CodePage Value="949"/>
+    <ExcludeDir Value=""/>
+    <AcceptableExt Value=".txt"/>
+    <OpenLastFiles Value="False"/>
+  </Options>
+  <Files>
+    <Category Name="1-Lisp Is Power">
+      <File Name="1-Getting_Started_with_Lisp.txt"/>
+      <File Name="2-Create_Your_First_Lisp_Program.txt"/>
+      <File Name="3-Exploring_the_Syntax_of_Lisp_Code.txt"/>
+    </Category>
+    <Category Name="2-Lisp Is Symmetry">
+      <File Name="4-Making_Decisions_with_Conditions.txt"/>
+      <File Name="5-Bulding_a_Text_Game_Engine.txt"/>
+      <File Name="6-Interacting_with_the_World.txt"/>
+      <File Name="6_5-lambda.txt"/>
+      <File Name="7-Going_Beyond_Basic_Lists.txt"/>
+    </Category>
+    <Category Name="3-Lisp Is Hacking"/>
+    <Category Name="4-Lisp Is Science"/>
+    <Category Name="Introduction">
+      <File Name="emacs_short_cut.txt"/>
+      <File Name="enviroment.txt"/>
+      <File Name="functions.txt"/>
+      <File Name="Intoruduction.txt"/>
+    </Category>
+  </Files>
+  <ClosedFiles/>
+</AcroEditProject>

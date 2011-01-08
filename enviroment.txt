@@ -1,0 +1,63 @@
+Windows기준
+Emacs설치
+http://ourcomments.org/Emacs/EmacsW32.html접속
+Download latest EmacsW32 + binaries for Emacs 링크 클릭
+Download latest EmacsW32+Emacs patched
+Download latest EmacsW32+Emacs unpatched 
+에서 아무거나 선택해도 무관할듯 합니다.
+(저의 경우는 unpatched선택)
+
+Clisp설치
+http://clisp.sourceforge.net/접속 >> SourceForge Project Home 링크 클릭
+http://sourceforge.net/projects/clisp/에 접속이 되면서 윈도우용 설치 프로그램 다운로드
+
+slime설치
+http://common-lisp.net/project/slime/ 접속
+>> 굵은색 downloading 검색 >> cvs_snapshot 링크클릭
+http://common-lisp.net/project/slime/snapshots/slime-current.tgz
+
+emacs설정파일
+환경변수 %HOME%설정
+내컴퓨터 우측마우스(시스템 등록정보) > 고급 > 환경변수 > 새로만들기(사용자변수인경우재부팅필요) > 변수이름 : HOME, 변수값 : 사용자지정폴더
+
+여기서 사용자 지정폴더는 저같은 경우 D:\myHome
+D:\myHome폴더에서 _emacs파일 생성
+
+
+slime설정
+;압축을 풀고 위치지정
+(add-to-list 'load-path "~/.emacs.d/slime-2010-12-21/")
+;CLisp위치 지정 Program Files하면 안되므로 Progra~1로 함
+(setq inferior-lisp-program "C:/Progra~1/clisp-2.49/clisp.exe")
+(require 'slime)
+(slime-setup)
+
+요약
+C:\Program Files\clisp-2.49 - Clisp가 설치된 폴더
+c:\Program Files\Emacs - emacs가 설치된 폴더
+d:\myHome\ - 환경 변수 HOME위치
+d:\myHome\_emacs - emacs 설정파일
+d:\myHome\.emacs.d\slime-2010-12-21 - slime가 설치된 폴더
+
+
+slime실행
+emacs 실행후 M-x slime
+M-은 Meta의 약자로.. 윈도우에서는 그냥 Alt키라 생각하면 됩니다.
+Alt를 누르시고 x를 누르면 하단부에 입력가능한 프롬프트가 뜨는데 거기에 slime을 입력하시고 enter를 누르면 됩니다.
+
+
+slime에러 발생 해결(저의 경우)
+GNU Emacs 24.0.50.1 (i386-mingw-nt5.1.2600) of 2010-09-29 on LENNART-69DE564
+
+M-x slime했는데
+*** - OPEN: Directory #P"C:\\DOCUME~1\\pyoung\\LOCALS~1\\Temp\\" does not exist
+The following restarts are available:
+ABORT          :R1      Abort main loop
+Break 1 [2]> 
+메시지와
+
+Polling "c:/DOCUME~1/pyoung/LOCALS~1/Temp/slime.2484".. (Abort with `M-x slime-abort-connection'.
+상태바에 이러한 메시지가 지속적으로 나옴
+
+emacs설정 파일에서 추가합니다. (D:\tmp란 폴더가 있어야함)
+(setq temporary-file-directory "D:\tmp")
