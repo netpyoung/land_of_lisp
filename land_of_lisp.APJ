@@ -31,5 +31,8 @@
       <File Name="Intoruduction.txt"/>
     </Category>
   </Files>
-  <ClosedFiles/>
+  <ClosedFiles>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\functions.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\7-Going_Beyond_Basic_Lists.txt"/>
+  </ClosedFiles>
 </AcroEditProject>

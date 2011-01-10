@@ -34,3 +34,12 @@ print 출력(라인및 공백추가)
 prin1 출력
 read 입력(쌍따옴표붙여야 string)
 read-line 입력(쌍따옴표 안붙여도 string)
+
+7장
+mapc
+substitute-if
+alphanumericp
+complement
+
+concatenate
+subseq
