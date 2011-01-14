@@ -1,15 +1,16 @@
 6.5.LAMBDA : A FUNCTION SO IMPORTANT IT DESERVES ITS OWN CHAPTER
 
- Lisp에서 lambda명령어의 중요성은 아무리 강조해도 지나치지 않습니다. ??? 사실, 이 명령어는 Lisp를 처음 존재하게한 거의 완벽한 이유입니다(In fact, this command is pretty much the entire reason that Lisp exists in the first place.) ???
+ Lisp에서 lambda명령어의 중요성은 아무리 강조해도 지나치지 않습니다. 사실, 무엇보다도 이 명령어는 Lisp의 존재 이유와도 같은 것입니다.
+
 
 What lambda Does
 
- 짧게, lambda는 여러분이 이름을 가지지 않는 함수를 만들도록 해 줍니다. 예를 들어,  여러분이 수를 받고 반으로 나누는 half 함수를 만든다고 칩시다. 이제까지, 여러분은 다음 방법과 같이 함수를 작성하였습니다:
+ 요컨대, lambda는 여러분이 이름을 가지지 않는 함수를 만들도록 해 줍니다. 예를 들어,  여러분이 수를 받고 반으로 나누는 half 함수를 만든다고 칩시다. 이제까지, 여러분은 다음 방법과 같이 함수를 작성하였습니다:
 [source]
 
 [pic]
 
- Lisp에서 함수는, 숫자나 list와 같이 볼 수 있고 통과시킬 수 있는 실제로는 값이라는 것이 밝혀졌습니다. 숙련된 Lisp 프로그래머는 그 함수를 Lisp에서 first-class 값이라고 말합니다. 5장에서 봤듯이, 여러분은 실제로 함수를 함수 연산자를 사용함으로써 half단어로 얻을 수 있습니다:
+ Lisp에서 함수는, 수나 list와 같이 볼 수 있고 통과시킬 수 있는, 실제로는 값이라는 것이 밝혀졌습니다. 숙련된 Lisp 프로그래머는 그 함수를 Lisp에서 first-class 값이라고 말합니다. 5장에서 봤듯이, 여러분은 실제로 함수를 함수 연산자를 사용함으로써 half단어로 얻을 수 있습니다:
 [source]
 
  lambda 명령어는 이러한 두가지 단계중 한가지 단계만을 수행합니다. 함수 이름을 정하지 않고도, 여러분은 함수를 정의하고 그것을 얻을 수 있습니다.
@@ -17,19 +18,19 @@ What lambda Does
 
  lambda 명령어의 첫번째 인자는, defun에서 사용되는 인자 list와 다를 것이 없는, list입니다. 나머지 인자들은 이름 없는 함수의 body를 위한 명령어입니다.
 
+ 이름 없는 반으로 나누는 함수를 표현하는 값을 가짐으로, mapcar혹은 apply명령어와 같이, 이것을 다른 Common Lisp 명령어로 직접 전달할 수 있습니다.
 
- 이름 없는 반으로 나누는 함수를 표현하는 값을 가짐으로, mapcar혹은 apply명령어와 같이, 이것을 다른 Common Lisp 명령어로 직접적으로 통과 시킬 수 있습니다.
-
- 예를 들어, list에 있는 모든 값들을 우아하게 반으로 나누는 일을, 다음처럼 할 수 있습니다
+ 예를 들어, list에 있는 모든 값들을 반으로 나누는 일을, 다음처럼 할 수 있습니다
 [source]
 
- lambda명령어의 모든 인자들이 평가되지 않기 때문에, lambda 그 자체는 실제로 진짜 함수는 아닙니다. 이것은 종종 macro라 불리웁니다. 2장에서 Lisp함수의 모든 인자들이 함수 자체에서 평가되기 전에 평가 된다는 것을 기억하길 바랍니다. 반면, macro는, 특별한 힘을 가져 그러한 규칙을 벗어납니다. 16장에서 macro에 대해 더 자세히 배울 것입니다.
+ lambda명령어의 모든 인자들이 평가되지 않기 때문에, lambda 그 자체는 실제로 진짜 함수는 아닙니다. 이것은 종종 macro라 불리웁니다. 2장에서 Lisp함수의 모든 인자들은, 함수 자체에서 평가되기 전에, 평가 된다는 것을 기억하길 바랍니다. 반면 macro는, 특별한 힘을 가져 그러한 규칙을 벗어납니다. 16장에서 macro에 대해 더 자세히 배울 것입니다.
 
  또한, 조금 혼란스러운 문제로는, lambda가 반환한 실제값은 보통의 Lisp 함수 입니다-이번 경우에, 수를 반으로 자르는 함수. Lisper들이 lambda함수에 대해 - 아침, 점심, 저녁으로 하는-이야기를 나눌때 그들은, 함수가 아닌, lambda macro그 자체에 대해 이야기를 하지 않습니다. 이해하셨나요?
 
 
  lambda는 여러분의 프로그램을 매우 복잡한 것을 처리하도록 해줍니다.
-  lambda 형식은 여러분의 프로그래밍 code에게 개념적 도약(conceptual leap)을 가져다 줍니다. 대부분의 프로그래밍 언어들이 함수와 값의 나라를 분단을 유지하려고 노력하는 동안, Lisp는 이 나라들 사이에 여러분이 원하는 대로 다리를 놔줍니다. 예를 들어, 작은 임시(ad hoc)함수를 묶어 여러분의 프로그램의 다른 부분으로 보낸다면, lambda는 여러분이 필요한 일을 정확하게 수행할 것입니다.
+ 
+ lambda 형식은 여러분의 프로그래밍 code에게 개념적 도약(conceptual leap)을 가져다 줍니다. 대부분의 프로그래밍 언어들이 function와 value를 나누어 놓으려 노력하는 동안, Lisp는 여러분이 원하는 대로 이들 사이에 다리를 놔줍니다. 예를 들어, 작은 임시(ad hoc)함수를 묶어 여러분의 프로그램의 다른 부분으로 보낸다면, lambda는 여러분이 필요한 일을 정확하게 수행할 것입니다.
 
  여러분은 대부분의 Lisp프로그램이 이 명령어를 매우 강력하게(heavily) 사용하다는 것을 보게 될 것입니다. 이 책의 남아 있는 예제도 마찬가지 입니다.
 
@@ -39,12 +40,12 @@ Why lambda Is So Important
  
  Lisper들이 lambda에 대해 열광하는 주된 이유는, 순수하게 수학적인 sense에서, lambda는 실제로 오직 Lisp명령어에만 있습니다!!
 
- lambda 계산기라고 불리는 수학적 개념으로부터 직접적으로 파생되었기 때문에, Lisp는 평범하지 않은 프로그래밍 언어중 하나라고 회상(recall)됩니다. 요약하자면, lambda 계산기는 오직 하나의 명령어를 가진 이론적인 프로그래밍 언어입니다:lambda 명령어. 오직 하나의 명령어를 가지고 특별한 코드 변형을 사용함으로써, 완전한 functioning(아마도 실용적이지는 않겠지만) 프로그래밍 언어를 만드는것이 가능합니다
+ Lambda  Calculus라고 불리는 수학적 개념으로부터 직접적으로 파생되었기 때문에, Lisp는 평범하지 않은 프로그래밍 언어중 하나라고 회상(recall)됩니다. 요약하자면, lambda 계산기는 오직 하나의 명령어를 가진 이론적인 프로그래밍 언어입니다:lambda 명령어. 오직 하나의 명령어를 가지고 특별한 코드 변형을 사용함으로써, 완전한 functioning(아마도 실용적이지는 않겠지만) 프로그래밍 언어를 만드는것이 가능합니다
 
 
- ??? 중요한 점(take-home point)은 lambda specail form은 Lisp 시스템에서 가장 기본적인 명령어이며, Lisp의 다른 함수들의 파생에 있어 중요한 개념(the central concept)이라는 것입니다. 사실, 이것은 Lisp의 기원 idea의 중요한 개념입니다 (The take-home point is that the lambda special form is the most fundamental command in a Lisp system, and the central concept from which other functions in Lisp derive. In fact, it is the central concept from which the very idea of Lisp itself originated.)???
+ 중요한 점(take-home point)은 lambda specail form은 Lisp 시스템에서 가장 근본이되는 명령어이며, Lisp의 다른 함수들의 파생에 있어 중요한 개념(the central concept)이라는 것입니다. 사실, 이것은 Lisp의 기원 idea의 중요한 개념(the central concept)입니다.
 
- 여러분은 이제 lambda에 관한 기본 지식을 갖게되었고, 익명 함수 없이 작성하기 어려운, 더욱 복잡해진 프로그래밍 예제들과 씨름할 준비가 되었습니다.
+ 여러분은 이제 lambda에 관한 기본 지식을 갖게되었고, 익명 함수(anonymous function)없이 작성하기 어려운, 더욱 복잡해진 프로그래밍 예제들과 씨름할 준비가 되었습니다.
 
 
 What You’ve Learned
@@ -52,4 +53,5 @@ What You’ve Learned
  이 짧은 장에서, 어떻게 익명함수(anonymous function)를 만드는지에 대해 다루었습니다. 주요한 점은 다음과 같습니다: 
 
 z lambda를 사용함으로써, 이것에 이름을 줄 필요가 없는 함수를 만들 수 있다.
+
 z Lisp의 많은 함수들은 인자로써 함수를 허용한다. 만일 여러분이 이러한 함수들을 사용한다면, 고차원 함수형 프로그래밍(higher-order functional programming)이라 불리는 기법을 사용한 것입니다.
