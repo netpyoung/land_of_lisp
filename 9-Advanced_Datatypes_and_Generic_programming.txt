@@ -523,162 +523,55 @@ The Generic Monster
 
 The Wicked Orc
 
- orc는 단순한 적입니다. 몽둥이로 강력한 공격을 하지만, 거의 해가 없습니다. 모든 orc는 고유한 공격 level의 몽둥이를 가졌습니다
-#END==================================================>
-Orc들은
-무시하는게 최선입니다
+ orc는 단순한 적입니다. 몽둥이로 강력한 공격을 하지만, 거의 해가 없습니다. 모든 orc는 고유한 공격 level의 몽둥이를 가졌습니다. 비정상적으로 강력한 몽둥이 공격을 하지 않는한 Orc들은 무시하는게 최선입니다. 
 
-배틀이 시작할때
-무리로부터
-도태되기를 원하는
-비정상적인 강력한 몽둥이 공격
-Orcs are best ignored, unless there are orcs with an unusually powerful club attack 
-that you want to cull from the herd at the beginning of a battle.
+ orc를 만들기 위해, defstruct로 orc 데이터형식을 정의합니다. 여기서, 저희는 defstruct의 또다른 진보된 기능을 사용하여 monster범주에 orc를 포함하도록 선언할 것입니다.
 
-orc를 만들기 위해, defstruct로 orc 데이터형식을 정의합니다.
-
-여기
-defstruct의 또다른 진보된 기능
-orc
-
- Here, we will use another advanced feature of defstruct to declare that the orc includes all the fields of monster.
+ orc타입을 범주에 포함시키기 위해 orc는 health field와 같은 모든 몬스터에 적용되는 field들을 상속 받아야합니다. C++나 Java와 같은 유명한 언어에서도 generic class를 정의하고 이 generic class로부터 상속받는 더욱 특화된 classes를 생성함으로써 이와 유사한 일을 할 수 있습니다.
 
 
-By including the fields from our monster type in our orc type, the orc will 
-be able to inherit the fields that apply to all monsters, such as the health field. 
-
-C++나 Java
-
-
-This is similar to what you can accomplish in popular languages such as C++ 
-or Java by defining a generic class and then creating other, more specialized, 
-classes that inherit from this generic class.
-
-
-일단 structure가 선언되면, (defstruct에 의해 자동적으로 생성된)make-orc함수를 *monster-builders* 리스트에 집어 넣습니다:
+ 일단 structure가 선언되면, (defstruct에 의해 자동적으로 생성된)make-orc함수를 *monster-builders* 리스트에 집어 넣습니다:
 [source]
 
 NOTE
-이러한 접근은 정말로 강력합니다.
- 기본 Orc Battle code를 수정할 필요없이 저희가 원하는 새로운 몬스터 타입을 추가할 수 있습니다.
-
-이것은 동적 타입과 first-class value로 함수를 지원하는
- Lisp와 같은 언어에서만 가능합니다.
-정적 타입 프로그래밍 언어에서, Orc Battle 코드는 새로운 타입의 몬스터의 생성자를 호출하는 hardwired 방법이 필요할지도 모릅니다.
- first-class 함수로 인해, 이것에 대해 걱정할 필요가 없습니다.
-
+ 이러한 접근은 정말로 강력합니다. 기본 Orc Battle code를 수정할 필요없이 저희가 원하는 새로운 몬스터 타입을 추가할 수 있습니다. 이것은 동적 타입과 first-class value로 함수를 지원하는 Lisp와 같은 언어에서만 가능합니다. 정적 타입 프로그래밍 언어에서, Orc Battle 코드는 새로운 타입의 몬스터의 생성자를 호출하는 hardwired 방법이 필요할지도 모릅니다. first-class 함수로 인해, 이것에 대해 걱정할 필요가 없습니다.
 
 [pic]
 
-Now let’s specialize our monster-show and monster-attack functions for orcs. 
-Notice these are defined in the same way as the earlier versions of these func-
-tions, except that we explicitly declare that these functions are orc-specific in 
-the argument lists:
+ 이제 orc에 맞게 monster-show와 monster-attack함수를 특수화시킵시다specialize. 인자 리스트에서 이 함수가 orc-특화되도록 명시적으로 선언한다는 점을 제외하면, 이 함수의 이전 버전과 동일한 방법으로 정의되었다는 것을 알립니다:
 [source]
 
-The one unique thing about our orc type is that each orc has an orc-club-
-level field. These orc-specific versions of monster-show and monster-attack take 
-this field into account. In the monster-show function, we display this club level X, 
-so that the player can gauge the danger posed by each orc.
-In the monster-attack function, we use the level of the club to decide how 
-badly the player is hit by the club Y.
+ orc 타입에 관해 고유한 특성은 각 orc는 orc-club-level field를 가졌다는 것입니다. 이 orc-특화된 monster-show와 monster-attack버전은 이 filed를 고려합니다. monster-show함수에서 이 club 레벨을 보여줌으로써, 게이머는 각 orc의 위험수준을 측정할 수 있습니다.
+
+ monster-attack함수에서, 이 club레벨을 사용하여 게이머를 때릴때 얼마나 나쁘게 될지를 결정합니다.
+
+
+The Malicious Hydra
 [pic]
 
-hydra는 매우 
-The hydra is a very nasty enemy.
-
-많은 머리
-
- It will attack you with its many heads, which 
-you’ll need to chop off to defeat it.
-
-hydra의 특별한 공격력은
- The hydra’s special power is that it can 
-grow a new head during each round of battle, which means you want to defeat it 
-as early as possible.
+ hydra는 매우 위험한 적입니다. 이것은 (이것을 이기기 위해 짜를 필요가 있는)많은 머리로 공격합니다. hydra의 특별한 능력은 매 배틀 라운드마다 새로운 머리가 자라날 수 있다는 것이며, 이는 가능한 빨리 이걸 쓰려뜨려야 한다는 것을 의미합니다.
 [source]
 
-hydra를 다루는 이 code는 orc를 다루는 code와 유사합니다.
-The code for handling the hydra is similar to the code for handling the 
-orc.
+ hydra를 다루는 이 code는 orc를 다루는 code와 유사합니다. 주요한 차이점은 hydra머리 수가 hydra의 health의 대리 역활을 한다는 것입니다. 다시 말해서, hydra 3 health point를 가졌다면 3개의 머리를 가졌다는 것과 같습니다. 그러므로, hydra-특화된 monster-show 함수를 작성할때, 몬스터의 health를 사용하여 hydra의 머리 수를 알맞게 출력할 것입니다.
 
-주요한 차이점은 hydra의 health
-또한
-hydra머리 수에
- The main difference is that a hydra’s health also acts as a stand-in for the 
-number of hydra heads.
+ 또 다른 orc와 hydra의 차이점은 orc는 게이머에게 맞았을때 특히 흥미있는 일을 하지 않는다는 것입니다. 왜냐하면, orc에게 custom monster-hit함수를 작성할 필요가 없기 때문입니다; orc는 단순히 generic monster를 위해 생성한 generic monster-hit함수를 사용합니다.
 
-다시 말해서, hydra 3 health point
- In other words, a hydra with three health points will 
-have three heads, as well.
+ 반면, hydra는 이것이 공격받았을때 어떤 흥미로운 일을 합니다: 머리가 떨어져 나갑니다! 그러므로 blow에 의해 머리가 사라지는 곳에 hydra의 health가 낮아지도록하는 hydra-특화된 monster-hit함수를 작성합니다. 또한, 저희는 이제 기사가 머리를 잘라내는 것에 관한 다이나믹한 메시지를 출력할 수 있습니다
 
-그러므로, 
-hydra에 특화된 monster-show 함수를 작성할때,
-몬스터의 health를 사용합니다
-hydra의 머리 수에
- Therefore, when we write our hydra-specific monster-
-show function, we use the monster’s health to print a pretty message about the 
-number of heads on the hydra X.
-
-또다른 orc와 hydra의 차이점은
-orc는
-Another difference between the orc and the hydra is that an orc doesn’t 
-do anything particularly interesting when it is hit by the player.
-
- Because of 
-this, we didn’t need to write a custom monster-hit function for the orc; the 
-orc simply used the generic monster-hit function we created for a generic mon-
-ster.
-
-A hydra, on the other hand, does something interesting when it is hit:
-
-
- It loses heads! We therefore create a hydra-specific monster-hit function, where 
-heads are removed with every blow, which amounts to lowering the hydra’s 
-health Y. Also, we can now print a dramatic message about how the knight 
-lopped off said heads Z.
-
-hydra의 monster-attack함수는
-orc와 유사합니다
-The hydra’s monster-attack function is again similar to that for the orc. 
-
-한가지 흥미로운 차이점은
-매 공격시
-The one interesting difference is that we increment the health with every 
-attack, so that the hydra grows a new head every turn [.
-매 턴마다 hydra의 새로운 머리가 자라납니다.
+ hydra의 monster-attack함수는 orc와 유사합니다. 한가지 흥미로운 차이점은 매 공격마다 health가 증가한다는 점이며, 따라서 매 턴마다 hydra의 새로운 머리가 자라납니다.
 
 
 The Slimy Slime Mold
 
-slime mold는 희귀한 몬스터입니다. 이것이 여러분을 공격할때, 이것자체가 여러분의 다리를 감싸서 못움직이게 만들어, 다른 나쁜넘들이 여러분을 끝내도록 만듭니다. 이것은 또한  여러분의 얼굴에 찐득 찐득한것을 뱉습니다. agility를 유지하기 위해 초기에 slime을 제거해버리는게 나은지 무시하고 더 흉칙한 적에 집중하는지 빠르게 결정해야 합니다.
-
-#TODO
-agility가 낮아질수록
-slime mold는
-후에
-배틀 라운드
- (Remember that by lowering 
-your agility, the slime mold will decrease the number of attacks you can deliver in later rounds of battle.)
+ slime mold는 희귀한 몬스터입니다. 이것이 여러분을 공격할때, 이것자체가 여러분의 다리를 감싸서 못움직이게 만들어, 다른 나쁜놈들이 여러분을 끝내도록 만듭니다. 이것은 또한  여러분의 얼굴에 찐득 찐득한것을 뱉습니다. agility를 유지하기 위해 초기에 slime을 제거해버리는게 나은지, 무시하고 더 흉칙한 적에 집중하는지 빠르게 결정해야 합니다. (slime mold가 agility를 낮추므로 나중에 있을 배틀 라운드에서 여러분의 공격 횟수가 줄어든다는 것을 명심하시기 바랍니다.)
 [pic]
 [source]
 
  slime mold의 monster-attack 함수는 게이머를 움직이지 못하게 하는 특별한 일을 합니다. 우선 slime mold의 (각 slime mold가 만들어질 때 생성된)끈끈이를 사용하여 변수 x에 저장된 게이머에게 무작위 공격을 생성합니다. 게임에 다른 공격과는 달리 이 slime mold 공격은 게이머의 health보다 agility에 영향을 미칩니다.
 
-#TODO
-그러나, 
-만약 slime mold
-게이머의 health
+ 그러나, 만약 slime mold가 게이머의 health를 조금이라도 공격을 할 수 없으면 이것은 소용없을 것이며 게이머와 slime mold가 계속 꼼짝 못하게 되어 전투는 형편없이 끝나게 될 것 입니다.
 
-However, it would be pointless if the slime mold couldn’t attack the player’s 
-health at least a little, or the battle could end awkwardly, with the player and 
-slime mold frozen in place for all time.
-
-그러므로, 이 slime mold는 또한
-
- Therefore, the slime mold also has a 
-superwimpy squirt attack that happens during half of all attacks Z, but sub-
-tracts only a single health point from the player [.
+ 그러므로, 이 slime mold는 또한 모든 공격 중간에 게이머 health point를 단지 1만 빼는 superwimpy squirt attack을 합니다
 
 
 The Cunning Brigand
@@ -687,17 +580,11 @@ The Cunning Brigand
 [source]
 [pic]
 
- 약삭빠른 brigand가 공격할때 하는 첫번째 일은 게이머의 health, agility, strength를 살벼보고 공격 목표로 이 세가지중 가장 높은것을 선택하는 것입니다.
-
- If several of the attributes are equally large, 
-the brigand will choose health over agility and agility over strength as the 
-focus of attack. 
-
- 만약 health가 높다면, 게이머는 새총으로 맞을 것 입니다. agility가 높다면, brigand는 게이머의 다리를 채찍질 할 것입니다. strength가 높다면, brigand는 게이머의 팔을 채찍질 할 것입니다.
+ 약삭빠른 brigand가 공격할때 하는 첫번째 일은 게이머의 health, agility, strength를 살펴보고 공격 목표로 이 세가지중 가장 높은것을 선택하는 것입니다. 각 속성이 모두 높다면, brigand는 agility보다 health를 strength보다 agility공격에 초점을 둡니다. 만약 health가 높다면, 게이머는 새총으로 맞을 것 입니다. agility가 높다면, brigand는 게이머의 다리를 채찍질 할 것입니다. strength가 높다면, brigand는 게이머의 팔을 채찍질 할 것입니다.
 
  저희는 이제 완전히 저희 게임의 모든 몬스터들을 정의하였습니다!
 
-#===============================END
+
 To Battle!
 
  게임을 시작하기 위해, REPL에서 orc-battle을 호출합니다:
@@ -714,7 +601,7 @@ To Battle!
 
  적에게 한방 먹었지만, 여전히 많은 싸움이 남아 있습니다. 이 싸움은 아직 끝나지 않았습니다!
 
- 보시다시피, Orc Battle에서 살아남길 원한다면 사려 깊은 전략 필요합니다. 여러분께서 이 새로운 게임을 즐겼으면 합니다!
+ 보시다시피, Orc Battle에서 살아남길 원한다면 사려 깊은 전략이 필요합니다. 여러분께서 이 새로운 게임을 즐겼으면 합니다!
 
 
 What You’ve Learned
