@@ -24,7 +24,9 @@
       <File Name="8-This_Aint_Your_Daddys_Wumpus.txt"/>
       <File Name="9-Advanced_Datatypes_and_Generic_programming.txt"/>
     </Category>
-    <Category Name="3-Lisp Is Hacking"/>
+    <Category Name="3-Lisp Is Hacking">
+      <File Name="10-Looping_with_the_loop_command.txt"/>
+    </Category>
     <Category Name="4-Lisp Is Science"/>
     <Category Name="Introduction">
       <File Name="emacs_short_cut.txt"/>
@@ -34,6 +36,6 @@
     </Category>
   </Files>
   <ClosedFiles>
-    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\9-Advanced_Datatypes_and_Generic_programming.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\10-Looping_with_the_loop_command.txt"/>
   </ClosedFiles>
 </AcroEditProject>
