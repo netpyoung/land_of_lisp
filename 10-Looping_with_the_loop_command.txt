@@ -4,138 +4,138 @@ Lisp Is Hacking
 
 LOOP AND FORMAT: THE SEEDY UNDERBELLY OF LISP
 
- ÀÌÀü¿¡, ÀúÈñ´Â Common Lisp ¾ğ¾îÀÇ core¸¦ »ìÆìº¸¾Ò°í °£°áÇÔ°ú ¿ì¾ÆÇÔ¿¡ °¨¸íÀ» ¹Ş¾Ò½À´Ï´Ù. ±×·¯³ª ÀÌ core ÁÖº¯¿¡´Â ¾î¶² ¸Å·ÂÀ» Áö´Ñ LispÀÇ ¾îµÓ°í ÃÊ¶óÇÑ ¸éµµ ÀÖ½À´Ï´Ù. ±×µéÀÌ Lisp coreÀÇ ¾Æ¸§´Ù¿òÀ» È¸¼ÕÇÒÁöµµ ¸ğ¸£Áö¸¸, ±×µéÀÇ ÆÄ¿ö·Î ÀÌ°ÍÀ» ½±°Ô º¸»óÇÕ´Ï´Ù. ÀÌ·¯ÇÑ ¾ğ¾îÀÇ ºÎºĞÀº budding Lisp hacker¿¡°Ô ÀÖ¾î ÁøÁ¤ÇÑ Áñ°Å¿òÀÔ´Ï´Ù
+ ì´ì „ì—, ì €í¬ëŠ” Common Lisp ì–¸ì–´ì˜ coreë¥¼ ì‚´í´ë³´ì•˜ê³  ê°„ê²°í•¨ê³¼ ìš°ì•„í•¨ì— ê°ëª…ì„ ë°›ì•˜ìŠµë‹ˆë‹¤. ê·¸ëŸ¬ë‚˜ ì´ core ì£¼ë³€ì—ëŠ” ì–´ë–¤ ë§¤ë ¥ì„ ì§€ë‹Œ Lispì˜ ì–´ë‘¡ê³  ì´ˆë¼í•œ ë©´ë„ ìˆìŠµë‹ˆë‹¤. ê·¸ë“¤ì´ Lisp coreì˜ ì•„ë¦„ë‹¤ì›€ì„ íšŒì†í• ì§€ë„ ëª¨ë¥´ì§€ë§Œ, ê·¸ë“¤ì˜ íŒŒì›Œë¡œ ì´ê²ƒì„ ì‰½ê²Œ ë³´ìƒí•©ë‹ˆë‹¤. ì´ëŸ¬í•œ ì–¸ì–´ì˜ ë¶€ë¶„ì€ budding Lisp hackerì—ê²Œ ìˆì–´ ì§„ì •í•œ ì¦ê±°ì›€ì…ë‹ˆë‹¤
 
- loop¿Í format, ÀÌ È®ÀåÀ» ÀÌ¹ø section¿¡¼­ ´Ù·ê°ÍÀÌ¸ç, ¼öÇĞÀûÀÎ ¿ì¾ÆÇÔÀ» ³Ñ¾î¼³ °­·ÂÇÑ Èû¿¡ ÁßÁ¡À» µÎ°Ú½À´Ï´Ù. Lisp ÇÁ·Î±×·¡¸Óµé »çÀÌ¿¡¼­ ÀÌ°ÍÀº Á¾Á¾ ³í¶õÀ» ¾ß±âÇÏ¸ç, ÀÌ ¸í·É¾îµé¿¡ ÀÇÇØ ¾î¶² ÈûÀÌ Á¦°øµÇ´ÂÁö ¹¯´Â ÀÌµéÀº ¿ì¾ÆÇÔ¿¡ ÀÖ¾î »ó¹İ°ü°è°¡ ÀÖ´ÂÁö °ÆÁ¤ÇÕ´Ï´Ù. ÀÌ·¯ÇÑ ÇÁ·Î±×·¡¸ÓµéÀº ¾î¶² Áß´ëÇÑ code¸¦ ÀÛ¼ºÇÒ¶§ loop¿Í format¸¦ ÇÇÇØ¾ß ÇÑ´Ù°í ¹Ï½À´Ï´Ù.
+ loopì™€ format, ì´ í™•ì¥ì„ ì´ë²ˆ sectionì—ì„œ ë‹¤ë£°ê²ƒì´ë©°, ìˆ˜í•™ì ì¸ ìš°ì•„í•¨ì„ ë„˜ì–´ì„¤ ê°•ë ¥í•œ í˜ì— ì¤‘ì ì„ ë‘ê² ìŠµë‹ˆë‹¤. Lisp í”„ë¡œê·¸ë˜ë¨¸ë“¤ ì‚¬ì´ì—ì„œ ì´ê²ƒì€ ì¢…ì¢… ë…¼ë€ì„ ì•¼ê¸°í•˜ë©°, ì´ ëª…ë ¹ì–´ë“¤ì— ì˜í•´ ì–´ë–¤ í˜ì´ ì œê³µë˜ëŠ”ì§€ ë¬»ëŠ” ì´ë“¤ì€ ìš°ì•„í•¨ì— ìˆì–´ ìƒë°˜ê´€ê³„ê°€ ìˆëŠ”ì§€ ê±±ì •í•©ë‹ˆë‹¤. ì´ëŸ¬í•œ í”„ë¡œê·¸ë˜ë¨¸ë“¤ì€ ì–´ë–¤ ì¤‘ëŒ€í•œ codeë¥¼ ì‘ì„±í• ë•Œ loopì™€ formatë¥¼ í”¼í•´ì•¼ í•œë‹¤ê³  ë¯¿ìŠµë‹ˆë‹¤.
 
- ±×·¯³ª ÀÌ ¸í·É¾îµéÀ» »ç¿ëÇÏ°í ¹è¿ö¾ßÇÏ´Â Áß¿äÇÑ ÀÌÀ¯°¡ ÀÖ½À´Ï´Ù: ÀÌ°ÍµéÀº LispÀÇ À¯¿¬ÇÔ°ú È®Àå¼º Æ÷ÇÔÇÏ°í ÀÖ½À´Ï´Ù. Lisp°¡ (°ÅÀÇ Æ²¸²¾øÀÌ) °¡Àå À¯¿¬ÇÑ ÇÁ·Î±×·¡¹Ö ¾ğ¾îÀÌ±â ¶§¹®¿¡, hackerµéÀº ¼ö½Ê³âµ¿¾È ¼öÃµ°³ÀÇ ±×µéÀÇ hack·Î ÀÌ°ÍÀ» È®Àå½ÃÄÑ ¿Ô½À´Ï´Ù. ÀÌ·¯ÇÑ ¼º°øÀûÀÎ È®ÀåÀÇ Áß°£¿¡ ¼­ÀÖ´Â loop¿Í format´Â Darwinian battlefield¿¡¼­ »ì¾Æ³²´Â °Í¿¡¼­ ÁøÁ¤ÇÑ Àå°üÀ» ÀÌ·ê °ÍÀÔ´Ï´Ù.
+ ê·¸ëŸ¬ë‚˜ ì´ ëª…ë ¹ì–´ë“¤ì„ ì‚¬ìš©í•˜ê³  ë°°ì›Œì•¼í•˜ëŠ” ì¤‘ìš”í•œ ì´ìœ ê°€ ìˆìŠµë‹ˆë‹¤: ì´ê²ƒë“¤ì€ Lispì˜ ìœ ì—°í•¨ê³¼ í™•ì¥ì„± í¬í•¨í•˜ê³  ìˆìŠµë‹ˆë‹¤. Lispê°€ (ê±°ì˜ í‹€ë¦¼ì—†ì´) ê°€ì¥ ìœ ì—°í•œ í”„ë¡œê·¸ë˜ë° ì–¸ì–´ì´ê¸° ë•Œë¬¸ì—, hackerë“¤ì€ ìˆ˜ì‹­ë…„ë™ì•ˆ ìˆ˜ì²œê°œì˜ ê·¸ë“¤ì˜ hackë¡œ ì´ê²ƒì„ í™•ì¥ì‹œì¼œ ì™”ìŠµë‹ˆë‹¤. ì´ëŸ¬í•œ ì„±ê³µì ì¸ í™•ì¥ì˜ ì¤‘ê°„ì— ì„œìˆëŠ” loopì™€ formatëŠ” Darwinian battlefieldì—ì„œ ì‚´ì•„ë‚¨ëŠ” ê²ƒì—ì„œ ì§„ì •í•œ ì¥ê´€ì„ ì´ë£° ê²ƒì…ë‹ˆë‹¤.
 
 
 LOOPING WITH THE LOOP COMMAND
 
-loop¿Í format¸í·É¾î´Â °­·ÂÇÏ°í hacker-friendlyÇÕ´Ï´Ù. ÀÌµéÀÌ Á¦°øÇÏ´Â ´ë´Ù¼öÀÇ ±â´ÉµéÀº Lisp¾ğ¾î¿¡¼­ ´Ù¸¥ ¹æ¸éÀ¸·Î ÀÌ¿ë°¡´ÉÇÏ¸ç, °£°áÇÑ code¸¦ ÁÁ¾ÆÇÑ´Ù¸é ÀÌ·¯ÇÑ »ó´çÈ÷ Æ¯È­µÈ ¸í·É¾î¸¦ ¹è¿ï °¡Ä¡°¡ ÀÖ½À´Ï´Ù. ÀÌ¹øÀå¿¡¼­ loop¿¡ ´ëÇØ »ìÆì º¼ °ÍÀÔ´Ï´Ù. ´ÙÀ½ Àå¿¡¼­´Â format¿¡ ´ëÇØ ´Ù·ê °ÍÀÔ´Ï´Ù.
+loopì™€ formatëª…ë ¹ì–´ëŠ” ê°•ë ¥í•˜ê³  hacker-friendlyí•©ë‹ˆë‹¤. ì´ë“¤ì´ ì œê³µí•˜ëŠ” ëŒ€ë‹¤ìˆ˜ì˜ ê¸°ëŠ¥ë“¤ì€ Lispì–¸ì–´ì—ì„œ ë‹¤ë¥¸ ë°©ë©´ìœ¼ë¡œ ì´ìš©ê°€ëŠ¥í•˜ë©°, ê°„ê²°í•œ codeë¥¼ ì¢‹ì•„í•œë‹¤ë©´ ì´ëŸ¬í•œ ìƒë‹¹íˆ íŠ¹í™”ëœ ëª…ë ¹ì–´ë¥¼ ë°°ìš¸ ê°€ì¹˜ê°€ ìˆìŠµë‹ˆë‹¤. ì´ë²ˆì¥ì—ì„œ loopì— ëŒ€í•´ ì‚´í´ ë³¼ ê²ƒì…ë‹ˆë‹¤. ë‹¤ìŒ ì¥ì—ì„œëŠ” formatì— ëŒ€í•´ ë‹¤ë£° ê²ƒì…ë‹ˆë‹¤.
 
 
 The loop Macro
 
- ÄÄÇ»ÅÍ ÇÁ·Î±×·¥¿¡¼­ ¿©·¯ºĞÀÌ ¿øÇÏ´Â ¾î¶°ÇÑ looping Å¸ÀÔÀÌ¶óµµ loop macro·Î ÇÒ ¼ö ÀÖ½À´Ï´Ù. ¿©±â °£´ÜÇÑ ¿¹Á¦°¡ ÀÖ½À´Ï´Ù:
+ ì»´í“¨í„° í”„ë¡œê·¸ë¨ì—ì„œ ì—¬ëŸ¬ë¶„ì´ ì›í•˜ëŠ” ì–´ë– í•œ looping íƒ€ì…ì´ë¼ë„ loop macroë¡œ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì—¬ê¸° ê°„ë‹¨í•œ ì˜ˆì œê°€ ìˆìŠµë‹ˆë‹¤:
 [source]
 
- ÀÌ code´Â 5º¸´Ù ÀÛÀº ÀÚ¿¬¼ö¸¦ ´ÙÀ½Ã³·³ ¸ğµÎ ´õÇÕ´Ï´Ù:
+ ì´ codeëŠ” 5ë³´ë‹¤ ì‘ì€ ìì—°ìˆ˜ë¥¼ ë‹¤ìŒì²˜ëŸ¼ ëª¨ë‘ ë”í•©ë‹ˆë‹¤:
 
  0 + 1 + 2 + 3 + 4 = 10
 
- ÀÌ loop ¸í·É¾î Lisp¸í·É¾î°¡ ÇØ¾ßÇÏ´Â ÀûÀıÇÑ ¹æ¹ıÀ¸·Î ÀÏÀ» Ã³¸®ÇÏÁö ¾Ê´Â´Ù´Â °ÍÀ» º¼ ¼ö ÀÖ½À´Ï´Ù. ¹«¾ùº¸´Ùµµ ÀÌ°ÍÀº Àå¾Ö°¡ ÀÖ½À´Ï´Ù.(First of all, it¡¯s parenthetically challenged.) ÇÑÁÙ¿¡ °ıÈ£ ¾øÀÌ ÀÏ°ö°³ÀÇ ÅäÅ«ÀÌ °¡Áø°ÍÀ» Àü¿¡´Â ÇÑ¹øµµ º»ÀûÀÌ ¾ø½À´Ï´Ù!
+ ì´ loop ëª…ë ¹ì–´ Lispëª…ë ¹ì–´ê°€ í•´ì•¼í•˜ëŠ” ì ì ˆí•œ ë°©ë²•ìœ¼ë¡œ ì¼ì„ ì²˜ë¦¬í•˜ì§€ ì•ŠëŠ”ë‹¤ëŠ” ê²ƒì„ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ë¬´ì—‡ë³´ë‹¤ë„ ì´ê²ƒì€ ì¥ì• ê°€ ìˆìŠµë‹ˆë‹¤.(First of all, itâ€™s parenthetically challenged.) í•œì¤„ì— ê´„í˜¸ ì—†ì´ ì¼ê³±ê°œì˜ í† í°ì´ ê°€ì§„ê²ƒì„ ì „ì—ëŠ” í•œë²ˆë„ ë³¸ì ì´ ì—†ìŠµë‹ˆë‹¤!
 [pic]
 
- ÀÌ°ÍÀÌ Lispy°¡ ¾Æ´Ñ°ÍÃ³·³ ¸¸µå´Â °ÍÀº ÀÌ Ãß°¡ ÅäÅ«µéÀÌ(for, below, ±×¸®°í sum) Æ¯º°ÇÑ ÀÇ¹Ì¸¦ Áö´Ï´Â °Í Ã³·³ º¸ÀÎ´Ù´Â °ÍÀÔ´Ï´Ù. 3ÀåÀ» È¸»óÇÏ¸é form¿¡ ÀÖ´Â Ã¹¹øÂ° ÅäÅ«Àº ÀüÅëÀûÀ¸·Î codeÀÇ ±âº» ¼Ó¼ºÀ» °áÁ¤ÇÏ¸ç, ¹İ¸é formÀÇ ³ª¸ÓÁö °ÍµéÀº ÀÎÀÚµéÀ» Æ÷ÇÔÇÏ°í ÀÖ½À´Ï´Ù. loop macro¿¡¼­´Â ÀÌ "magic tokens"ÀÌ ±Ùº»ÀûÀ¸·Î loopÀÇ Çàµ¿¿¡ ¿µÇâÀ» ¹ÌÄ¨´Ï´Ù. ¿©±â, ÀÌ°Ô ¹«¾ùÀ» ÀÇ¹ÌÇÏ´ÂÁö°¡ ³ª¿Í ÀÖ½À´Ï´Ù:
+ ì´ê²ƒì´ Lispyê°€ ì•„ë‹Œê²ƒì²˜ëŸ¼ ë§Œë“œëŠ” ê²ƒì€ ì´ ì¶”ê°€ í† í°ë“¤ì´(for, below, ê·¸ë¦¬ê³  sum) íŠ¹ë³„í•œ ì˜ë¯¸ë¥¼ ì§€ë‹ˆëŠ” ê²ƒ ì²˜ëŸ¼ ë³´ì¸ë‹¤ëŠ” ê²ƒì…ë‹ˆë‹¤. 3ì¥ì„ íšŒìƒí•˜ë©´ formì— ìˆëŠ” ì²«ë²ˆì§¸ í† í°ì€ ì „í†µì ìœ¼ë¡œ codeì˜ ê¸°ë³¸ ì†ì„±ì„ ê²°ì •í•˜ë©°, ë°˜ë©´ formì˜ ë‚˜ë¨¸ì§€ ê²ƒë“¤ì€ ì¸ìë“¤ì„ í¬í•¨í•˜ê³  ìˆìŠµë‹ˆë‹¤. loop macroì—ì„œëŠ” ì´ "magic tokens"ì´ ê·¼ë³¸ì ìœ¼ë¡œ loopì˜ í–‰ë™ì— ì˜í–¥ì„ ë¯¸ì¹©ë‹ˆë‹¤. ì—¬ê¸°, ì´ê²Œ ë¬´ì—‡ì„ ì˜ë¯¸í•˜ëŠ”ì§€ê°€ ë‚˜ì™€ ìˆìŠµë‹ˆë‹¤:
 
-z for´Â °ªÀÇ ¹üÀ§¸¦ ÅëÇØ iterateÇÒ º¯¼ö¸¦ ¼±¾ğÇÏ´Â °ÍÀ» Çã¿ëÇÑ´Ù. ±âº»ÀûÀ¸·Î 0ºÎÅÍ ½ÃÀÛÇÏ´Â Á¤¼ö·Î Ä«¿îÆ®¸¦ ÇÒ °ÍÀÔ´Ï´Ù.
-z below´Â Æ¯Á¤ °ª(ÀÌ¹ø °æ¿ì¿¡´Â 5)¿¡ µµ´ŞÇÒ¶§ ¸ØÃß¾î ±× ÀÚ½ÅÀÇ °ªÀ» Á¦¿ÜÇÑ´Ù°í for¿¡°Ô ¸»ÇÑ´Ù.
-z sumÀº ÁÖ¾îÁø Ç¥Çö½ÄÀÇ ¸ğµç °ªµéÀ» ´õÇÏ¿© loop°¡ ±× ¼ö¸¦ ¹İÈ¯ÇÏµµ·Ï ÇÑ´Ù.
+z forëŠ” ê°’ì˜ ë²”ìœ„ë¥¼ í†µí•´ iterateí•  ë³€ìˆ˜ë¥¼ ì„ ì–¸í•˜ëŠ” ê²ƒì„ í—ˆìš©í•œë‹¤. ê¸°ë³¸ì ìœ¼ë¡œ 0ë¶€í„° ì‹œì‘í•˜ëŠ” ì •ìˆ˜ë¡œ ì¹´ìš´íŠ¸ë¥¼ í•  ê²ƒì…ë‹ˆë‹¤.
+z belowëŠ” íŠ¹ì • ê°’(ì´ë²ˆ ê²½ìš°ì—ëŠ” 5)ì— ë„ë‹¬í• ë•Œ ë©ˆì¶”ì–´ ê·¸ ìì‹ ì˜ ê°’ì„ ì œì™¸í•œë‹¤ê³  forì—ê²Œ ë§í•œë‹¤.
+z sumì€ ì£¼ì–´ì§„ í‘œí˜„ì‹ì˜ ëª¨ë“  ê°’ë“¤ì„ ë”í•˜ì—¬ loopê°€ ê·¸ ìˆ˜ë¥¼ ë°˜í™˜í•˜ë„ë¡ í•œë‹¤.
 
 
 Some loop Tricks
 
- loop macro´Â ¾î¶² Á¾·ùÀÇ Çàµ¿ÀÌ¶óµµ °¡´ÉÇÏ°Ô ÇØÁÖ´Â Æ¯º°ÇÑ ÅäÅ«µéÀÇ cornucopia¸¦ °¡Á³½À´Ï´Ù. ¸î¸î °¡´É¼ºµéÀ» »ìÆìº¾½Ã´Ù
+ loop macroëŠ” ì–´ë–¤ ì¢…ë¥˜ì˜ í–‰ë™ì´ë¼ë„ ê°€ëŠ¥í•˜ê²Œ í•´ì£¼ëŠ” íŠ¹ë³„í•œ í† í°ë“¤ì˜ cornucopiaë¥¼ ê°€ì¡ŒìŠµë‹ˆë‹¤. ëª‡ëª‡ ê°€ëŠ¥ì„±ë“¤ì„ ì‚´í´ë´…ì‹œë‹¤
 
 
 Counting from a Starting Point to an Ending Point
 
- from°ú to ÀıÀ» ÀÌ¿ëÇÏ¿©, for ±¸Á¶°¡ Æ¯Á¤ÇÑ Á¤¼ö ¹üÀ§¸¦ ¼¿¼ö ÀÖµµ·Ï ¸¸µé ¼ö ÀÖ½À´Ï´Ù:
+ fromê³¼ to ì ˆì„ ì´ìš©í•˜ì—¬, for êµ¬ì¡°ê°€ íŠ¹ì •í•œ ì •ìˆ˜ ë²”ìœ„ë¥¼ ì…€ìˆ˜ ìˆë„ë¡ ë§Œë“¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤:
 [source]
 
 
 Iterating Through Values in a List
 
- ´ÙÀ½ ¿¹Á¦¿¡¼­, in ÅäÅ«À» »ç¿ëÇÏ¿© list¿¡ ÀÖ´Â °ªÀ» ÅëÇØ iterateÇÏ¿´½À´Ï´Ù:
+ ë‹¤ìŒ ì˜ˆì œì—ì„œ, in í† í°ì„ ì‚¬ìš©í•˜ì—¬ listì— ìˆëŠ” ê°’ì„ í†µí•´ iterateí•˜ì˜€ìŠµë‹ˆë‹¤:
 [source]
 
 
 doing Stuff in a Loop
- do ÅäÅ«Àº ÀÓÀÇÀÇ Ç¥Çö½ÄÀ» ¹Ş¾Æ loop³»ºÎ¿¡¼­ ÀÌ°ÍÀ» ½ÇÇàÇÕ´Ï´Ù:
+ do í† í°ì€ ì„ì˜ì˜ í‘œí˜„ì‹ì„ ë°›ì•„ loopë‚´ë¶€ì—ì„œ ì´ê²ƒì„ ì‹¤í–‰í•©ë‹ˆë‹¤:
 [source]
 
 
 Doing Stuff Under Certain Conditions
 
- when ÅäÅ«Àº ´ÙÀ½ loopÀÇ ÀÏºÎºĞÀ» ÇÊ¿äÇÏ´Ù¸é ½ÇÇàÇÏµµ·Ï ÇÕ´Ï´Ù:
+ when í† í°ì€ ë‹¤ìŒ loopì˜ ì¼ë¶€ë¶„ì„ í•„ìš”í•˜ë‹¤ë©´ ì‹¤í–‰í•˜ë„ë¡ í•©ë‹ˆë‹¤:
 [source]
 
- È¦¼öÀÇ ÇÕÀÌ ¹İÈ¯µÇ¾ú´Ù´Â °ÍÀ» ¾Ë¸³´Ï´Ù.
+ í™€ìˆ˜ì˜ í•©ì´ ë°˜í™˜ë˜ì—ˆë‹¤ëŠ” ê²ƒì„ ì•Œë¦½ë‹ˆë‹¤.
 
 
 Breaking out of a Loop Early
 
- ´ÙÀ½ loop´Â ¸î¸î »õ·Î¿î Æ®¸¯À» »ç¿ëÇÏ¿´½À´Ï´Ù:
+ ë‹¤ìŒ loopëŠ” ëª‡ëª‡ ìƒˆë¡œìš´ íŠ¸ë¦­ì„ ì‚¬ìš©í•˜ì˜€ìŠµë‹ˆë‹¤:
 [source]
 
- ¼ıÀÚ Ä«¿îÆÃÀ» ¸ØÃßµµ·Ï ¸»ÇÏ´Â LoopÀÇ ÀÏºÎºĞÀÌ ¾ø´Ù´Â °ÍÀ» ¾Ë¸³´Ï´Ù - ÀÌ°ÍÀº 0ºÎÅÍ ¹«ÇÑÀ¸·Î ³ª¾Æ°¥ °ÍÀÔ´Ï´Ù. ±×·¯³ª 5¿¡ µµ´ŞÇÏ°ÔµÇ¸é, when ÀıÀÌ loop°¡ Áï½Ã °ª 'falafelÀ» ¹İÈ¯ÇÏµµ·Ï ¸¸µì´Ï´Ù.
+ ìˆ«ì ì¹´ìš´íŒ…ì„ ë©ˆì¶”ë„ë¡ ë§í•˜ëŠ” Loopì˜ ì¼ë¶€ë¶„ì´ ì—†ë‹¤ëŠ” ê²ƒì„ ì•Œë¦½ë‹ˆë‹¤ - ì´ê²ƒì€ 0ë¶€í„° ë¬´í•œìœ¼ë¡œ ë‚˜ì•„ê°ˆ ê²ƒì…ë‹ˆë‹¤. ê·¸ëŸ¬ë‚˜ 5ì— ë„ë‹¬í•˜ê²Œë˜ë©´, when ì ˆì´ loopê°€ ì¦‰ì‹œ ê°’ 'falafelì„ ë°˜í™˜í•˜ë„ë¡ ë§Œë“­ë‹ˆë‹¤.
 
 
 Collecting a List of Values
 
- collect ÀıÀº list formÀ¸·Î loop·ÎºÎÅÍ ÇÏ³ªÀÇ Ç×¸ñº¸´Ù ´õ ¹İÈ¯ÇÏµµ·Ï ¸¸µì´Ï´Ù. ÀÌ ¸í·É¾î´Â ´ÙÀ½ ¿¹Á¦Ã³·³ list¿¡ ÀÖ´Â °¢ Ç×¸ñÀ» ¼öÁ¤ÇÒ ÇÊ¿ä°¡ ÀÖÀ»¶§ À¯¿ëÇÕ´Ï´Ù:
+ collect ì ˆì€ list formìœ¼ë¡œ loopë¡œë¶€í„° í•˜ë‚˜ì˜ í•­ëª©ë³´ë‹¤ ë” ë°˜í™˜í•˜ë„ë¡ ë§Œë“­ë‹ˆë‹¤. ì´ ëª…ë ¹ì–´ëŠ” ë‹¤ìŒ ì˜ˆì œì²˜ëŸ¼ listì— ìˆëŠ” ê° í•­ëª©ì„ ìˆ˜ì •í•  í•„ìš”ê°€ ìˆì„ë•Œ ìœ ìš©í•©ë‹ˆë‹¤:
 [source]
 [pic]
 
 Using Multiple for Clauses
 
- loop macro´Â ÇÏ³ª ÀÌ»óÀÇ ÀıÀ» °®´Â°Ô °¡´ÉÇÕ´Ï´Ù. ´ÙÀ½ ¿¹Á¦¸¦ Àß »ìÆìº¾´Ï´Ù:
+ loop macroëŠ” í•˜ë‚˜ ì´ìƒì˜ ì ˆì„ ê°–ëŠ”ê²Œ ê°€ëŠ¥í•©ë‹ˆë‹¤. ë‹¤ìŒ ì˜ˆì œë¥¼ ì˜ ì‚´í´ë´…ë‹ˆë‹¤:
 [source]
 [pic]
 
- ¾ó¸¶³ª ¸¹Àº ¼ıÀÚ°¡ °á°ú·Î ¹İÈ¯µÈ´Ù°í »ı°¢ÇÏ½Ê´Ï±î? ¿©±â µÎ °¡´É¼ºÀÌ ÀÖ½À´Ï´Ù: x¿Í y¸¦ µ¿½Ã¿¡ Áõ°¡½ÃÅ°¸ç 10°³ÀÇ Ç×¸ñÀÌ ÀÖ´Â list¸¦ ¹İÈ¯ÇÏ°Å³ª, x¿Í y¸¦ ÁßÃ¸ÇÏ¿© ¼øÈ¯½ÃÅ°¸ç 100°³ÀÇ ¼ıÀÚ¸¦ ¹İÈ¯ÇÏ°Å³ª. Á¤´äÀº ÀüÀÚÀÔ´Ï´Ù:
+ ì–¼ë§ˆë‚˜ ë§ì€ ìˆ«ìê°€ ê²°ê³¼ë¡œ ë°˜í™˜ëœë‹¤ê³  ìƒê°í•˜ì‹­ë‹ˆê¹Œ? ì—¬ê¸° ë‘ ê°€ëŠ¥ì„±ì´ ìˆìŠµë‹ˆë‹¤: xì™€ yë¥¼ ë™ì‹œì— ì¦ê°€ì‹œí‚¤ë©° 10ê°œì˜ í•­ëª©ì´ ìˆëŠ” listë¥¼ ë°˜í™˜í•˜ê±°ë‚˜, xì™€ yë¥¼ ì¤‘ì²©í•˜ì—¬ ìˆœí™˜ì‹œí‚¤ë©° 100ê°œì˜ ìˆ«ìë¥¼ ë°˜í™˜í•˜ê±°ë‚˜. ì •ë‹µì€ ì „ìì…ë‹ˆë‹¤:
 [source]
 
- º¸½Ã´Ù½ÃÇÇ, µÎ ¼ö ¸ğµÎ°¡ µ¿½Ã¿¡ 0ºÎÅÍ 9±îÁö Áõ°¡ÇÏ¿´½À´Ï´Ù.
+ ë³´ì‹œë‹¤ì‹œí”¼, ë‘ ìˆ˜ ëª¨ë‘ê°€ ë™ì‹œì— 0ë¶€í„° 9ê¹Œì§€ ì¦ê°€í•˜ì˜€ìŠµë‹ˆë‹¤.
 
- Common Lisp loop¿¡ ´Ù¼öÀÇ for ÀıÀÌ ÀÖ´Ù¸é, °¢°¢ Á¡°ËcheckedµÉ °ÍÀÌ¸ç, loop´Â ¾î¶² ÀıÁß ÇÏ³ª°¡ °ªÀ» ¹İÈ¯ÇÒ¶§ ¸ØÃâ °ÍÀÔ´Ï´Ù. ÀÌ°ÍÀÌ ÀÇ¹ÌÇÏ´Â °ÍÀº, forÀıÀÌ ´Ù¼öÀÇ looping º¯¼öµé°ú µ¶¸³ÀûÀ¸·Î loopÇÏÁö ¾Ê´Â ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç, °¢°¢ÀÇ µÎ °ª 10ÀÇ ¹üÀ§¸¦ loopÇÑ´Ù¸é, 10¹ø¸¸ loop ÇÒ °ÍÀÔ´Ï´Ù.
+ Common Lisp loopì— ë‹¤ìˆ˜ì˜ for ì ˆì´ ìˆë‹¤ë©´, ê°ê° ì ê²€checkedë  ê²ƒì´ë©°, loopëŠ” ì–´ë–¤ ì ˆì¤‘ í•˜ë‚˜ê°€ ê°’ì„ ë°˜í™˜í• ë•Œ ë©ˆì¶œ ê²ƒì…ë‹ˆë‹¤. ì´ê²ƒì´ ì˜ë¯¸í•˜ëŠ” ê²ƒì€, forì ˆì´ ë‹¤ìˆ˜ì˜ looping ë³€ìˆ˜ë“¤ê³¼ ë…ë¦½ì ìœ¼ë¡œ loopí•˜ì§€ ì•ŠëŠ” ë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©°, ê°ê°ì˜ ë‘ ê°’ 10ì˜ ë²”ìœ„ë¥¼ loopí•œë‹¤ë©´, 10ë²ˆë§Œ loop í•  ê²ƒì…ë‹ˆë‹¤.
 
- ±×·¯³ª, Á¾Á¾ ´Ù¼öÀÇ ¹üÀ§»çÀÌ¿¡¼­ µ¥Ä«¸£Æ® °ö(the Cartesian product)À» »ı¼ºÇÏ±â ¿øÇÕ´Ï´Ù. ´Ù½Ã¸»ÇÏÀÚ¸é, ¸ğµç °¡´ÉÇÑ µÎ°³ È¤Àº ÀÌ»óÀÇ ¹üÀ§ Á¶ÇÕÀ» À§ÇØ ÇÑ¹ø¸¸ ½ÇÇàÇÏ´Â loop¸¦ ¿øÇÕ´Ï´Ù. ÀÌ°ÍÀ» ÇÏ±â À§ÇØ¼±, ÁßÃ¸µÈ loop for x¿Í y°¡ ÇÊ¿äÇÕ´Ï´Ù:
+ ê·¸ëŸ¬ë‚˜, ì¢…ì¢… ë‹¤ìˆ˜ì˜ ë²”ìœ„ì‚¬ì´ì—ì„œ ë°ì¹´ë¥´íŠ¸ ê³±(the Cartesian product)ì„ ìƒì„±í•˜ê¸° ì›í•©ë‹ˆë‹¤. ë‹¤ì‹œë§í•˜ìë©´, ëª¨ë“  ê°€ëŠ¥í•œ ë‘ê°œ í˜¹ì€ ì´ìƒì˜ ë²”ìœ„ ì¡°í•©ì„ ìœ„í•´ í•œë²ˆë§Œ ì‹¤í–‰í•˜ëŠ” loopë¥¼ ì›í•©ë‹ˆë‹¤. ì´ê²ƒì„ í•˜ê¸° ìœ„í•´ì„ , ì¤‘ì²©ëœ loop for xì™€ yê°€ í•„ìš”í•©ë‹ˆë‹¤:
 [source]
 
- ÀÌ¹ø °æ¿ì¿¡, ¸ğµÎ 100°³ÀÇ Ç×¸ñµéÀ» loopingÇÏ¸é¼­ °¢°¢ 10°³ÀÇ Ç×¸ñÀ» Áö´Ñ 10°³ÀÇ ¸®½ºÆ®¸¦ ¸¸µé¾ú½À´Ï´Ù.
+ ì´ë²ˆ ê²½ìš°ì—, ëª¨ë‘ 100ê°œì˜ í•­ëª©ë“¤ì„ loopingí•˜ë©´ì„œ ê°ê° 10ê°œì˜ í•­ëª©ì„ ì§€ë‹Œ 10ê°œì˜ ë¦¬ìŠ¤íŠ¸ë¥¼ ë§Œë“¤ì—ˆìŠµë‹ˆë‹¤.
 
- ¶ÇÇÑ, ´ÙÀ½ ¿¹Á¦¿¡¼­ i º¯¼ö¿Í °°Àº 0ºÎÅÍ ½ÃÀÛÇÏ´Â º¯¼ö¸¦ »ç¿ëÇÏ¿©, list¿¡ ÀÖ´Â Ç×¸ñµéÀÇ »öÀÎ ¼ıÀÚ¸¦ ÃßÀûÇÒ ±ò²ûÇÑ ¹æ¹ıÀ» Á¦°øÇÏ¿´´Ù´Â °ÍÀ» ¾Ë¸³´Ï´Ù.
+ ë˜í•œ, ë‹¤ìŒ ì˜ˆì œì—ì„œ i ë³€ìˆ˜ì™€ ê°™ì€ 0ë¶€í„° ì‹œì‘í•˜ëŠ” ë³€ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬, listì— ìˆëŠ” í•­ëª©ë“¤ì˜ ìƒ‰ì¸ ìˆ«ìë¥¼ ì¶”ì í•  ê¹”ë”í•œ ë°©ë²•ì„ ì œê³µí•˜ì˜€ë‹¤ëŠ” ê²ƒì„ ì•Œë¦½ë‹ˆë‹¤.
 [source]
 
- ÀÌ ÁöÁ¡¿¡¼­, °¡´ÉÇÑ ¸ğµç looping º¯Á¾µéÀ» ´Ù·ç¾ú´Ù°í »ı°¢ÇÒÁöµµ ¸ğ¸¨´Ï´Ù. ¸¸¾à ±×·¸´Ù¸é, Áß´ëÇÑ ½Ç¼ö¸¦ ÇÏ¿´½À´Ï´Ù. º¸½Ê½Ã¿ä! Lisp MacroÀÇ ÁÖ±âÀ²Ç¥¸¦!
+ ì´ ì§€ì ì—ì„œ, ê°€ëŠ¥í•œ ëª¨ë“  looping ë³€ì¢…ë“¤ì„ ë‹¤ë£¨ì—ˆë‹¤ê³  ìƒê°í• ì§€ë„ ëª¨ë¦…ë‹ˆë‹¤. ë§Œì•½ ê·¸ë ‡ë‹¤ë©´, ì¤‘ëŒ€í•œ ì‹¤ìˆ˜ë¥¼ í•˜ì˜€ìŠµë‹ˆë‹¤. ë³´ì‹­ì‹œìš”! Lisp Macroì˜ ì£¼ê¸°ìœ¨í‘œë¥¼!
 [pic]
 [pic]
 
 Everything You Ever Wanted to Know About loop
 
- ÀÌÀü¿¡ ÀúÈñ°¡ ´Ù·ç¾ú´ø ¹ÏÁö¸øÇÒ ¿¹Á¦µéÀº ´ÜÁö loopÀÇ ÀüÃ¼ ´É·ÂÁß¿¡¼­ ÀÛÀº Á¤º¸ÀÏ »ÓÀÔ´Ï´Ù. ±×·¯³ª °Ì¸ÔÁö ¸¶½Ê½Ã¿ä! ÀÌÁ¦ ¿©·¯ºĞÀº ¼¼°è¿¡¼­ Ã³À½ÀÌÀÚ À¯ÀÏÇÑ Loop MacroÀÇ ÁÖ±âÀ²Ç¥¸¦ °¡Á³½À´Ï´Ù. ´Ü¼øÈ÷ ÀÌ°ÍÀ» ¿©·¯ºĞÀÇ ¸ğ´ÏÅÍ¿¡ ÀÔ·ÂÇÏ±âº¸´Ù´Â, Áö°©¿¡ ÀÌ°ÍÀ» ºÙÀÌ°Å³ª, ·¹ÀÌÀú·Î ÀÌ°ÍÀ» ¿©·¯ºĞÀÇ ¸Á¸·retina¿¡ ¼¼±ä´Ù¸é, ´Ü¼û¿¡ loop¿¡ ¼÷´ŞµÇ´Â °ÍÀÌ º¸ÀåµË´Ï´Ù!
+ ì´ì „ì— ì €í¬ê°€ ë‹¤ë£¨ì—ˆë˜ ë¯¿ì§€ëª»í•  ì˜ˆì œë“¤ì€ ë‹¨ì§€ loopì˜ ì „ì²´ ëŠ¥ë ¥ì¤‘ì—ì„œ ì‘ì€ ì •ë³´ì¼ ë¿ì…ë‹ˆë‹¤. ê·¸ëŸ¬ë‚˜ ê²ë¨¹ì§€ ë§ˆì‹­ì‹œìš”! ì´ì œ ì—¬ëŸ¬ë¶„ì€ ì„¸ê³„ì—ì„œ ì²˜ìŒì´ì ìœ ì¼í•œ Loop Macroì˜ ì£¼ê¸°ìœ¨í‘œë¥¼ ê°€ì¡ŒìŠµë‹ˆë‹¤. ë‹¨ìˆœíˆ ì´ê²ƒì„ ì—¬ëŸ¬ë¶„ì˜ ëª¨ë‹ˆí„°ì— ì…ë ¥í•˜ê¸°ë³´ë‹¤ëŠ”, ì§€ê°‘ì— ì´ê²ƒì„ ë¶™ì´ê±°ë‚˜, ë ˆì´ì €ë¡œ ì´ê²ƒì„ ì—¬ëŸ¬ë¶„ì˜ ë§ë§‰retinaì— ì„¸ê¸´ë‹¤ë©´, ë‹¨ìˆ¨ì— loopì— ìˆ™ë‹¬ë˜ëŠ” ê²ƒì´ ë³´ì¥ë©ë‹ˆë‹¤!
 
- loop macro¿¡¼­ »ç¿ëÇÒ ¼ö ÀÖ´Â ¸ğµç ÇÕ¹ıÀûÀÎ ¸í·É¾îÀÇ ´ë´Ù¼ö´Â ÀÌ ÁÖ±âÀ² Ç¥¿¡¼­ ´Ù·ç¾îÁ³½À´Ï´Ù. ÀÌ°ÍÀº ¾î¶»°Ô ÇØ½¬ Å×ÀÌºí°ú ¹è¿­À» Á¶ÀÛÇÏ´ÂÁö, Æ¯º°ÇÑ lopping ¿¬»êÀ» ¼öÇàÇÏ´ÂÁö¸¦ º¸¿©Áİ´Ï´Ù. ÀÌ ÁÖ±âÀ²Ç¥¿¡ ÀÖ´Â °¢ ³×¸ğÄ­µéÀº ÇÏ³ªÀÇ ¿¹Á¦¸¦ Æ÷ÇÔÇÏ°í ÀÖ½À´Ï´Ù. ÀÌ ¿¹Á¦¸¦ ½ÇÇàÇÑ´Ù¸é, ÁÖ¾îÁø ¸í·É¾îÀÇ Çàµ¿À» ¹àÇô³¾ ¼ö ÀÖÀ» °ÍÀÔ´Ï´Ù
+ loop macroì—ì„œ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ëª¨ë“  í•©ë²•ì ì¸ ëª…ë ¹ì–´ì˜ ëŒ€ë‹¤ìˆ˜ëŠ” ì´ ì£¼ê¸°ìœ¨ í‘œì—ì„œ ë‹¤ë£¨ì–´ì¡ŒìŠµë‹ˆë‹¤. ì´ê²ƒì€ ì–´ë–»ê²Œ í•´ì‰¬ í…Œì´ë¸”ê³¼ ë°°ì—´ì„ ì¡°ì‘í•˜ëŠ”ì§€, íŠ¹ë³„í•œ lopping ì—°ì‚°ì„ ìˆ˜í–‰í•˜ëŠ”ì§€ë¥¼ ë³´ì—¬ì¤ë‹ˆë‹¤. ì´ ì£¼ê¸°ìœ¨í‘œì— ìˆëŠ” ê° ë„¤ëª¨ì¹¸ë“¤ì€ í•˜ë‚˜ì˜ ì˜ˆì œë¥¼ í¬í•¨í•˜ê³  ìˆìŠµë‹ˆë‹¤. ì´ ì˜ˆì œë¥¼ ì‹¤í–‰í•œë‹¤ë©´, ì£¼ì–´ì§„ ëª…ë ¹ì–´ì˜ í–‰ë™ì„ ë°í˜€ë‚¼ ìˆ˜ ìˆì„ ê²ƒì…ë‹ˆë‹¤
  
 
 Using loop to Evolve!
 [pic]
 #BEGIN=============================================
 
-loop¸¦ »ç¿ëÇÏ¿© ¸¸µé¾îÁø ¶Ç ´Ù¸¥ °ÔÀÓÀ» ¸¸µé¾î º¾½Ã´Ù.
-ÀÌ°ÍÀº ÀúÈñ°¡ ÁøÇàÇÒ ¼ö ÀÖ´Â °ÔÀÓÀÌ ¾Æ´Õ´Ï´Ù.
-´ë½Å¿¡, ÀÌ°ÍÀº ÁøÈ­ÇÏ´Â °ÔÀÓ ¼¼°è°¡ µÉ °ÍÀÌ¸ç ÀúÈñ´Â ±×°É ÁöÄÑº¾´Ï´Ù!
+loopë¥¼ ì‚¬ìš©í•˜ì—¬ ë§Œë“¤ì–´ì§„ ë˜ ë‹¤ë¥¸ ê²Œì„ì„ ë§Œë“¤ì–´ ë´…ì‹œë‹¤.
+ì´ê²ƒì€ ì €í¬ê°€ ì§„í–‰í•  ìˆ˜ ìˆëŠ” ê²Œì„ì´ ì•„ë‹™ë‹ˆë‹¤.
+ëŒ€ì‹ ì—, ì´ê²ƒì€ ì§„í™”í•˜ëŠ” ê²Œì„ ì„¸ê³„ê°€ ë  ê²ƒì´ë©° ì €í¬ëŠ” ê·¸ê±¸ ì§€ì¼œë´…ë‹ˆë‹¤!
 
-Let¡¯s create another game, making full use of loop. But this won¡¯t be a game 
+Letâ€™s create another game, making full use of loop. But this wonâ€™t be a game 
 that we play. Instead, it will be a game world that evolves as we watch it! 
 
 
-We¡¯re going to create an environment of steppes and jungles,
+Weâ€™re going to create an environment of steppes and jungles,
  filled with animals 
 running around, foraging, eating, and reproducing.
 
-¸î ¹é¸¸ ½Ã°£ÀÌ Èå¸¥ÈÄ¿¡, ´Ù¸¥ Á¾À¸·Î ÁøÈ­ÇÑ°É º¼ ¼ö ÀÖÀ» °ÍÀÔ´Ï´Ù.
+ëª‡ ë°±ë§Œ ì‹œê°„ì´ íë¥¸í›„ì—, ë‹¤ë¥¸ ì¢…ìœ¼ë¡œ ì§„í™”í•œê±¸ ë³¼ ìˆ˜ ìˆì„ ê²ƒì…ë‹ˆë‹¤.
 
 NOTE
- ÀÌ ¿¹Á¦´Â Scientific American¿¡ "Computer Recreations" Ä®·³¿¡ ½Ç¸°
-A.K. DewdneyÀÇ ±Û "Simulated evolution: wherein bugs learns to hunt bacteria"¿¡¼­ Ã¼ÅÃµÇ¾ú½À´Ï´Ù(May 1989: 138-141)..
+ ì´ ì˜ˆì œëŠ” Scientific Americanì— "Computer Recreations" ì¹¼ëŸ¼ì— ì‹¤ë¦°
+A.K. Dewdneyì˜ ê¸€ "Simulated evolution: wherein bugs learns to hunt bacteria"ì—ì„œ ì²´íƒë˜ì—ˆìŠµë‹ˆë‹¤(May 1989: 138-141)..
 [pic]
 
-ÀúÈñ °ÔÀÓ ¼¼°è´Â ¸Å¿ì °£´ÜÇÕ´Ï´Ù.
-°£´ÜÇÑ »ç°¢Çü ÆòÁö·Î ÀÌ·ç¾îÁ³½À´Ï´Ù
+ì €í¬ ê²Œì„ ì„¸ê³„ëŠ” ë§¤ìš° ê°„ë‹¨í•©ë‹ˆë‹¤.
+ê°„ë‹¨í•œ ì‚¬ê°í˜• í‰ì§€ë¡œ ì´ë£¨ì–´ì¡ŒìŠµë‹ˆë‹¤
 
  It consists of a simple rectangular 
 plane, with edges that wrap around to the opposite side. (Mathematically 
@@ -146,19 +146,19 @@ speaking, it has a toroidal topology.)
 world is a small jungle, where plants grow much faster. Our animals, who are 
 herbivores, will forage this world in search for food.
 
-Let¡¯s create some variables describing the extent of our world:
+Letâ€™s create some variables describing the extent of our world:
 [source]
 
 
-We¡¯re giving the world a width of 100 units and a height of 30 units. Using 
+Weâ€™re giving the world a width of 100 units and a height of 30 units. Using 
 these dimensions should make it easy to display the world in our Lisp REPL. 
 The *jungle* list defines the rectangle in the world map that contains the jun-
-gle. The first two numbers in the list are the x- and y-coordinates of the jungle¡¯s 
+gle. The first two numbers in the list are the x- and y-coordinates of the jungleâ€™s 
 top-left corner, and the last two numbers are its width and height. Finally, we 
 give the amount of energy contained in each plant, which is set to 80. This 
-means that if an animal finds a plant, it will gain 80 days¡¯ worth of food by 
+means that if an animal finds a plant, it will gain 80 daysâ€™ worth of food by 
 eating it.
-NOTE If your terminal window isn¡¯t large enough to display the entire world, change the val-
+NOTE If your terminal window isnâ€™t large enough to display the entire world, change the val-
 ues of the *width* and *height* variables. Set the *width* variable to the width of your 
 terminal window minus two, and the *height* variable to the height of your terminal 
 window minus one.
@@ -167,22 +167,22 @@ window minus one.
 Growing Plants in Our World
 As you might imagine, simulating evolution on a computer is a slow process. 
 In order to see the creatures evolve, we need to simulate large stretches of 
-time, which means we¡¯ll want our code for this project to be very efficient. As 
+time, which means weâ€™ll want our code for this project to be very efficient. As 
 animals wander around our world, they will need to be able to check if there 
 is a plant at a given x,y location. The most efficient way to enable this is to 
-store all of our plants in a hash table, indexed based on each plant¡¯s x- and 
+store all of our plants in a hash table, indexed based on each plantâ€™s x- and 
 y-coordinates.
 [source]
 
 By default, a Common Lisp hash table uses eq when testing for the equal-
-ity of keys. For this hash table, however, we¡¯re defining :test to use equal 
+ity of keys. For this hash table, however, weâ€™re defining :test to use equal 
 instead of eq, which will let us use cons pairs of x- and y-coordinates as keys. If 
 you remember our rule of thumb for checking equality, cons pairs should be 
-compared using equal. If we didn¡¯t make this change, every check for a key 
+compared using equal. If we didnâ€™t make this change, every check for a key 
 would fail, since two different cons cells, even with the same contents, test 
 as being different when using eq.
 Plants will grow randomly across the world, though a higher concentra-
-tion of plants will grow in the jungle area than in the steppes. Let¡¯s write 
+tion of plants will grow in the jungle area than in the steppes. Letâ€™s write 
 some functions to grow new plants:
 [source]
 
@@ -208,11 +208,11 @@ is so small, it will have dense vegetation compared to the rest of the world.
 Creating Animals
 [pic]
 The plants in our world are very simple, but the animals are a bit more com-
-plicated. Because of this, we¡¯ll need to define a structure that stores the 
+plicated. Because of this, weâ€™ll need to define a structure that stores the 
 properties of each animal in our game:
 [source]
 
-Let¡¯s take a look at each of these fields in detail.
+Letâ€™s take a look at each of these fields in detail.
 Anatomy of an Animal
 [pic]
 
@@ -220,20 +220,20 @@ We need to track several properties for each animal. First, we need to know
 its x- and y-coordinates. This indicates where the animal is located on the 
 world map.
 Next, we need to know how much energy an animal has. This is a Darwinian 
-game of survival, so if an animal can¡¯t forage enough food, it will starve and 
+game of survival, so if an animal canâ€™t forage enough food, it will starve and 
 die. The energy field tracks how many days of energy an animal has remain-
 ing. It is crucial that an animal find more food before its energy supply is 
 exhausted.
 We also need to track which direction the animal is 
 facing. This is important because an animal will walk 
 to a neighboring square in the world map each day. 
-The dir field will specify the direction of the animal¡¯s 
+The dir field will specify the direction of the animalâ€™s 
 next x,y position as a number from 0 to 7:
 For example, an orientation of 0 would cause the 
 animal to move up and to the left by the next day.
-Finally, we need to track the animal¡¯s genes. Each 
+Finally, we need to track the animalâ€™s genes. Each 
 animal has exactly eight genes, consisting of positive integers. These integers 
-represent eight ¡°slots,¡± which encircle the animal as follows:
+represent eight â€œslots,â€ which encircle the animal as follows:
 [pic]
 [pic]
 Every day, an animal will decide whether to continue facing the same 
@@ -244,7 +244,7 @@ the gene slot.
 For example, an animal might have the following genes:
 [source]
 
-Let¡¯s represent these genes as a table, showing each slot 
+Letâ€™s represent these genes as a table, showing each slot 
 number and how large of a value is stored in it:
 In this example, an animal has a large number (10) stored 
 in slot 2. Looking at our picture of the eight slots around the 
@@ -253,20 +253,20 @@ animal, you can see that slot 2 points to the right. Therefore,
 this animal will make a lot of right-hand turns and run in a circle. Of course, 
 since the other slots still contain values larger than zero, the animal will occa-
 sionally move in another direction.
-Let¡¯s create an *animals* variable, populated with a single starting animal. 
-You can think of this animal as ¡°Adam¡± (or ¡°Eve¡±, depending on what gender 
+Letâ€™s create an *animals* variable, populated with a single starting animal. 
+You can think of this animal as â€œAdamâ€ (or â€œEveâ€, depending on what gender 
 you prefer for our asexual animals).
 [source]
 
-We make the animal¡¯s starting point the center of the world by setting 
-the x and y positions to half of the map¡¯s width and height, respectively. We 
-set its initial energy to 1000, since it hasn¡¯t evolved much yet and we want it to 
+We make the animalâ€™s starting point the center of the world by setting 
+the x and y positions to half of the mapâ€™s width and height, respectively. We 
+set its initial energy to 1000, since it hasnâ€™t evolved much yet and we want it to 
 have a fighting chance at survival. It starts off facing the upper left, with its 
 dir field set to 0. For its genes, we just use random numbers.
 Note that unlike the *plants* structure, which was a hash table, the 
 *animals* structure is just a plain list (currently containing only a single mem-
 ber). This is because, for the core of our simulation, we never need to search 
-our list of animals. Instead, we¡¯ll just be traversing *animals* once every simu-
+our list of animals. Instead, weâ€™ll just be traversing *animals* once every simu-
 lated day, to let our critters do their daily activities. Lists already support effi-
 cient linear traversals, so using another, more complex data structure (such as 
 a table) would have no significant effect on the performance of our simulation.
@@ -279,7 +279,7 @@ nally or diagonally, based on the direction grid we have described:
 [source]
 
 The move function modifies the x and y fields, using the animal-x and 
-animal-y accessors. As we¡¯ve discussed, these are automatically generated 
+animal-y accessors. As weâ€™ve discussed, these are automatically generated 
 through the defstruct macro, based on the field names. At the top of this 
 function, we use the accessors to retrieve the x- and y-coordinates for the 
 animal XY. Then we use the same accessors to set the same values, with the 
@@ -288,7 +288,7 @@ To calculate the new x-coordinate, we use a cond command to first check
 if the direction is 2, 3, or 4 [. These are the directions the animal may face 
 that point east in the world, so we want to add one to the x-coordinate. If the 
 direction instead is 1 or 5, it means the animal is facing directly north or 
-south \. In those cases, the x-coordinate shouldn¡¯t be changed. In all other 
+south \. In those cases, the x-coordinate shouldnâ€™t be changed. In all other 
 cases, the animal is facing west and we need to subtract one ]. The y-coordi-
 nate is adjusted in an analogous way ^.
 Since the world needs to wrap around at the edges, we do some extra math 
@@ -302,7 +302,7 @@ the far west side of the game world.
 The final thing the move function needs to do is decrease the amount of 
 energy the animal possesses by one. Motion, after all, requires energy.
 Handling Animal Turning
-Next, we¡¯ll write the turn function. This function will use the animal¡¯s genes 
+Next, weâ€™ll write the turn function. This function will use the animalâ€™s genes 
 to decide if and how much it will turn on a given day.
 
 [source]
@@ -321,11 +321,11 @@ back to zero, once again by using mod [.
 Handling Animal Eating
 [pic]
 
-Eating is a simple process. We just need to check if there¡¯s a plant at the ani-
-mal¡¯s current location, and if there is, consume it:
+Eating is a simple process. We just need to check if thereâ€™s a plant at the ani-
+malâ€™s current location, and if there is, consume it:
 [source]
 
-The animal¡¯s energy is increased by the amount of energy that was 
+The animalâ€™s energy is increased by the amount of energy that was 
 being stored by the plant. We then remove the plant from the world using 
 the remhash function.
 
@@ -333,13 +333,13 @@ Handling Animal Reproduction
 [pic]
 
 Reproduction is usually the most interesting part in any animal simulation. 
-We¡¯ll keep things simple by having our animals reproduce asexually, but it 
+Weâ€™ll keep things simple by having our animals reproduce asexually, but it 
 should still be interesting, because errors will creep into their genes as they 
 get copied, causing mutations.
 [source]
 
 It takes a healthy parent to produce healthy offspring, so our animals will 
-reproduce only if they have at least 200 days¡¯ worth of energy X. We use the 
+reproduce only if they have at least 200 daysâ€™ worth of energy X. We use the 
 global constant *reproduction-energy* to decide what this cutoff number should 
 be. If the animal decides to reproduce, it will lose half its energy to its child Y.
 
@@ -348,8 +348,8 @@ with the copy-structure function Z. We need to be careful though, since
 copy-structure performs only a shallow copy of a structure. This means that if 
 there are any fields in the structure that contain values that are more compli-
 cated than just numbers or symbols, the values in those fields will be shared 
-with the parent. An animal¡¯s genes, which are stored in a list, represent the only 
-such complex value in our animal structures. If we aren¡¯t careful, mutations 
+with the parent. An animalâ€™s genes, which are stored in a list, represent the only 
+such complex value in our animal structures. If we arenâ€™t careful, mutations 
 in the genes of an animal would simultaneously affect all its parents and 
 children. In order to avoid this, we need to create an explicit copy of our 
 gene list using the copy-list function [.
@@ -358,15 +358,15 @@ just relied on the shallow copy from the copy-structure function:
 
 [source]
 
-Here, we¡¯ve created a parent animal with all its genes set to 1 X. Next, we 
+Here, weâ€™ve created a parent animal with all its genes set to 1 X. Next, we 
 use copy-structure to create a child Y. Then we set the third (second count-
 ing from zero) gene equal to 10 Z. Our parent now looks correct [. Unfor-
 tunately, since we neglected to use copy-list to create a separate list of genes 
 for the child, the child genes were also changed \ when the parent mutated. 
 Any time you have data structures that go beyond simple atomic symbols or 
 numbers, you need to be very careful when using setf so that these kinds of 
-bugs don¡¯t creep into your code. In future chapters (especially Chapter 14), 
-you¡¯ll learn how to avoid these issues by not using functions that mutate data 
+bugs donâ€™t creep into your code. In future chapters (especially Chapter 14), 
+youâ€™ll learn how to avoid these issues by not using functions that mutate data 
 directly, in the manner that setf does.
 To mutate an animal in our reproduce function, we randomly pick one of 
 its eight genes and place it in the mutation variable. Then we use setf to twiddle 
@@ -374,22 +374,22 @@ that value a bit, again using a random number. We did this twiddling on the
 following line:
 [source]
 
-In this line, we¡¯re slightly changing a random slot in the gene list. 
+In this line, weâ€™re slightly changing a random slot in the gene list. 
 The number of the slot is stored in the local variable mutation. We add a ran-
 dom number less than three to the value in this slot, and then subtract one 
 from the total. This means the gene value will change plus or minus one, or 
-stay the same. Since we don¡¯t want a gene value to be smaller than one, we 
+stay the same. Since we donâ€™t want a gene value to be smaller than one, we 
 use the max function to make sure it is at least one.
 We then use push to insert this new critter into our global *animal* list, 
 which adds it to the simulation.
 Simulating a Day in Our World
-Now that we have functions that handle every detail of an animal¡¯s routine, 
-let¡¯s write one that simulates a day in our world.
+Now that we have functions that handle every detail of an animalâ€™s routine, 
+letâ€™s write one that simulates a day in our world.
 [source]
 
 First, this function removes all dead animals from the world X. (An ani-
 mal is dead if its energy is less than or equal to zero.) Next, it maps across the 
-list, handling each of the animal¡¯s possible daily activities: turning, moving, 
+list, handling each of the animalâ€™s possible daily activities: turning, moving, 
 eating, and reproducing Y. Since all these functions have side effects (they 
 modify the individual animal structures directly, using setf), we use the mapc 
 function, which does not waste time generating a result list from the map-
@@ -400,50 +400,50 @@ are always new plants growing on the landscape, our simulated world should
 eventually reach an equilibrium, allowing a reasonably large population of 
 animals to survive throughout the spans of time we simulate.
 Drawing Our World
-A simulated world isn¡¯t any fun unless we can actually see our critters running 
+A simulated world isnâ€™t any fun unless we can actually see our critters running 
 around, searching for food, reproducing, and dying. The draw-world function 
 handles this by using the *animals* and *plants* data structures to draw a snap-
 shot of the current world to the REPL.
 [source]
 
-First, the function uses a loop to iterate through each of the world¡¯s rows 
+First, the function uses a loop to iterate through each of the worldâ€™s rows 
 X. Every row starts with a new line (created with fresh-line) followed by a 
 vertical bar, which shows us where the left edge of the world is. Next, we iterate 
 across the columns of the current row Y, checking for an animal at every 
 location. We perform this check using the some function Z, which lets us 
 determine if at least one item in a list obeys a certain condition. In this case, 
-the condition we¡¯re checking is whether there¡¯s an animal at the current x- and 
+the condition weâ€™re checking is whether thereâ€™s an animal at the current x- and 
 y-coordinates. If so, we draw the letter M at that spot [. (The capital letter M 
 looks a little like an animal, if you use your imagination.) 
-Otherwise, we check for a plant, which we¡¯ll indicate with an asterisk (*) 
-character \. And if there isn¡¯t a plant or an animal, we draw a space charac-
+Otherwise, we check for a plant, which weâ€™ll indicate with an asterisk (*) 
+character \. And if there isnâ€™t a plant or an animal, we draw a space charac-
 ter ]. Lastly, we draw another vertical bar to cap off the end of each line ^.
 Notice that in this function, we need to search through our entire *animals* 
 list, which will cause a performance penalty. However, draw-world is not a core 
-routine in our simulation. As you¡¯ll see shortly, the user interface for our game 
+routine in our simulation. As youâ€™ll see shortly, the user interface for our game 
 will allow us to run thousands of days of the simulation at a time, without 
-drawing the world to the screen until the end. Since there¡¯s no need to draw 
+drawing the world to the screen until the end. Since thereâ€™s no need to draw 
 the screen on every single day when we do this, the performance of draw-world 
 has no impact on the overall performance of the simulation.
 Creating a User Interface
-Finally, we¡¯ll create a user interface function for our simulation, called evolution.
+Finally, weâ€™ll create a user interface function for our simulation, called evolution.
 [source]
 
 First, this function draws the world in the REPL X. Then it waits for the 
 user to enter a command at the REPL using read-line Y. If the user enters 
-quit, the simulation ends Z. Otherwise, it will attempt to parse the user¡¯s 
+quit, the simulation ends Z. Otherwise, it will attempt to parse the userâ€™s 
 command using parse-integer [. We set :junk-allowed to true for parse-integer, 
-which lets the interface accept a string even if it isn¡¯t a valid integer.
+which lets the interface accept a string even if it isnâ€™t a valid integer.
 If the user enters a valid integer n, the program will run the simulation 
 for n simulated days, using a loop \. It will also print a dot to the screen for 
-every 1000 days, so the user can see that the computer hasn¡¯t frozen while 
+every 1000 days, so the user can see that the computer hasnâ€™t frozen while 
 running the simulation.
-If the input isn¡¯t a valid integer, we run update-world to simulate one 
+If the input isnâ€™t a valid integer, we run update-world to simulate one 
 more day. Since read-line allows for an empty value, the user can just tap the 
 ENTER key and watch the animals move around their world.
 Finally, the evolution function recursively calls itself to redraw the world 
 and await more user input ]. Our simulation is now complete.
-Let¡¯s Watch Some Evolution!
+Letâ€™s Watch Some Evolution!
 To start the simulation, execute evolution as follows:
 
 [output]
@@ -458,20 +458,20 @@ Next, enter 100 to see what the world looks like after 100 days:
 [output]
 
 Our animal has already multiplied quite a bit, although this has less to 
-do with the amount of food it has eaten than with the large amount of ¡°starter 
-energy¡± we gave it.
-Now let¡¯s go all out and run the simulation for five million days! Since 
-we¡¯re using CLISP, this will be kind of slow, and you may want to start it up in 
+do with the amount of food it has eaten than with the large amount of â€œstarter 
+energyâ€ we gave it.
+Now letâ€™s go all out and run the simulation for five million days! Since 
+weâ€™re using CLISP, this will be kind of slow, and you may want to start it up in 
 the evening and let it run overnight. With a higher-performance Lisp, such 
 as SBCL, it could take only a couple of minutes.
 [output]
 
-Our world doesn¡¯t look much different after five million days than it did 
+Our world doesnâ€™t look much different after five million days than it did 
 after a hundred days. Of course, there are more animals, both traveling across 
 the steppes and enjoying the lush vegetation of the jungle.
 
 But appearances are deceptive. These animals are distinctly different from 
-their early ancestors. If you observe them closely (by tapping ENTER), you¡¯ll 
+their early ancestors. If you observe them closely (by tapping ENTER), youâ€™ll 
 see that some of the creatures move in straight lines and others just jitter 
 around in a small area, never taking more than a single step in any direction. 
 (As an exercise, you could tweak the code to use different letters for each 
@@ -480,7 +480,7 @@ this contrast even more clearly by typing quit to exit the simulation, then
 checking the contents of the *animals* variable at the REPL:
 [output]
 
-If you look closely at all the animals in the list, you¡¯ll notice that they 
+If you look closely at all the animals in the list, youâ€™ll notice that they 
 have two distinct types of genomes. One group of animals has a high number 
 toward the front of the list, which causes them to move mostly in a straight 
 line. The other group has a large number toward the back of the list, which 
@@ -500,93 +500,93 @@ Explaining the Evolution
 The solution to the evolution puzzle is pretty straightforward. There are two 
 possible survival strategies an animal can adopt in this imaginary world: 
 z Focus on the rich food supply in the jungle. Any animal adopting this 
-strategy needs to be conservative in its motion. It can¡¯t stray too far over 
+strategy needs to be conservative in its motion. It canâ€™t stray too far over 
 time, or it might fall out of the jungle. Of course, these types of animals 
 do need to evolve at least a bit of jittery motion, or they will never find 
-any food at all. Let¡¯s call these conservative, jittery, jungle-dwelling ani-
+any food at all. Letâ€™s call these conservative, jittery, jungle-dwelling ani-
 mals the elephant species.
 z Forage the sparse vegetation of the steppes. Here, the most critical trait 
 for survival is to cover large distances. Such an animal needs to be open-
 minded, and must constantly migrate to new areas of the map to find 
-food. (It can¡¯t travel in too straight a line however, or it may end up com-
+food. (It canâ€™t travel in too straight a line however, or it may end up com-
 peting for resources with its own offspring.) This strategy requires a bit 
-of naive optimism, and can at times lead to doom. Let¡¯s call these liberally 
+of naive optimism, and can at times lead to doom. Letâ€™s call these liberally 
 minded, risk-taking animals the donkey species.
 
 [pic]
 
- ¼¼°¡Áö Á¾Á·À¸·Î ÁøÈ­ÇÏ´Â ½Ã¹Ä·¹ÀÌ¼ÇÀ» È®ÀåÇÏ´Â °ÍÀº µ¶ÀÚµé¿¡°Ô ¼÷Á¦·Î ³²±é´Ï´Ù.
+ ì„¸ê°€ì§€ ì¢…ì¡±ìœ¼ë¡œ ì§„í™”í•˜ëŠ” ì‹œë®¬ë ˆì´ì…˜ì„ í™•ì¥í•˜ëŠ” ê²ƒì€ ë…ìë“¤ì—ê²Œ ìˆ™ì œë¡œ ë‚¨ê¹ë‹ˆë‹¤.
 
-What You¡¯ve Learned
- ÀÌ¹ø Àå¿¡¼­, loop¸í·É¾î¸¦ ÀÚ¼¼È÷ ´Ù·ç¾ú½À´Ï´Ù. ±×·¯¸é¼­ ¿©·¯ºĞÀº ´ÙÀ½°ú °°Àº °ÍÀ» ¹è¿ü½À´Ï´Ù:
+What Youâ€™ve Learned
+ ì´ë²ˆ ì¥ì—ì„œ, loopëª…ë ¹ì–´ë¥¼ ìì„¸íˆ ë‹¤ë£¨ì—ˆìŠµë‹ˆë‹¤. ê·¸ëŸ¬ë©´ì„œ ì—¬ëŸ¬ë¶„ì€ ë‹¤ìŒê³¼ ê°™ì€ ê²ƒì„ ë°°ì› ìŠµë‹ˆë‹¤:
 
-z loop¸í·É¾î´Â Á¾ÇÕ looping »óÁ¡ÀÌ´Ù - ¿©·¯ºĞÀÌ loop¸¦ ÇÏ±â À§ÇØ ÇÊ¿äÇÑ ¾î¶² °ÍÀÌ¶óµµ ÇÒ ¼ö ÀÖ½À´Ï´Ù.
-z loop¿¡¼­ ¼ıÀÚ¸¦ ¼¼±â À§ÇØ¼±, for ±¸Àı¸¦ »ç¿ëÇÑ´Ù.
-z loop¿¡¼­ list¿¡ ÀÖ´Â Ç×¸ñµéÀ» ¼¼±â À§ÇØ¼±, for in ±¸ÀıÀ» »ç¿ëÇÑ´Ù.
-z list¿Í collect ±¸¹®À¸·Î list¿¡ Ç×¸ñÀ»À» ¸ğ¾Æ¼­ ±×°ÍÀ» ¹İÈ¯ÇÒ ¼ö ÀÖ´Ù.
-z loop¿¡¼­ Áö¿øÇÏ´Â ´Ù¸¥ À¯¿ëÇÑ ±¸¹®À» Ã£±â À§ÇØ Loop MacroÀÇ Periodic TableÀ» »ç¿ëÇÑ´Ù.
+z loopëª…ë ¹ì–´ëŠ” ì¢…í•© looping ìƒì ì´ë‹¤ - ì—¬ëŸ¬ë¶„ì´ loopë¥¼ í•˜ê¸° ìœ„í•´ í•„ìš”í•œ ì–´ë–¤ ê²ƒì´ë¼ë„ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+z loopì—ì„œ ìˆ«ìë¥¼ ì„¸ê¸° ìœ„í•´ì„ , for êµ¬ì ˆë¥¼ ì‚¬ìš©í•œë‹¤.
+z loopì—ì„œ listì— ìˆëŠ” í•­ëª©ë“¤ì„ ì„¸ê¸° ìœ„í•´ì„ , for in êµ¬ì ˆì„ ì‚¬ìš©í•œë‹¤.
+z listì™€ collect êµ¬ë¬¸ìœ¼ë¡œ listì— í•­ëª©ì„ì„ ëª¨ì•„ì„œ ê·¸ê²ƒì„ ë°˜í™˜í•  ìˆ˜ ìˆë‹¤.
+z loopì—ì„œ ì§€ì›í•˜ëŠ” ë‹¤ë¥¸ ìœ ìš©í•œ êµ¬ë¬¸ì„ ì°¾ê¸° ìœ„í•´ Loop Macroì˜ Periodic Tableì„ ì‚¬ìš©í•œë‹¤.
 SECTION III
 Lisp Is Hacking
 
 LOOP AND FORMAT: THE SEEDY UNDERBELLY OF LISP
 
- ÀÌÀü¿¡, ÀúÈñ´Â Common Lisp ¾ğ¾îÀÇ core¸¦ »ìÆìº¸¾Ò°í °£°áÇÔ°ú ¿ì¾ÆÇÔ¿¡ °¨¸íÀ» ¹Ş¾Ò½À´Ï´Ù. ±×·¯³ª ÀÌ core ÁÖº¯¿¡´Â ¾î¶² ¸Å·ÂÀ» Áö´Ñ LispÀÇ ¾îµÓ°í ÃÊ¶óÇÑ ¸éµµ ÀÖ½À´Ï´Ù. ±×µéÀÌ Lisp coreÀÇ ¾Æ¸§´Ù¿òÀ» È¸¼ÕÇÒÁöµµ ¸ğ¸£Áö¸¸, ±×µéÀÇ ÆÄ¿ö·Î ÀÌ°ÍÀ» ½±°Ô º¸»óÇÕ´Ï´Ù. ÀÌ·¯ÇÑ ¾ğ¾îÀÇ ºÎºĞÀº budding Lisp hacker¿¡°Ô ÀÖ¾î ÁøÁ¤ÇÑ Áñ°Å¿òÀÔ´Ï´Ù
+ ì´ì „ì—, ì €í¬ëŠ” Common Lisp ì–¸ì–´ì˜ coreë¥¼ ì‚´í´ë³´ì•˜ê³  ê°„ê²°í•¨ê³¼ ìš°ì•„í•¨ì— ê°ëª…ì„ ë°›ì•˜ìŠµë‹ˆë‹¤. ê·¸ëŸ¬ë‚˜ ì´ core ì£¼ë³€ì—ëŠ” ì–´ë–¤ ë§¤ë ¥ì„ ì§€ë‹Œ Lispì˜ ì–´ë‘¡ê³  ì´ˆë¼í•œ ë©´ë„ ìˆìŠµë‹ˆë‹¤. ê·¸ë“¤ì´ Lisp coreì˜ ì•„ë¦„ë‹¤ì›€ì„ íšŒì†í• ì§€ë„ ëª¨ë¥´ì§€ë§Œ, ê·¸ë“¤ì˜ íŒŒì›Œë¡œ ì´ê²ƒì„ ì‰½ê²Œ ë³´ìƒí•©ë‹ˆë‹¤. ì´ëŸ¬í•œ ì–¸ì–´ì˜ ë¶€ë¶„ì€ budding Lisp hackerì—ê²Œ ìˆì–´ ì§„ì •í•œ ì¦ê±°ì›€ì…ë‹ˆë‹¤
 
- loop¿Í format, ÀÌ È®ÀåÀ» ÀÌ¹ø section¿¡¼­ ´Ù·ê°ÍÀÌ¸ç, ¼öÇĞÀûÀÎ ¿ì¾ÆÇÔÀ» ³Ñ¾î¼³ °­·ÂÇÑ Èû¿¡ ÁßÁ¡À» µÎ°Ú½À´Ï´Ù. Lisp ÇÁ·Î±×·¡¸Óµé »çÀÌ¿¡¼­ ÀÌ°ÍÀº Á¾Á¾ ³í¶õÀ» ¾ß±âÇÏ¸ç, ÀÌ ¸í·É¾îµé¿¡ ÀÇÇØ ¾î¶² ÈûÀÌ Á¦°øµÇ´ÂÁö ¹¯´Â ÀÌµéÀº ¿ì¾ÆÇÔ¿¡ ÀÖ¾î »ó¹İ°ü°è°¡ ÀÖ´ÂÁö °ÆÁ¤ÇÕ´Ï´Ù. ÀÌ·¯ÇÑ ÇÁ·Î±×·¡¸ÓµéÀº ¾î¶² Áß´ëÇÑ code¸¦ ÀÛ¼ºÇÒ¶§ loop¿Í format¸¦ ÇÇÇØ¾ß ÇÑ´Ù°í ¹Ï½À´Ï´Ù.
+ loopì™€ format, ì´ í™•ì¥ì„ ì´ë²ˆ sectionì—ì„œ ë‹¤ë£°ê²ƒì´ë©°, ìˆ˜í•™ì ì¸ ìš°ì•„í•¨ì„ ë„˜ì–´ì„¤ ê°•ë ¥í•œ í˜ì— ì¤‘ì ì„ ë‘ê² ìŠµë‹ˆë‹¤. Lisp í”„ë¡œê·¸ë˜ë¨¸ë“¤ ì‚¬ì´ì—ì„œ ì´ê²ƒì€ ì¢…ì¢… ë…¼ë€ì„ ì•¼ê¸°í•˜ë©°, ì´ ëª…ë ¹ì–´ë“¤ì— ì˜í•´ ì–´ë–¤ í˜ì´ ì œê³µë˜ëŠ”ì§€ ë¬»ëŠ” ì´ë“¤ì€ ìš°ì•„í•¨ì— ìˆì–´ ìƒë°˜ê´€ê³„ê°€ ìˆëŠ”ì§€ ê±±ì •í•©ë‹ˆë‹¤. ì´ëŸ¬í•œ í”„ë¡œê·¸ë˜ë¨¸ë“¤ì€ ì–´ë–¤ ì¤‘ëŒ€í•œ codeë¥¼ ì‘ì„±í• ë•Œ loopì™€ formatë¥¼ í”¼í•´ì•¼ í•œë‹¤ê³  ë¯¿ìŠµë‹ˆë‹¤.
 
- ±×·¯³ª ÀÌ ¸í·É¾îµéÀ» »ç¿ëÇÏ°í ¹è¿ö¾ßÇÏ´Â Áß¿äÇÑ ÀÌÀ¯°¡ ÀÖ½À´Ï´Ù: ÀÌ°ÍµéÀº LispÀÇ À¯¿¬ÇÔ°ú È®Àå¼º Æ÷ÇÔÇÏ°í ÀÖ½À´Ï´Ù. Lisp°¡ (°ÅÀÇ Æ²¸²¾øÀÌ) °¡Àå À¯¿¬ÇÑ ÇÁ·Î±×·¡¹Ö ¾ğ¾îÀÌ±â ¶§¹®¿¡, hackerµéÀº ¼ö½Ê³âµ¿¾È ¼öÃµ°³ÀÇ ±×µéÀÇ hack·Î ÀÌ°ÍÀ» È®Àå½ÃÄÑ ¿Ô½À´Ï´Ù. ÀÌ·¯ÇÑ ¼º°øÀûÀÎ È®ÀåÀÇ Áß°£¿¡ ¼­ÀÖ´Â loop¿Í format´Â Darwinian battlefield¿¡¼­ »ì¾Æ³²´Â °Í¿¡¼­ ÁøÁ¤ÇÑ Àå°üÀ» ÀÌ·ê °ÍÀÔ´Ï´Ù.
+ ê·¸ëŸ¬ë‚˜ ì´ ëª…ë ¹ì–´ë“¤ì„ ì‚¬ìš©í•˜ê³  ë°°ì›Œì•¼í•˜ëŠ” ì¤‘ìš”í•œ ì´ìœ ê°€ ìˆìŠµë‹ˆë‹¤: ì´ê²ƒë“¤ì€ Lispì˜ ìœ ì—°í•¨ê³¼ í™•ì¥ì„± í¬í•¨í•˜ê³  ìˆìŠµë‹ˆë‹¤. Lispê°€ (ê±°ì˜ í‹€ë¦¼ì—†ì´) ê°€ì¥ ìœ ì—°í•œ í”„ë¡œê·¸ë˜ë° ì–¸ì–´ì´ê¸° ë•Œë¬¸ì—, hackerë“¤ì€ ìˆ˜ì‹­ë…„ë™ì•ˆ ìˆ˜ì²œê°œì˜ ê·¸ë“¤ì˜ hackë¡œ ì´ê²ƒì„ í™•ì¥ì‹œì¼œ ì™”ìŠµë‹ˆë‹¤. ì´ëŸ¬í•œ ì„±ê³µì ì¸ í™•ì¥ì˜ ì¤‘ê°„ì— ì„œìˆëŠ” loopì™€ formatëŠ” Darwinian battlefieldì—ì„œ ì‚´ì•„ë‚¨ëŠ” ê²ƒì—ì„œ ì§„ì •í•œ ì¥ê´€ì„ ì´ë£° ê²ƒì…ë‹ˆë‹¤.
 
 
 LOOPING WITH THE LOOP COMMAND
 
-loop¿Í format¸í·É¾î´Â °­·ÂÇÏ°í hacker-friendlyÇÕ´Ï´Ù. ÀÌµéÀÌ Á¦°øÇÏ´Â ´ë´Ù¼öÀÇ ±â´ÉµéÀº Lisp¾ğ¾î¿¡¼­ ´Ù¸¥ ¹æ¸éÀ¸·Î ÀÌ¿ë°¡´ÉÇÏ¸ç, °£°áÇÑ code¸¦ ÁÁ¾ÆÇÑ´Ù¸é ÀÌ·¯ÇÑ »ó´çÈ÷ Æ¯È­µÈ ¸í·É¾î¸¦ ¹è¿ï °¡Ä¡°¡ ÀÖ½À´Ï´Ù. ÀÌ¹øÀå¿¡¼­ loop¿¡ ´ëÇØ »ìÆì º¼ °ÍÀÔ´Ï´Ù. ´ÙÀ½ Àå¿¡¼­´Â format¿¡ ´ëÇØ ´Ù·ê °ÍÀÔ´Ï´Ù.
+loopì™€ formatëª…ë ¹ì–´ëŠ” ê°•ë ¥í•˜ê³  hacker-friendlyí•©ë‹ˆë‹¤. ì´ë“¤ì´ ì œê³µí•˜ëŠ” ëŒ€ë‹¤ìˆ˜ì˜ ê¸°ëŠ¥ë“¤ì€ Lispì–¸ì–´ì—ì„œ ë‹¤ë¥¸ ë°©ë©´ìœ¼ë¡œ ì´ìš©ê°€ëŠ¥í•˜ë©°, ê°„ê²°í•œ codeë¥¼ ì¢‹ì•„í•œë‹¤ë©´ ì´ëŸ¬í•œ ìƒë‹¹íˆ íŠ¹í™”ëœ ëª…ë ¹ì–´ë¥¼ ë°°ìš¸ ê°€ì¹˜ê°€ ìˆìŠµë‹ˆë‹¤. ì´ë²ˆì¥ì—ì„œ loopì— ëŒ€í•´ ì‚´í´ ë³¼ ê²ƒì…ë‹ˆë‹¤. ë‹¤ìŒ ì¥ì—ì„œëŠ” formatì— ëŒ€í•´ ë‹¤ë£° ê²ƒì…ë‹ˆë‹¤.
 
 
 The loop Macro
 
- ÄÄÇ»ÅÍ ÇÁ·Î±×·¥¿¡¼­ ¿©·¯ºĞÀÌ ¿øÇÏ´Â ¾î¶°ÇÑ looping Å¸ÀÔÀÌ¶óµµ loop macro·Î ÇÒ ¼ö ÀÖ½À´Ï´Ù. ¿©±â °£´ÜÇÑ ¿¹Á¦°¡ ÀÖ½À´Ï´Ù:
+ ì»´í“¨í„° í”„ë¡œê·¸ë¨ì—ì„œ ì—¬ëŸ¬ë¶„ì´ ì›í•˜ëŠ” ì–´ë– í•œ looping íƒ€ì…ì´ë¼ë„ loop macroë¡œ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì—¬ê¸° ê°„ë‹¨í•œ ì˜ˆì œê°€ ìˆìŠµë‹ˆë‹¤:
 [source]
 
- ÀÌ code´Â 5º¸´Ù ÀÛÀº ÀÚ¿¬¼ö¸¦ ´ÙÀ½Ã³·³ ¸ğµÎ ´õÇÕ´Ï´Ù:
+ ì´ codeëŠ” 5ë³´ë‹¤ ì‘ì€ ìì—°ìˆ˜ë¥¼ ë‹¤ìŒì²˜ëŸ¼ ëª¨ë‘ ë”í•©ë‹ˆë‹¤:
 
  0 + 1 + 2 + 3 + 4 = 10
 
- ÀÌ loop ¸í·É¾î Lisp¸í·É¾î°¡ ÇØ¾ßÇÏ´Â ÀûÀıÇÑ ¹æ¹ıÀ¸·Î ÀÏÀ» Ã³¸®ÇÏÁö ¾Ê´Â´Ù´Â °ÍÀ» º¼ ¼ö ÀÖ½À´Ï´Ù. ¹«¾ùº¸´Ùµµ ÀÌ°ÍÀº Àå¾Ö°¡ ÀÖ½À´Ï´Ù.(First of all, it¡¯s parenthetically challenged.) ÇÑÁÙ¿¡ °ıÈ£ ¾øÀÌ ÀÏ°ö°³ÀÇ ÅäÅ«ÀÌ °¡Áø°ÍÀ» Àü¿¡´Â ÇÑ¹øµµ º»ÀûÀÌ ¾ø½À´Ï´Ù!
+ ì´ loop ëª…ë ¹ì–´ Lispëª…ë ¹ì–´ê°€ í•´ì•¼í•˜ëŠ” ì ì ˆí•œ ë°©ë²•ìœ¼ë¡œ ì¼ì„ ì²˜ë¦¬í•˜ì§€ ì•ŠëŠ”ë‹¤ëŠ” ê²ƒì„ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ë¬´ì—‡ë³´ë‹¤ë„ ì´ê²ƒì€ ì¥ì• ê°€ ìˆìŠµë‹ˆë‹¤.(First of all, itâ€™s parenthetically challenged.) í•œì¤„ì— ê´„í˜¸ ì—†ì´ ì¼ê³±ê°œì˜ í† í°ì´ ê°€ì§„ê²ƒì„ ì „ì—ëŠ” í•œë²ˆë„ ë³¸ì ì´ ì—†ìŠµë‹ˆë‹¤!
 [pic]
 
 #BEGIN================
 What makes it even less Lispy is that some of these extra tokens (for, below, 
 and sum) appear to have special meanings.
 
-3ÀåÀ» È¸»óÇÏ¿©
-form¿¡ ÀÖ´Â Ã¹¹øÂ° ÅäÅ«
+3ì¥ì„ íšŒìƒí•˜ì—¬
+formì— ìˆëŠ” ì²«ë²ˆì§¸ í† í°
 
  Recall from Chapter 3 that the first 
 token in a form (the one immediately after the opening parenthesis) is typi-
 cally what decides the basic behavior of the code, while the rest of the form 
 contains parameters.
 
-loop macro¿¡¼­´Â
+loop macroì—ì„œëŠ”
 "magic tokens"
 
- Within the loop macro, several of these ¡°magic tokens¡± 
-fundamentally affect the loop¡¯s behavior.
+ Within the loop macro, several of these â€œmagic tokensâ€ 
+fundamentally affect the loopâ€™s behavior.
 
- Here¡¯s what they mean:
+ Hereâ€™s what they mean:
 
-z °ªÀÇ ¹üÀ§¸¦ ÅëÇØ iterateÇÒ º¯¼ö¸¦ ¼±¾ğÇÏ´Â °ÍÀ» Çã¿ëÇÑ´Ù. ±âº»ÀûÀ¸·Î 0ºÎÅÍ ½ÃÀÛÇÏ´Â Á¤¼ö·Î Ä«¿îÆ®¸¦ ÇÒ °ÍÀÔ´Ï´Ù.
+z ê°’ì˜ ë²”ìœ„ë¥¼ í†µí•´ iterateí•  ë³€ìˆ˜ë¥¼ ì„ ì–¸í•˜ëŠ” ê²ƒì„ í—ˆìš©í•œë‹¤. ê¸°ë³¸ì ìœ¼ë¡œ 0ë¶€í„° ì‹œì‘í•˜ëŠ” ì •ìˆ˜ë¡œ ì¹´ìš´íŠ¸ë¥¼ í•  ê²ƒì…ë‹ˆë‹¤.
 
 z below tells the for construct to halt when it reaches the specified value (in 
 this case, 5), excluding the value itself.
 
-ÁÖ¾îÁø Ç¥Çö½ÄÀÇ ¸ğµç °ªµéÀ»
+ì£¼ì–´ì§„ í‘œí˜„ì‹ì˜ ëª¨ë“  ê°’ë“¤ì„
 z sum adds together all values of a given expression (in this case, the expres-
 sion is just i) and makes the loop return that number.
 
 
 Some loop Tricks
 The loop macro has a veritable cornucopia of special tokens that make just 
-about any kind of behavior possible. Let¡¯s look at some of the possibilities.
+about any kind of behavior possible. Letâ€™s look at some of the possibilities.
 
 
 Counting from a Starting Point to an Ending Point
@@ -616,7 +616,7 @@ Breaking out of a Loop Early
 The following loop uses several new tricks:
 [source]
 
-Notice that there¡¯s nothing in the for part of the loop that tells it to stop 
+Notice that thereâ€™s nothing in the for part of the loop that tells it to stop 
 counting numbers?it goes from zero off to infinity. However, once we reach 
 5, the when clause triggers the loop to immediately return the value 'falafel.
 Collecting a List of Values
@@ -628,7 +628,7 @@ in the following example:
 [pic]
 
 Using Multiple for Clauses
-It¡¯s possible for a loop macro to have 
+Itâ€™s possible for a loop macro to have 
 more than one for clause. Consider 
 the following example:
 [source]
@@ -653,24 +653,24 @@ ble combination of two or more ranges. To accomplish this, you need to use
 nested loops for x and y:
 
 [source]
-In this case, we¡¯ve created 10 lists of 10 items each, looping for a total of 
+In this case, weâ€™ve created 10 lists of 10 items each, looping for a total of 
 100 items. 
 Also, notice that using a for variable starting at zero, such as the i variable 
 in the following example, provides a clean way to track the index number of 
 items in a list:
 
 [source]
-You might think we¡¯ve covered every conceivable variation of looping at 
+You might think weâ€™ve covered every conceivable variation of looping at 
 this point. If so, you are gravely mistaken. Behold! The Periodic Table of the 
 Loop Macro!
 
 [pic]
 [pic]
 Everything You Ever Wanted to Know About loop
-The individual examples we¡¯ve discussed so far give only the briefest hint of 
-the full capabilities of loop. But fear not! You now have the world¡¯s first and 
+The individual examples weâ€™ve discussed so far give only the briefest hint of 
+the full capabilities of loop. But fear not! You now have the worldâ€™s first and 
 only Periodic Table of the Loop Macro. Just tape it to your monitor, glue it to 
-your wallet, or laser-etch it directly into your retina, and you¡¯ll be guaranteed 
+your wallet, or laser-etch it directly into your retina, and youâ€™ll be guaranteed 
 to reach loop proficiency in no time!
 Almost every legal command that can be used in a loop macro is covered 
 by the periodic table. It shows how to manipulate hash tables and arrays, and 
@@ -680,13 +680,13 @@ behavior of the given command.
 Using loop to Evolve!
 [pic]
 
-Let¡¯s create another game, making full use of loop. But this won¡¯t be a game 
-that we play. Instead, it will be a game world that evolves as we watch it! We¡¯re 
+Letâ€™s create another game, making full use of loop. But this wonâ€™t be a game 
+that we play. Instead, it will be a game world that evolves as we watch it! Weâ€™re 
 going to create an environment of steppes and jungles, filled with animals 
 running around, foraging, eating, and reproducing. And after a few million 
-units of time, we¡¯ll see that they¡¯ve evolved into different species!
-NOTE This example is adapted from A.K. Dewdney¡¯s article ¡°Simulated evolution: wherein 
-bugs learn to hunt bacteria,¡± in the ¡°Computer Recreations¡± column of Scientific 
+units of time, weâ€™ll see that theyâ€™ve evolved into different species!
+NOTE This example is adapted from A.K. Dewdneyâ€™s article â€œSimulated evolution: wherein 
+bugs learn to hunt bacteria,â€ in the â€œComputer Recreationsâ€ column of Scientific 
 American (May 1989: 138-141).
 [pic]
 Our game world is extremely simple. It consists of a simple rectangular 
@@ -695,19 +695,19 @@ speaking, it has a toroidal topology.) Most of this world is covered in steppes,
 meaning that very few plants grow for the animals to eat. In the center of the 
 world is a small jungle, where plants grow much faster. Our animals, who are 
 herbivores, will forage this world in search for food.
-Let¡¯s create some variables describing the extent of our world:
+Letâ€™s create some variables describing the extent of our world:
 [source]
 
 
-We¡¯re giving the world a width of 100 units and a height of 30 units. Using 
+Weâ€™re giving the world a width of 100 units and a height of 30 units. Using 
 these dimensions should make it easy to display the world in our Lisp REPL. 
 The *jungle* list defines the rectangle in the world map that contains the jun-
-gle. The first two numbers in the list are the x- and y-coordinates of the jungle¡¯s 
+gle. The first two numbers in the list are the x- and y-coordinates of the jungleâ€™s 
 top-left corner, and the last two numbers are its width and height. Finally, we 
 give the amount of energy contained in each plant, which is set to 80. This 
-means that if an animal finds a plant, it will gain 80 days¡¯ worth of food by 
+means that if an animal finds a plant, it will gain 80 daysâ€™ worth of food by 
 eating it.
-NOTE If your terminal window isn¡¯t large enough to display the entire world, change the val-
+NOTE If your terminal window isnâ€™t large enough to display the entire world, change the val-
 ues of the *width* and *height* variables. Set the *width* variable to the width of your 
 terminal window minus two, and the *height* variable to the height of your terminal 
 window minus one.
