@@ -2,7 +2,7 @@
 <AcroEditProject Version="1.0">
   <Options>
     <UserTools Value=""/>
-    <BaseFolder Value=""/>
+    <BaseFolder Value="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp"/>
     <GenerateFunctionList Value="False"/>
     <CodePage Value="949"/>
     <ExcludeDir Value=""/>
@@ -26,8 +26,15 @@
     </Category>
     <Category Name="3-Lisp Is Hacking">
       <File Name="10-Looping_with_the_loop_command.txt"/>
+      <File Name="11-Printing_text_with_the_format_function.txt"/>
+      <File Name="12-Working-with-stream.txt"/>
+      <File Name="13-Lets-create-a-web-server!.txt"/>
     </Category>
-    <Category Name="4-Lisp Is Science"/>
+    <Category Name="4-Lisp Is Science">
+      <File Name="14-Ramping_Lisp_Up_a_Notch_with_Functional_Programming.txt"/>
+      <File Name="15-Dice_of_Doom_a_Game_Written_in_the_Functional_Style.txt"/>
+      <File Name="16-The_Magic_of_Lisp_Macros.txt"/>
+    </Category>
     <Category Name="Introduction">
       <File Name="emacs_short_cut.txt"/>
       <File Name="enviroment.txt"/>
@@ -36,6 +43,6 @@
     </Category>
   </Files>
   <ClosedFiles>
-    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\10-Looping_with_the_loop_command.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\16-The_Magic_of_Lisp_Macros.txt"/>
   </ClosedFiles>
 </AcroEditProject>

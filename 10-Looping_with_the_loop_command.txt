@@ -3,29 +3,25 @@ SECTION III
 Lisp Is Hacking
 
 LOOP AND FORMAT: THE SEEDY UNDERBELLY OF LISP
+ 저희는 이전에 Common Lisp 언어의 core를 살펴보았고 간결함과 우아함에 감명을 받았습니다. 그러나 이 core 주변에는 어떤 매력을 지닌 Lisp의 어둡고 초라한 면도 있습니다. 그들이 Lisp core의 아름다움을 회손할지 모르지만, 그들의 파워로 이것을 쉽게 보상합니다. 이러한 언어의 부분은 budding Lisp hacker에게 있어 진정한 즐거움입니다
 
- 이전에, 저희는 Common Lisp 언어의 core를 살펴보았고 간결함과 우아함에 감명을 받았습니다. 그러나 이 core 주변에는 어떤 매력을 지닌 Lisp의 어둡고 초라한 면도 있습니다. 그들이 Lisp core의 아름다움을 회손할지도 모르지만, 그들의 파워로 이것을 쉽게 보상합니다. 이러한 언어의 부분은 budding Lisp hacker에게 있어 진정한 즐거움입니다
-
- loop와 format, 이 확장을 이번 section에서 다룰것이며, 수학적인 우아함을 넘어설 강력한 힘에 중점을 두겠습니다. Lisp 프로그래머들 사이에서 이것은 종종 논란을 야기하며, 이 명령어들에 의해 어떤 힘이 제공되는지 묻는 이들은 우아함에 있어 상반관계가 있는지 걱정합니다. 이러한 프로그래머들은 어떤 중대한 code를 작성할때 loop와 format를 피해야 한다고 믿습니다.
+ 이번 section에서 loop와 format, 이 확장들을 다룰것이며, 수학적인 우아함을 넘어설 강력한 힘에 중점을 두겠습니다.  이 명령어들에 의해 제공되는 힘이 우아함과 바꿀만한 가치가 있는지 의문을 가진 Lisp 프로그래머들 사이에서는, 이것이 종종 논란을 야기합니다. 이러한 프로그래머들은 어떤 중대한 code를 작성할때 loop와 format를 피해야 한다고 믿습니다.
 
  그러나 이 명령어들을 사용하고 배워야하는 중요한 이유가 있습니다: 이것들은 Lisp의 유연함과 확장성 포함하고 있습니다. Lisp가 (거의 틀림없이) 가장 유연한 프로그래밍 언어이기 때문에, hacker들은 수십년동안 수천개의 그들의 hack로 이것을 확장시켜 왔습니다. 이러한 성공적인 확장의 중간에 서있는 loop와 format는 Darwinian battlefield에서 살아남는 것에서 진정한 장관을 이룰 것입니다.
 
 
 LOOPING WITH THE LOOP COMMAND
-
-loop와 format명령어는 강력하고 hacker-friendly합니다. 이들이 제공하는 대다수의 기능들은 Lisp언어에서 다른 방면으로 이용가능하며, 간결한 code를 좋아한다면 이러한 상당히 특화된 명령어를 배울 가치가 있습니다. 이번장에서 loop에 대해 살펴 볼 것입니다. 다음 장에서는 format에 대해 다룰 것입니다.
+ loop와 format명령어는 강력하고 hacker-friendly입니다. 이들이 제공하는 대다수의 기능들은 Lisp언어에서 다른 방면으로 이용 가능하며, 간결한 code를 좋아한다면  상당히 특화된 이러한 명령어를 배울 가치가 있습니다. 이번 장에서 loop에 대해 살펴 볼 것입니다. 다음 장에서는 format에 대해 다룰 것입니다.
 
 
 The loop Macro
-
  컴퓨터 프로그램에서 여러분이 원하는 어떠한 looping 타입이라도 loop macro로 할 수 있습니다. 여기 간단한 예제가 있습니다:
 [source]
 
- 이 code는 5보다 작은 자연수를 다음처럼 모두 더합니다:
-
+ 이 code는 다음과 같이 5보다 작은 자연수를 모두 더합니다:
  0 + 1 + 2 + 3 + 4 = 10
 
- 이 loop 명령어 Lisp명령어가 해야하는 적절한 방법으로 일을 처리하지 않는다는 것을 볼 수 있습니다. 무엇보다도 이것은 장애가 있습니다.(First of all, it’s parenthetically challenged.) 한줄에 괄호 없이 일곱개의 토큰이 가진것을 전에는 한번도 본적이 없습니다!
+ 여러분은 이 loop 명령어가 Lisp명령어가 해야하는 적절한 방법으로 일을 처리하지 않는다는 것을 볼 수 있습니다. 우선, 이것은 괴상합니다.(First of all, it’s parenthetically challenged.) 괄호 없이 한줄에 일곱개의 토큰이 가진것을 전에는 한번도 본적이 없습니다!
 [pic]
 
  이것이 Lispy가 아닌것처럼 만드는 것은 이 추가 토큰들이(for, below, 그리고 sum) 특별한 의미를 지니는 것 처럼 보인다는 것입니다. 3장을 회상하면 form에 있는 첫번째 토큰은 전통적으로 code의 기본 속성을 결정하며, 반면 form의 나머지 것들은 인자들을 포함하고 있습니다. loop macro에서는 이 "magic tokens"이 근본적으로 loop의 행동에 영향을 미칩니다. 여기, 이게 무엇을 의미하는지가 나와 있습니다:
@@ -36,18 +32,15 @@ z sum은 주어진 표현식의 모든 값들을 더하여 loop가 그 수를 �
 
 
 Some loop Tricks
-
- loop macro는 어떤 종류의 행동이라도 가능하게 해주는 특별한 토큰들의 cornucopia를 가졌습니다. 몇몇 가능성들을 살펴봅시다
+ loop macro는 어떤 종류의 행동이라도 가능하게 해주는 특별한 토큰들의 진정한 보물 창고(vertitable cornucopia)를 가졌습니다. 가능한 일들 일부를 살펴봅시다.
 
 
 Counting from a Starting Point to an Ending Point
-
  from과 to 절을 이용하여, for 구조가 특정한 정수 범위를 셀수 있도록 만들 수 있습니다:
 [source]
 
 
 Iterating Through Values in a List
-
  다음 예제에서, in 토큰을 사용하여 list에 있는 값을 통해 iterate하였습니다:
 [source]
 
@@ -58,29 +51,24 @@ doing Stuff in a Loop
 
 
 Doing Stuff Under Certain Conditions
-
  when 토큰은 다음 loop의 일부분을 필요하다면 실행하도록 합니다:
 [source]
-
  홀수의 합이 반환되었다는 것을 알립니다.
 
 
 Breaking out of a Loop Early
-
  다음 loop는 몇몇 새로운 트릭을 사용하였습니다:
 [source]
 
- 숫자 카운팅을 멈추도록 말하는 Loop의 일부분이 없다는 것을 알립니다 - 이것은 0부터 무한으로 나아갈 것입니다. 그러나 5에 도달하게되면, when 절이 loop가 즉시 값 'falafel을 반환하도록 만듭니다.
+ 숫자 카운팅을 멈추도록하는 Loop의 일부분이 없습니다 - 이것은 0부터 무한으로 나아갈 것입니다. 그러나 5에 도달하게되면, when 절이 loop가 즉시 값 'falafel을 반환하도록 만듭니다.
 
 
 Collecting a List of Values
-
- collect 절은 list form으로 loop로부터 하나의 항목보다 더 반환하도록 만듭니다. 이 명령어는 다음 예제처럼 list에 있는 각 항목을 수정할 필요가 있을때 유용합니다:
+ collect 절은 list form으로 loop로부터 하나의 항목보다 더 반환하도록 만듭니다. 이 명령어는 다음 예제처럼 list에 있는 각 항목을 수정할때 유용합니다:
 [source]
 [pic]
 
 Using Multiple for Clauses
-
  loop macro는 하나 이상의 절을 갖는게 가능합니다. 다음 예제를 잘 살펴봅니다:
 [source]
 [pic]
@@ -90,432 +78,231 @@ Using Multiple for Clauses
 
  보시다시피, 두 수 모두가 동시에 0부터 9까지 증가하였습니다.
 
- Common Lisp loop에 다수의 for 절이 있다면, 각각 점검checked될 것이며, loop는 어떤 절중 하나가 값을 반환할때 멈출 것입니다. 이것이 의미하는 것은, for절이 다수의 looping 변수들과 독립적으로 loop하지 않는 다는 것을 의미하며, 각각의 두 값 10의 범위를 loop한다면, 10번만 loop 할 것입니다.
+ Common Lisp loop에 다수의 for 절이 있다면, 각각 검사할 것이며, loop는 어떤 절중 하나가 값을 반환할때 멈출 것입니다. 이것은 for절이 다수의 looping 변수들과 독립적으로 loop하지 않는다는 것을 의미하며, 각각의 두 값 10의 범위를 loop한다면, 10번만 loop 할 것입니다.
 
- 그러나, 종종 다수의 범위사이에서 데카르트 곱(the Cartesian product)을 생성하기 원합니다. 다시말하자면, 모든 가능한 두개 혹은 이상의 범위 조합을 위해 한번만 실행하는 loop를 원합니다. 이것을 하기 위해선, 중첩된 loop for x와 y가 필요합니다:
+ 그러나 때때로, 다수의 범위사이에서 데카르트 곱(the Cartesian product)을 생성하기 원합니다. 다시말하자면, 모든 가능한 두개 혹은 이상의 범위 조합을 위해 한번만 실행하는 loop를 원합니다. 이것을 하기 위해선, 중첩된 loop for x와 y가 필요합니다:
 [source]
 
  이번 경우에, 모두 100개의 항목들을 looping하면서 각각 10개의 항목을 지닌 10개의 리스트를 만들었습니다.
 
- 또한, 다음 예제에서 i 변수와 같은 0부터 시작하는 변수를 사용하여, list에 있는 항목들의 색인 숫자를 추적할 깔끔한 방법을 제공하였다는 것을 알립니다.
+ 또한, 다음 예제에서 i 변수와 같은 0부터 시작하는 변수를 사용하여, list에 있는 항목들의 색인 숫자를 추적할 깔끔한 방법을 제공하였습니다.
 [source]
 
- 이 지점에서, 가능한 모든 looping 변종들을 다루었다고 생각할지도 모릅니다. 만약 그렇다면, 중대한 실수를 하였습니다. 보십시요! Lisp Macro의 주기율표를!
+ 이 지점에서, 가능한 모든 looping 변종들을 다루었다고 생각할지도 모릅니다. 만약 그렇다면, 중대한 실수를 하였습니다. 보십시요! Lisp Macro의 주기율표를!(Behold! The Periodic Table of the Loop Macro!)
 [pic]
 [pic]
+
 
 Everything You Ever Wanted to Know About loop
+ 이전에 저희가 다루었던 믿지못할 예제들은 단지 loop의 전체 능력중에서 작은 hint일 뿐입니다. 그러나 겁먹지 마십시요! 이제 여러분은 세계에서 처음이자 유일한 Loop Macro의 주기율표를 가졌습니다. 단순히 이것을 여러분의 모니터에 입력하기보다는, 지갑에 이것을 붙이거나, 레이저로 이것을 여러분의 망막retina에 세긴다면, 단숨에 loop에 숙달할것입니다!
 
- 이전에 저희가 다루었던 믿지못할 예제들은 단지 loop의 전체 능력중에서 작은 정보일 뿐입니다. 그러나 겁먹지 마십시요! 이제 여러분은 세계에서 처음이자 유일한 Loop Macro의 주기율표를 가졌습니다. 단순히 이것을 여러분의 모니터에 입력하기보다는, 지갑에 이것을 붙이거나, 레이저로 이것을 여러분의 망막retina에 세긴다면, 단숨에 loop에 숙달되는 것이 보장됩니다!
-
- loop macro에서 사용할 수 있는 모든 합법적인 명령어의 대다수는 이 주기율 표에서 다루어졌습니다. 이것은 어떻게 해쉬 테이블과 배열을 조작하는지, 특별한 lopping 연산을 수행하는지를 보여줍니다. 이 주기율표에 있는 각 네모칸들은 하나의 예제를 포함하고 있습니다. 이 예제를 실행한다면, 주어진 명령어의 행동을 밝혀낼 수 있을 것입니다
+ loop macro에서 사용할 수 있는 모든 합법적인 명령어의 대부분은 이 주기율 표에서 다루어졌습니다. 이것은 어떻게 해쉬 테이블과 배열을 조작하는지, 특별한 lopping 연산을 수행하는지를 보여줍니다. 이 주기율표에 있는 각 네모칸들은 하나의 예제를 포함하고 있습니다. 이 예제를 실행한다면, 주어진 명령어의 행동을 밝혀낼 수 있을 것입니다.
  
 
 Using loop to Evolve!
 [pic]
-#BEGIN=============================================
 
-loop를 사용하여 만들어진 또 다른 게임을 만들어 봅시다.
-이것은 저희가 진행할 수 있는 게임이 아닙니다.
-대신에, 이것은 진화하는 게임 세계가 될 것이며 저희는 그걸 지켜봅니다!
-
-Let’s create another game, making full use of loop. But this won’t be a game 
-that we play. Instead, it will be a game world that evolves as we watch it! 
-
-
-We’re going to create an environment of steppes and jungles,
- filled with animals 
-running around, foraging, eating, and reproducing.
-
-몇 백만 시간이 흐른후에, 다른 종으로 진화한걸 볼 수 있을 것입니다.
+ loop를 사용한 또 다른 게임을 만들어 봅시다. 이것은 저희가 진행하는 게임이 아닙니다. 대신에, 이것은 진화하는 게임 세계가 될 것이며 저희는 그걸 지켜봅니다! 저희는 초원과 밀림 동물들 주변을 뛰어다니고, 먹이를 찾아다니며, 먹고, 번식하는 몇 백만 시간이 흐른후에, 다른 종으로 진화한걸 볼 수 있을 것입니다.
 
 NOTE
  이 예제는 Scientific American에 "Computer Recreations" 칼럼에 실린
-A.K. Dewdney의 글 "Simulated evolution: wherein bugs learns to hunt bacteria"에서 체택되었습니다(May 1989: 138-141)..
+A.K. Dewdney의 글 "Simulated evolution: wherein bugs learns to hunt bacteria"에서 채택되었습니다(May 1989: 138-141).
 [pic]
 
-저희 게임 세계는 매우 간단합니다.
-간단한 사각형 평지로 이루어졌습니다
+ 저희 게임 세계는 매우 간단합니다. 이것은 간단한 사각형 평지와 둘러싸고 있는 edges로 이루어졌습니다 (수학적으로 말하자면, 이것은 toroidal topology를 지녔습니다) 이 세계의 대부분이 초원으로 덮혀있다는 것은, 매우 적은 식물들이 동물들이 먹도록 자라나는 것을 의미합니다. 이 세계의 중앙에는 식물들이 더 빨리 자라는 작은 밀림이 있습니다. 초식동물들은 이 세계에서 먹이를 찾을 것입니다.
 
- It consists of a simple rectangular 
-plane, with edges that wrap around to the opposite side. (Mathematically 
-speaking, it has a toroidal topology.)
-
-
- Most of this world is covered in steppes, meaning that very few plants grow for the animals to eat. In the center of the 
-world is a small jungle, where plants grow much faster. Our animals, who are 
-herbivores, will forage this world in search for food.
-
-Let’s create some variables describing the extent of our world:
+ 저희 세계의 범위를 기술할 변수를 만들어 봅시다:
 [source]
 
+ 저희에게 넓이 100 units 높이 30 unit의 세계가 주어졌습니다. 이 면적을 사용하는 것은 Lisp REPL에 이 세계를 쉽게 출력하도록 만듭니다. *jungle* 리스트는 이 세계에서 밀림을 포함하는 사각형을 정의합니다. 이 리스트에 있는 처음 두 숫자는 정글의 top-left 꼭지점의 x-와 y-좌표이며, 나머지 두 수는 넓이와 높이입니다. 마지막으로, 각 식물이 지닌 에너지의 양을 80으로 설정합니다. 이것이 의미하는 것은 동물이 식물을 찾았다면, 그것을 먹음으로써 80일의 먹이 가치를 얻습니다.
 
-We’re giving the world a width of 100 units and a height of 30 units. Using 
-these dimensions should make it easy to display the world in our Lisp REPL. 
-The *jungle* list defines the rectangle in the world map that contains the jun-
-gle. The first two numbers in the list are the x- and y-coordinates of the jungle’s 
-top-left corner, and the last two numbers are its width and height. Finally, we 
-give the amount of energy contained in each plant, which is set to 80. This 
-means that if an animal finds a plant, it will gain 80 days’ worth of food by 
-eating it.
-NOTE If your terminal window isn’t large enough to display the entire world, change the val-
-ues of the *width* and *height* variables. Set the *width* variable to the width of your 
-terminal window minus two, and the *height* variable to the height of your terminal 
-window minus one.
+NOTE
+ 터미널 창이 전체 세계를 출력하기에 충분히 크지 않다면 *width*와 *height*변수의 값을 바꾸어줍니다. 터미널 창의 넓이를 위해선 *width*변수를, 터미널 창의 높이를 위해선 *height*변수를 수정합니다.
 
 
 Growing Plants in Our World
-As you might imagine, simulating evolution on a computer is a slow process. 
-In order to see the creatures evolve, we need to simulate large stretches of 
-time, which means we’ll want our code for this project to be very efficient. As 
-animals wander around our world, they will need to be able to check if there 
-is a plant at a given x,y location. The most efficient way to enable this is to 
-store all of our plants in a hash table, indexed based on each plant’s x- and 
-y-coordinates.
+ 여러분의 상상하듯이 컴퓨터에서 진화를 시뮬레이트하는 것은 느리게 진행됩니다 생명체가 진화하는 것을 보기 위해, 시간을 많이 늘려서 시뮬레이트 해야하며, 이것은 이 프로젝트에서 저희 코드가 매우 효적으로 되길 원한다는 것을 의미합니다. 동물들이 저희 세계를 돌아다니기 때문에, 주어진 x, y 장소에 식물이 있는지 확인할 수 있어야 합니다. 이것을 가능케할 가장 효율적인 방법은 모든 식물들을 각 식물에 x-, y-좌표 기반으로 탐색하는 해쉬 테이블에 저장하는 것입니다.
 [source]
 
-By default, a Common Lisp hash table uses eq when testing for the equal-
-ity of keys. For this hash table, however, we’re defining :test to use equal 
-instead of eq, which will let us use cons pairs of x- and y-coordinates as keys. If 
-you remember our rule of thumb for checking equality, cons pairs should be 
-compared using equal. If we didn’t make this change, every check for a key 
-would fail, since two different cons cells, even with the same contents, test 
-as being different when using eq.
-Plants will grow randomly across the world, though a higher concentra-
-tion of plants will grow in the jungle area than in the steppes. Let’s write 
-some functions to grow new plants:
+ 기본적으로, Common Lisp 해쉬 테이블은 키의 동일함을 확인할때 eq를 사용합니다. 그러나, 이 해쉬 테이블에서는, x-와 y-좌표의 cons 쌍을 키로써 사용하도록 :test를  eq대신에 equal로 사용하도록 정의합니다. 동일함을 확인하는데 있어 저희 rule of thumb을 기억한다면, cons 쌍은 equal을 사용하여 비교될 것입니다. 만약 이 변경을 하지 않는다면,  동일한 내용을 포함하더라도 두 cons cell 다르기 때문에 eq를 사용할 때와 다르게 되며, 키를 확인하는 것은 실패할 것입니다
+
+ 초원보다 밀림에서 식물의 밀도가 높긴하지만, 식물들은 이 세계 전반에 걸처 무작위로 자라날 것입니다. 새로운 식물을 자라나게 하는 함수를 작성해 봅시다:
 [source]
 
-The random-plant function creates a new plant within a specified region 
-of the world. It uses the random function to construct a random location and 
-stores it in the local variable pos X. Then it uses setf to indicate the existence 
-of the plant within the hash table Y. The only item actually stored in the 
-hash table is t. For this *plants* table, the keys of the table (the x,y position of 
-each plant) are actually more than the values stored in the table.
-It may seem a bit weird to go through the trouble of creating a hash table 
-to do nothing more than store t in every slot. However, Common Lisp does 
-not, by default, have a data structure designed for holding mathematical sets. 
-In our game, we want to keep track of the set of all world positions that have 
-a plant in them. It turns out that hash tables are a perfectly acceptable way of 
-expressing this. You simply use each set item as a key and store t as the value. 
-Indeed, doing this is a bit of a hack, but it is a reasonably simple and efficient 
-hack. (Other Lisp dialects, such as Clojure, have a set data structure built right 
-into them, making this hack unnecessary.)
-Every day our simulation runs, the add-plants function will create two new 
-plants: one in the jungle Z and one in the rest of the map [. Because the jungle 
-is so small, it will have dense vegetation compared to the rest of the world.
+ random-plant 함수는 특정 지역에 새로운 식물을 생성합니다. 무작위 지점을 얻어 지역 변수 pos에 저장하기 위해 random함수를 사용합니다. 그런 다음 해쉬 테이블에 식물의 존제를 나타내기 위해 setf를 사용합니다. 해쉬 테이블에 저장된 실제 항목은 t입니다. 이 *plants* 테이블에서, 테이블의 키들이(각 식물들의 x, y 지점) 실제로 테이블에 저장된 값보다 더 많습니다.
+
+ 모든 항목에 t말고는 어떤것도 저장하지 않는 해쉬 테이블을 만드는 것은 조금 괴상하게 보일 수 있습니다. 그러나, 기본적으로 수학적 set을 지향하는 데이터 구조를 지닌 Common Lisp에서는 그렇지 않습니다. 저희 게임안에서 식물을 지닌 모든 지점을 추적하기 원합니다. 해쉬 테이블이 이것을 표현하는 적합한 방법이라고 밝혀졌습니다. 단순하게 각 set 항목을 key로써 사용하고 값으로 t를 저장합니다. 사실, 이렇게 하는 것은 좋지 않은 hack이지만, 상당히 간단하면서 효율적인 hack입니다(Clojure와 같은 다른 Lisp 방언에서는, 이러한 hack이 필요하지 않게, 안으로 내장된 set 데이터 구조를 가졌습니다.)
+
+ 저희 시뮬레이션은 매일마다 수행하는 add-plants 함수는 새로이 두 식물을 생성할 것입니다: 하나는 정글에, 하나는 지도의 나머지에. 밀림은 매우 작기 때문에, 나머지에 비해 식물이 밀집하게 됩니다.
+
 
 Creating Animals
 [pic]
-The plants in our world are very simple, but the animals are a bit more com-
-plicated. Because of this, we’ll need to define a structure that stores the 
-properties of each animal in our game:
+ 저희 세계에 있는 식물들은 매우 단순하지만, 동물들은 조금 더 복잡합니다. 이러한 이유로 인해, 저희 세계에 있는 각 동물들의 속성을 저장할 구조를 정의해야 합니다:
 [source]
 
-Let’s take a look at each of these fields in detail.
+ 이 필드들을 자세히 살펴봅시다.
+
+
 Anatomy of an Animal
 [pic]
 
-We need to track several properties for each animal. First, we need to know 
-its x- and y-coordinates. This indicates where the animal is located on the 
-world map.
-Next, we need to know how much energy an animal has. This is a Darwinian 
-game of survival, so if an animal can’t forage enough food, it will starve and 
-die. The energy field tracks how many days of energy an animal has remain-
-ing. It is crucial that an animal find more food before its energy supply is 
-exhausted.
-We also need to track which direction the animal is 
-facing. This is important because an animal will walk 
-to a neighboring square in the world map each day. 
-The dir field will specify the direction of the animal’s 
-next x,y position as a number from 0 to 7:
-For example, an orientation of 0 would cause the 
-animal to move up and to the left by the next day.
-Finally, we need to track the animal’s genes. Each 
-animal has exactly eight genes, consisting of positive integers. These integers 
-represent eight “slots,” which encircle the animal as follows:
+ 각 동물들의 항목을 추적할 필요가 있습니다. 우선 이것의 x-, y-좌표를 알기 원합니다. 이것은 동물이 지도에 어느 위치에 있는지 알려줍니다.
+
+ 다음으로, 동물이 얼마만큼 에너지를 가지고 있는지 알아야 합니다. 이것은 Darwinian game of survival임으로, 동물이 충분한 먹이를 찾을 수 없다면, 이것은 굶어 죽게될 것입니다.
+
+ 에너지 필드는 동물이 얼마나 많은 에너지가 남아 있는지 추적합니다. 에너지 공급이 사라지기 전에 더 많은 먹이를 찾아야 한다는 것은 중요합니다. 동물이 마주치게될 방향을 추적해야 합니다. 이것은 지도에서 각 날마다 인접한 사각형으로 걸어가기 때문에 중요합니다. dir 필드는 동물의 다음 x, y 지점을 0부터 7까지 숫자로 지정합니다:
+
+ 예를들어, 0 방향은 다음날 위로 좌로 가게 됩니다.
+ 
+  마지막으로, 동물의 유전자를 추적해야 합니다. 각 동물은 정확히  양수로 구성된 여덜개의 유전자를 가지고 있습니다. 이 정수는 다음과 같이 둘러싼 여덟개의 "항목들"을 나타냅니다:
 [pic]
 [pic]
-Every day, an animal will decide whether to continue facing the same 
-direction as the day before or to turn and face a new direction. It will do this 
-by consulting these eight slots and randomly choosing a new direction. The 
-chance of a gene being chosen will be proportional to the number stored in 
-the gene slot. 
-For example, an animal might have the following genes:
+
+ 매일마다, 동물은 이전날과 동일한 방향으로 계속 갈지 새로운 방향으로 갈지를 결정합니다. 이 여덟게 슬롯을 찾아보고 새로운 방향을 무작위로 선택함으로써 이러한 일을 합니다. 유전자의 변화는 유전자 슬롯에 저장된 번호에 비례하여 선택되어집니다.
+
+ 예를들어, 어떤 동물은 다음에 오는 유전자를 지니고 있습니다:
 [source]
 
-Let’s represent these genes as a table, showing each slot 
-number and how large of a value is stored in it:
-In this example, an animal has a large number (10) stored 
-in slot 2. Looking at our picture of the eight slots around the 
-animal, you can see that slot 2 points to the right. Therefore, 
+ 이 유전자를 각 항목 숫자와 이것에 얼마 만큼의 값이 저장되어 있는지 보여주는 테이블로 나타내 봅시다:
+
+ 이 예제에서, 동물은 항목 2에 큰 수(10)을 저장하고 있습니다. 동물을 둘러싼 여덟개의 항목에서, 여러분은 항목 2는 오른쪽을 가리킨다는 것을 알 수 있습니다.
 [pic]
-this animal will make a lot of right-hand turns and run in a circle. Of course, 
-since the other slots still contain values larger than zero, the animal will occa-
-sionally move in another direction.
-Let’s create an *animals* variable, populated with a single starting animal. 
-You can think of this animal as “Adam” (or “Eve”, depending on what gender 
-you prefer for our asexual animals).
+
+ 그러므로 이 동물은 원에서 오른쪽으로 돌고 뛸 것입니다. 물론, 다른 항목이 0보다 큰 수를 포함하고 있기 때문에, 동물은 때때로 다른 방향으로 움직이기도 합니다.
+
+ 하나의 starting 동물로 체워진 *animals*변수를 만듭시다. 이 동물을 "아담"이라 생각할 수 있습니다.  (혹은 "이브", 성별이 없는 동물을 위해 여러분이 선호하는 성별에 기반하여)
 [source]
 
-We make the animal’s starting point the center of the world by setting 
-the x and y positions to half of the map’s width and height, respectively. We 
-set its initial energy to 1000, since it hasn’t evolved much yet and we want it to 
-have a fighting chance at survival. It starts off facing the upper left, with its 
-dir field set to 0. For its genes, we just use random numbers.
-Note that unlike the *plants* structure, which was a hash table, the 
-*animals* structure is just a plain list (currently containing only a single mem-
-ber). This is because, for the core of our simulation, we never need to search 
-our list of animals. Instead, we’ll just be traversing *animals* once every simu-
-lated day, to let our critters do their daily activities. Lists already support effi-
-cient linear traversals, so using another, more complex data structure (such as 
-a table) would have no significant effect on the performance of our simulation.
+ x와 y 지점을 각각 지도의 넓이와 높이의 반으로 설정하여, 동물의 시작 지점을 세계의 중심으로 설정합니다. 아직 덜 진화가 되었고 살아남을 기회를 주어야 함으로, 초기 에너지를 100으로 설정합니다. 좌측 상단에서 dir 필드는 0으로 설정됩니다. 유전자를 위해선 간단한 무작위 수를 사용하였습니다.
+
+ 해쉬테이블이 였던 *plants* structure와 달리, *animals structure는 (현재 하나의 멤버만을 포함하는) 단순한 list입니다. 왜냐하면 저희 시뮬레이션에선 동물의 리스트를 탐색할 필요가 없기 때문입니다. 대신에, 각 시뮬레이트 시작마다 저희 생물이 그들의 일과를 수행하도록 *animals*을 탐색할 것입니다. 리스트는 이미 효율적인 선형 탐색을 지원하므로, (테이블과 같은)더욱 복잡한 데이터 구조에서 저희 시뮬레이션은 뚜렷한 효과가 나타나지 않습니다.
+
 
 Handling Animal Motion
-
 [pic]
-The move function accepts an animal as an argument and moves it, orthogo-
-nally or diagonally, based on the direction grid we have described:
+
+ move 함수는 동물을 인자로 받아 이것을 저희가 기술한 방향에 기반하여 직각으로든 대각선으로든 움직입니다:
 [source]
 
-The move function modifies the x and y fields, using the animal-x and 
-animal-y accessors. As we’ve discussed, these are automatically generated 
-through the defstruct macro, based on the field names. At the top of this 
-function, we use the accessors to retrieve the x- and y-coordinates for the 
-animal XY. Then we use the same accessors to set the same values, with the 
-aid of setf Z^.
-To calculate the new x-coordinate, we use a cond command to first check 
-if the direction is 2, 3, or 4 [. These are the directions the animal may face 
-that point east in the world, so we want to add one to the x-coordinate. If the 
-direction instead is 1 or 5, it means the animal is facing directly north or 
-south \. In those cases, the x-coordinate shouldn’t be changed. In all other 
-cases, the animal is facing west and we need to subtract one ]. The y-coordi-
-nate is adjusted in an analogous way ^.
-Since the world needs to wrap around at the edges, we do some extra math 
-using the mod (remainder) function to calculate the modulus of the coordinates 
-and enable wrapping across the map Z^. If an animal would have ended up 
-with an x-coordinate of *width*, the mod function puts it back to zero, and it 
-does the same for the y-coordinate and *height*. So, for example, if our func-
-tion makes the animal move east until x equals 100, this will mean that (mod 
-100 *width*) equals zero, and the animal will have wrapped around back to 
-the far west side of the game world.
-The final thing the move function needs to do is decrease the amount of 
-energy the animal possesses by one. Motion, after all, requires energy.
+ move함수는 animal-x와 animal-y 접근자accessor를 사용하여 x와 y 필드를 수정합니다. 저희가 다루었듯이, 빌드 이름에 기반하여 defstruct 매크로를 통해 자동적으로 생성된 것들입니다. 이 함수의 상단부분에서, 이 접근자를 사용하여 animal의 x- 와 y-좌표를 받아옵니다. 동일한 값을 설정하기 위해 다음 setf의 도움과 동일한 접근자를 이용합니다.
+
+ 새로운 x-좌표를 계산하려 방향이 2, 3, 혹은 4인지 검사하기 위해 cond 명령어를 사용합니다. 이것은 동물이 동쪽으로 향하는 방향이며, x-좌표에 하나를 더하기 원합니다. 만약 방향이 1이나 5라면, 이것은 동물이 북쪽 혹은 남쪽을 향하고 있다는 것입니다. 이러한 경우에, x-좌표는 바뀌지 않을 것입니다. 다른 모든 경우에서는, 동물은 서쪽을 마주치게되며 하나를 빼야합니다. y-좌표는 유사한 방식으로 조정되었습니다.
+
+ 이 세계가 edges에 둘러싸여 있기 때문에, 좌표계의 modulus를 계산하고 맵을 포장할 수 있도록 mod (remainder) 함수를 사용하는 추가 수학(extra math)을 합니다. 만약 동물이 *width*의 x좌표 끝에 도달한다면, mod함수는 이것을 0으로 되돌릴 것이며, y-좌표와 *height*도 동일합니다. 따라서, 예를들어 저희 함수가 x가 100이 될때까지 동물이 동쪽으로 움직이게 한다면, (mod 100 *width*)는 0과 같다가 될 것이며, 동물은 게임 세계의 가장 서쪽으로 이동할 것입니다.
+
+ move 함수가 마지막으로 필요한 것은 동물이 소유한 에너지의 양을 1만큼 줄이는 것입니다. 어쨋든, 움직임에는 에너지가 필요합니다.
+
+
 Handling Animal Turning
-Next, we’ll write the turn function. This function will use the animal’s genes 
-to decide if and how much it will turn on a given day.
 
+ 다음으로, turn 함수를 작성할 것입니다. 이 함수는 주어진 날에 얼마나 방향을 틀지 결정하기 위해 동물의 유전자를 사용할 것입니다.
 [source]
 
-This function needs to make sure that the amount the animal turns is 
-proportional to the gene number in the given slot. It does this by first sum-
-ming the amount of all genes, and then picking a random number within 
-that sum X. After that, it uses a recursive function named angle Y, which 
-traverses the genes and finds the gene that corresponds to the chosen number, 
-based on the respective contributions of each gene to the sum. It subtracts 
-the running count in the argument x from the number stored at the current 
-gene Y. If the running count has hit or exceeded zero, the function has reached 
-the chosen number and stops recursing Z. Finally, it adds the amount of 
-turning to the current direction and, if needed, wraps the number around 
-back to zero, once again by using mod [.
+ 이 함수는 동물의 turn의 양이 주어진 슬롯에 있는 유전자 수에 비례하는 것을 확인해야 합니다. 모든 유전자의 양을 첫번째로 더한 것으로 이것을 하며, 그 합에서 무작위 숫자를 꺼냅니다. 그런 다음, 유전자를 탐색하여 선택된 숫자와 일치하는 것을 찾아내는 angle이란 재귀적인recursive 함수를 사용합니다. 현재 gene에 저장되어 있는 숫자로부터 인자 x에 있는 running count를 뺍니다. 0을 초과하거나 만나면, 함수는 선택된 숫자를 만난 것이며 재귀를 멈춥니다. 마지막으로,tunning의 양을 현재 방향에 더하고, 필요하다면 mode를 사용하여 다시 한번 숫자를 0으로 되돌립니다.
+
 Handling Animal Eating
 [pic]
-
-Eating is a simple process. We just need to check if there’s a plant at the ani-
-mal’s current location, and if there is, consume it:
+ 먹는 것은 단순한 작업입니다. 동물의 현재 위치에 식물이 있는지를 확인하여 그곳에 있다면 소비합니다:
 [source]
 
-The animal’s energy is increased by the amount of energy that was 
-being stored by the plant. We then remove the plant from the world using 
-the remhash function.
+ 동물의 에너지는 동물에 저장되어 있는 에너지 양에 의해 증가됩니다. 그 다음 remhash 함수를 사용하여 이 세계에서 그 식물을 제거합니다.
+
 
 Handling Animal Reproduction
 [pic]
-
-Reproduction is usually the most interesting part in any animal simulation. 
-We’ll keep things simple by having our animals reproduce asexually, but it 
-should still be interesting, because errors will creep into their genes as they 
-get copied, causing mutations.
+ 번식은 보통, 동물 시뮬레이션에서 가장 흥미있는 부분입니다.  저희 동물이 무성번식을 하게 함으로써 단순함을 유지할 것이지만, 유전자가 복사될때 돌연변이를 유발시키는 에러들이 발생할 것이기 때문에, 이것은 여전히 흥미로울 것입니다
 [source]
 
-It takes a healthy parent to produce healthy offspring, so our animals will 
-reproduce only if they have at least 200 days’ worth of energy X. We use the 
-global constant *reproduction-energy* to decide what this cutoff number should 
-be. If the animal decides to reproduce, it will lose half its energy to its child Y.
+ 자식 체력을 생성하기 위해 부모의 체력을 취하며, 동물은 적어도 200일의 에너지 가치를 가지고 있어야만 번식할 것입니다. 이 마지노선을 결정하기 위해 전역 상수 *repuroduction-energy*를 사용합니다. 만일 동물이 번식한다면, 이 자식을 위해 에너지의 절반을 잃게 될 것입니다.
 
-To create the new animal, we simply copy the structure of the parent 
-with the copy-structure function Z. We need to be careful though, since 
-copy-structure performs only a shallow copy of a structure. This means that if 
-there are any fields in the structure that contain values that are more compli-
-cated than just numbers or symbols, the values in those fields will be shared 
-with the parent. An animal’s genes, which are stored in a list, represent the only 
-such complex value in our animal structures. If we aren’t careful, mutations 
-in the genes of an animal would simultaneously affect all its parents and 
-children. In order to avoid this, we need to create an explicit copy of our 
-gene list using the copy-list function [.
-Here is an example that shows what horrible things could happen if we 
-just relied on the shallow copy from the copy-structure function:
+ 새로운 동물을 생성하기 위해, 단순히 부모의 구조를 copy-structure 함수로 복사합니다. copy-structure는 얕은shallow 구조 복사를 수행하기 때문에 조심해야 합니다. 이것이 의미하는 것은, structure에 숫자나 심볼보다 더 복잡한 값을 포함하는 어떤 필드가 있다면, 그 필드에 있는 값들은 부모와 공유될 것입니다. 리스트에 저장된 동물의 유전자는 동물의 structure에 있는 복잡한 값을 나타냅니다. 만약 조심하지 않는다면, 동물의 유전자에 있어 변화는 이것의 부모와 자식 모두 영향을 줄 것입니다. 이것을 피하기 위해선 copy-list 함수를 사용하여 유전자 리스트를 명시적인explicit 복사하는 것을 만들어야 합니다.
 
+ 여기 copy-structure 함수에서 단순히 얕은 복사에 의존한다면 어떤 무서운 일이 발생할 수 있는지 보여주는 예제가 있습니다:
 [source]
 
-Here, we’ve created a parent animal with all its genes set to 1 X. Next, we 
-use copy-structure to create a child Y. Then we set the third (second count-
-ing from zero) gene equal to 10 Z. Our parent now looks correct [. Unfor-
-tunately, since we neglected to use copy-list to create a separate list of genes 
-for the child, the child genes were also changed \ when the parent mutated. 
-Any time you have data structures that go beyond simple atomic symbols or 
-numbers, you need to be very careful when using setf so that these kinds of 
-bugs don’t creep into your code. In future chapters (especially Chapter 14), 
-you’ll learn how to avoid these issues by not using functions that mutate data 
-directly, in the manner that setf does.
-To mutate an animal in our reproduce function, we randomly pick one of 
-its eight genes and place it in the mutation variable. Then we use setf to twiddle 
-that value a bit, again using a random number. We did this twiddling on the 
-following line:
+여기서, 모든 유전자가 1로 설정된 부모 동물을 만들었습니다. 다음으로, copy-structure를 사용하여 자식을 만들었습니다. 다음, 세번째 유전자를 10으로 설정합니다. 지금은 부모가 맞게 보입니다. 불행히도, 자식을 위해 분리된 리스트를 생성하는 copy-list를 사용하지 않았기 때문에, 부모가 수정될때 자식 유전자는 또한 바뀌게 될 것입니다. 간단한 atomic 심볼이나 숫자를 넘어선 데이터 structure를 가진 경우, 이러한 종류의 버그가 여러분의 코드에 스며들지 않도록 setf를 사용할때 매우 조심해야 합니다. 나중에 나오는 장에서 (특별히 14장), 여러분은 data를 직접적으로 mutate하는 함수를 사용하지 않고 setf를 사용함으로써, 이러한 문제를 어떻게 피하는지를 배울 것입니다
+
+ reproduce 함수에서 동물이 mutate하기 위해, 8개의 유전자중에서 무작위로 하나를 집어 mutation 변수에 놓습니다. 그리고 무작위 숫자를 사용하여 그 값을 여러번 돌리기 위해 다시 setf를 사용합니다. 이러한 돌리는 일을 다음 라인에서 하였습니다:
 [source]
 
-In this line, we’re slightly changing a random slot in the gene list. 
-The number of the slot is stored in the local variable mutation. We add a ran-
-dom number less than three to the value in this slot, and then subtract one 
-from the total. This means the gene value will change plus or minus one, or 
-stay the same. Since we don’t want a gene value to be smaller than one, we 
-use the max function to make sure it is at least one.
-We then use push to insert this new critter into our global *animal* list, 
-which adds it to the simulation.
+ 이번 라인에서, 유전자 리스트에서 무작위 슬롯을 조금 바꾸었습니다. 슬롯에 숫자는 지역 변수 mutation에 저장되어있는 것입니다. 이 슬롯에 있는 값에 3보다 적은 무작위 숫자를 더하고, 전체에서 1을 뺍니다. 이것은 유전자 값에 1이 더해지거나 빼지거나 혹은 같은 값을 유지한다는 것을 의미합니다. 유전자 값이 1보다 작아지길 원하지 않으므로, 이것이 적어도 1이라는 것을 확실하게 하기위해 max함수를 사용합니다.
+
+ 그리고 이 새로운 생물을 전역 *animal* 리스트에 넣기 위해 push를 사용합니다 .
+
+
 Simulating a Day in Our World
-Now that we have functions that handle every detail of an animal’s routine, 
-let’s write one that simulates a day in our world.
+ 이제 저희는 동물 routine의 모든 세부사항을 다룰 수 있는 함수를 가졌고, 저희 세상에서의 하루를 시뮬레이트하는 것을 작성해봅시다.
 [source]
 
-First, this function removes all dead animals from the world X. (An ani-
-mal is dead if its energy is less than or equal to zero.) Next, it maps across the 
-list, handling each of the animal’s possible daily activities: turning, moving, 
-eating, and reproducing Y. Since all these functions have side effects (they 
-modify the individual animal structures directly, using setf), we use the mapc 
-function, which does not waste time generating a result list from the map-
-ping process.
-Finally, we call the add-plants function Z, which adds two new plants to 
-the world every day (one in the jungle and one in the steppe). Since there 
-are always new plants growing on the landscape, our simulated world should 
-eventually reach an equilibrium, allowing a reasonably large population of 
-animals to survive throughout the spans of time we simulate.
+ 우선 이 함수는 모든 죽은 동물들을 이 세계로부터 제거합니다(동물의 에너지가 0보다 작거나 같으면 동물은 죽습니다). 다음으로, 각 동물의 하루동안 활동양을 다루는 리스트를 map합니다: 돌기, 움직이기, 먹기, 번식하기. 이러한 모든 함수들이 (setf를 사용하여, animal structure를 직접적으로 수정하는)side effect를 지녔기 때문에, mapping과정으로부터 결과 리스트를 생성하는데 시간을 소비하지 않는 mapc함수를 이용합니다
+
+ 마지막으로, 새로운 두 식물들을 매일마다 이 세계에 추가하는 add-plants 함수를 호출합니다(하나는 정글에, 다른 하나는 수풀에). 항상 새로운 식물들이 자라나기 때문에, 저희 세계는 최종적으로 균형 상태를 이룰것입니다.
+
+
 Drawing Our World
-A simulated world isn’t any fun unless we can actually see our critters running 
-around, searching for food, reproducing, and dying. The draw-world function 
-handles this by using the *animals* and *plants* data structures to draw a snap-
-shot of the current world to the REPL.
+ 생물들이 주변을 뛰어다니거나, 먹이를 찾거나, 번식하거나, 죽는것을 실제로 보지 않는한, 저희 세계는 어떠한 재미도 없습니다. draw-world 함수는 *animals*와 *plants* 데이터 구조를 사용하여 현재 세계의 snapshot을 REPL로 그림으로써 이러한 것을 다룹니다.
 [source]
 
-First, the function uses a loop to iterate through each of the world’s rows 
-X. Every row starts with a new line (created with fresh-line) followed by a 
-vertical bar, which shows us where the left edge of the world is. Next, we iterate 
-across the columns of the current row Y, checking for an animal at every 
-location. We perform this check using the some function Z, which lets us 
-determine if at least one item in a list obeys a certain condition. In this case, 
-the condition we’re checking is whether there’s an animal at the current x- and 
-y-coordinates. If so, we draw the letter M at that spot [. (The capital letter M 
-looks a little like an animal, if you use your imagination.) 
-Otherwise, we check for a plant, which we’ll indicate with an asterisk (*) 
-character \. And if there isn’t a plant or an animal, we draw a space charac-
-ter ]. Lastly, we draw another vertical bar to cap off the end of each line ^.
-Notice that in this function, we need to search through our entire *animals* 
-list, which will cause a performance penalty. However, draw-world is not a core 
-routine in our simulation. As you’ll see shortly, the user interface for our game 
-will allow us to run thousands of days of the simulation at a time, without 
-drawing the world to the screen until the end. Since there’s no need to draw 
-the screen on every single day when we do this, the performance of draw-world 
-has no impact on the overall performance of the simulation.
+ 우선 이 함수는 각 열을 iterate하기 위해 loop를 사용합니다. 모든 열은 좌측 경계를 나타내는 세로 막대와 새로운 라인으로 시작합니다. 모든 row는 세계의 좌측 경계를 나타내는, vertical bar가 따라오는 (fresh-line으로 생성된)새로운 라인으로 시작됩니다. 다음, 현재 row의 column을 iterate하여, 동물들을 확인합니다. 저희는 몇몇 함수를 사용하여 리스트에 어떤 항목이 특정 조건을 만족하는지 확인합니다. 이번 경우에는, 저희가 확인할 조건은 현재 x-와 y-좌표에 동물이 있는지 없는지입니다. 만일 있다면, 그 지점에 문자 M을 그립니다. (여러분의 상상력을 이용한다면, 대문자 M은 작은 동물처럼 보일 것입니다.)
+
+ 그렇지 않으면, 별표(*) 문자로 나타낼 식물을 확인합니다. 그리고 식물이나 동물이 없으면, 빈 공란으로 놔둡니다. 끝으로, 각 라인의 끝을 마치는 또 다른 vertical bar를 그립니다.
+
+ 이 함수에서 전체 *animals*리스트 전체를 탐색하기 때문에, 성능에 있어 불이익을 유발합니다. 그러나, draw-world는 저희 시뮬레이션에서 core routine이 아닙니다. 여러분이 곧 보게 될 것이지만, 저희 게임의 사용자 인터페이스는 수천일의 시뮬레이션이 끝나기까지 화면에 이 세계를 그리지 않습니다. 각 날마다 화면에 그릴 필요가 없기 때문에, draw-world의 성능은  시뮬레이션의 전체 성능에 영향을 미치지 않습니다.
+
+
 Creating a User Interface
-Finally, we’ll create a user interface function for our simulation, called evolution.
+ 마지막으로, 저희 evolution 시뮬레이션에 사용자 인터페이스 함수를 만들어야 합니다.
 [source]
 
-First, this function draws the world in the REPL X. Then it waits for the 
-user to enter a command at the REPL using read-line Y. If the user enters 
-quit, the simulation ends Z. Otherwise, it will attempt to parse the user’s 
-command using parse-integer [. We set :junk-allowed to true for parse-integer, 
-which lets the interface accept a string even if it isn’t a valid integer.
-If the user enters a valid integer n, the program will run the simulation 
-for n simulated days, using a loop \. It will also print a dot to the screen for 
-every 1000 days, so the user can see that the computer hasn’t frozen while 
-running the simulation.
-If the input isn’t a valid integer, we run update-world to simulate one 
-more day. Since read-line allows for an empty value, the user can just tap the 
-ENTER key and watch the animals move around their world.
-Finally, the evolution function recursively calls itself to redraw the world 
-and await more user input ]. Our simulation is now complete.
+ 우선, 이 함수는 REPL에 이 세계를 그립니다. 그리고 나서, read-line을 이용하여 REPL에 명령어를 입력하는 사용자를 기다립니다. 사용자가 quit라고 친다면, 시뮬레이션은 끝납니다. 그렇지 않으면, parse-integer를 이용하여 사용자의 명령어를 분석할 것입니다. 유효한 정수가 아닐 지라도 interface가 string을 허용하도록, parse-integer를 위해 :junk-allowed를 true로 설정하였습니다.
+
+ 사용자가 적합한 정수 n을 입력한다면, 프로그램은 loop를 사용하여 n 날짜만큼 시뮬레이션을 돌릴 것입니다. 1000일 마다 화면에 점을 출력하므로, 시뮬레이션하는 동안 사용자는 컴퓨터가 멈추지 않았다는 것을 확인 할 수 있습니다.
+
+ 입력이 유효한 정수가 아니라면, 하루를 더 시뮬레이션 하기 위해 update-world를 돌립니다. read-line은 빈 값을 허용하기 때문에 사용자는 ENTER 키를 입력하여 동물들이 그들의 세계에서 돌아다니는 것을 볼 수 있습니다.
+
+ 마지막으로, evolution 함수는 이 세계를 다시 그리기 위해, 사용자의 입력을 기다리기 위해, 자기자신을 재귀적으로 호출합니다. 저희 시뮬레이션은 이제 완벽합니다.
+
+
 Let’s Watch Some Evolution!
-To start the simulation, execute evolution as follows:
-
-[output]
-Our world is currently empty, except for the Adam/Eve animal in the 
-center. Hit ENTER a few times to cycle through a few days:
-[output]
-Our under-evolved animal is stumbling around randomly, and a few 
-plants are starting to grow.
-
-Next, enter 100 to see what the world looks like after 100 days:
-
+ 시뮬레이션을 시작하면 다음처럼 진화를 시작합니다:
 [output]
 
-Our animal has already multiplied quite a bit, although this has less to 
-do with the amount of food it has eaten than with the large amount of “starter 
-energy” we gave it.
-Now let’s go all out and run the simulation for five million days! Since 
-we’re using CLISP, this will be kind of slow, and you may want to start it up in 
-the evening and let it run overnight. With a higher-performance Lisp, such 
-as SBCL, it could take only a couple of minutes.
+ 중앙에 있는 아담/이브 동물을 제외하고는 저희 세계는 현재 비어있습니다. 여러날을 지내 보기 위해 ENTER를 여러번 눌누릅시다 :
 [output]
 
-Our world doesn’t look much different after five million days than it did 
-after a hundred days. Of course, there are more animals, both traveling across 
-the steppes and enjoying the lush vegetation of the jungle.
+ 진화가 덜된 저희 동물은 비틀거리며 무작위로 주변을 돌아다니며, 몇몇 식물들이 자라나기 시작합니다.
 
-But appearances are deceptive. These animals are distinctly different from 
-their early ancestors. If you observe them closely (by tapping ENTER), you’ll 
-see that some of the creatures move in straight lines and others just jitter 
-around in a small area, never taking more than a single step in any direction. 
-(As an exercise, you could tweak the code to use different letters for each 
-animal, in order to make their motion even easier to observe.) You can see 
-this contrast even more clearly by typing quit to exit the simulation, then 
-checking the contents of the *animals* variable at the REPL:
+ 다음으로 100일 이 지난 세계가 어떤 모습인지 보기 위해 100을 입력합시다:
 [output]
 
-If you look closely at all the animals in the list, you’ll notice that they 
-have two distinct types of genomes. One group of animals has a high number 
-toward the front of the list, which causes them to move mostly in a straight 
-line. The other group has a large number toward the back of the list, which 
-causes them to jitter about within a small area. There are no animals with a 
-genome between those two extremes. Have we evolved two different species?
-If you were to create a function that measured how far these evolved ani-
-mals travel in a fixed amount of time, the histogram of the distance would 
-appear as follows:
+ 먹은 먹이양이 저희가 줬던 "초기 에너지"의 양보다 적지만, 저희 동물들은 이미 상당히 번식하였습니다.
+
+ 이제 시뮬레이션을 5백만일 동안 돌려 봅시다! 저희가 CLISP를 사용하기 때문에, 이것은 느릴 것이며, 여러분은 아마도 저녁에 실행해서 밤새도록 그것을 돌려야 할것입니다. SBCL과 같은 높은-성능 Lisp로는 단지 2분정도 걸릴 것입니다.
+[output]
+
+ 저희 세계에서 100일 지난것과 5백만일이 지난 것은 별로 다를게 없어 보입니다. 물론, 그곳에는 초원을 돌아다니며 무성한 채소 정글을 즐기는 더 많은 동물들이 있습니다.
+
+ 그러나 밖으로 보이는 것은 별볼일 없습니다(But appearances are deceptive). 이러한 동물들은 그들의 조상들과는 다른점이 있습니다. (ENTER를 입력하여) 더욱 자세히 관찰하면, 곧바르게 이동하며 작은 지역에서 조금씩 움직이는 몇몇 동물들을 볼 수 있습니다. (실험에서 움직임을 관찰하기 쉽게 만드는 대신에, 각 동물을 다른 문자를 사용하는 코드로 수정할 수 있습니다.) quit를 입력하여 시뮬레이션을 끝내 *animals* 변수의 내용을 확인함으로써,  REPL에서 이러한 차이를 확인 할 수 있습니다.
+[output]
+
+ 리스트에 있는 동물들을 자세히 살펴보면, 유전자 타입이 두가지로 나뉜것을 알 수 있습니다. 한쪽은 곧장 이동하도록 리스트의 앞부분에 높은 수를 가졌습니다. 다른 한쪽은 작은 지역에서 조금씩 움직이도록 리스트 뒤쪽에 높은 수를 가졌습니다. 이 두가지를 크게 벗어나는 genome을 가진 동물은 없습니다. 두가지 종으로 진화시킨 것일까요?
+
+ 만약 여러분이 고정된 시간에 얼마나 이동했는지 측정하는 함수를 만들었다면 거리 히스토그램은 다음처럼 보일 것입니다:
 [pic]
 
+ 이것은 동물들의 행동이 두가지 종류로 나뉜것을 보여줍니다. 이 동물들이 살아가는 환경에 대해 생각하고, 왜 이렇게 두가지 종으로 나뉘었는지 생각해봅시다. 난제에 대한 해결책을 다음에서 다룰 것입니다.
 
-This is a clear bimodal distribution, showing that the behavior of these 
-animals appears to fall into two populations. Think about the environment 
-these animals live in, and try to reason why this bimodal distribution would 
-evolve. We will discuss the solution to this conundrum next.
+
 Explaining the Evolution
-The solution to the evolution puzzle is pretty straightforward. There are two 
-possible survival strategies an animal can adopt in this imaginary world: 
-z Focus on the rich food supply in the jungle. Any animal adopting this 
-strategy needs to be conservative in its motion. It can’t stray too far over 
-time, or it might fall out of the jungle. Of course, these types of animals 
-do need to evolve at least a bit of jittery motion, or they will never find 
-any food at all. Let’s call these conservative, jittery, jungle-dwelling ani-
-mals the elephant species.
-z Forage the sparse vegetation of the steppes. Here, the most critical trait 
-for survival is to cover large distances. Such an animal needs to be open-
-minded, and must constantly migrate to new areas of the map to find 
-food. (It can’t travel in too straight a line however, or it may end up com-
-peting for resources with its own offspring.) This strategy requires a bit 
-of naive optimism, and can at times lead to doom. Let’s call these liberally 
-minded, risk-taking animals the donkey species.
+ 진화 퍼즐의 해결책은 매우 간단합니다. 이 가상의 세계에서 동물이 살아남는 전략으로 채택할 수 있는 두가지 가능성이 있습니다:
 
+z 정글에서 제공하는 풍부한 먹이에 집중합니다. 이 전략을 채택한 동물은 움직임에 있어 보수적입니다. 오랜시간 머물러있지 않으면 정글에서 떨어져 나갈 것입니다. 물론 이러한 동물의 종류는 적어도 절제된 움직임을 가지도록 진화해야만 하며, 그러지 않으면 어떠한 먹이도 찾을 수 없을 것입니다. 이 보수적이며, 절제된, 정글에-거주하는 동물을 코끼리 종이라 부릅시다.
+
+z 초원에서 희박한 식물을 찾아나섭니다. 살아남기 위해 가장 강력한 특성은 넓은 지역을 돌아다니는 것입니다. 이러한 동물은 열린 생각이 필요하며, 지속적으로 먹이를 찾기 위해 새 지역으로 이동해야만 합니다. (이것은 곧장 이동할 수 없으며, 그렇지 않으면 자원과 자손을 위한 경쟁에서 패할 것입니다.) 이 전략은 때로는 죽음을 이끄는 약간의 천진난만함을 요구합니다. 자유로운 태도를 지니며 위험을 감수하는 동물을 당나귀 종이라 부릅시다.
 [pic]
 
- 세가지 종족으로 진화하는 시뮬레이션을 확장하는 것은 독자들에게 숙제로 남깁니다.
+ 세가지 종족으로 진화하는 시뮬레이션으로 확장하는 것은 독자들에게 숙제로 남깁니다.
 
 What You’ve Learned
  이번 장에서, loop명령어를 자세히 다루었습니다. 그러면서 여러분은 다음과 같은 것을 배웠습니다:
@@ -525,4 +312,3 @@ z loop에서 숫자를 세기 위해선, for 구절를 사용한다.
 z loop에서 list에 있는 항목들을 세기 위해선, for in 구절을 사용한다.
 z list와 collect 구문으로 list에 항목을을 모아서 그것을 반환할 수 있다.
 z loop에서 지원하는 다른 유용한 구문을 찾기 위해 Loop Macro의 Periodic Table을 사용한다.
-#END
