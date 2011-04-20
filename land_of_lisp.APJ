@@ -34,6 +34,8 @@
       <File Name="14-Ramping_Lisp_Up_a_Notch_with_Functional_Programming.txt"/>
       <File Name="15-Dice_of_Doom_a_Game_Written_in_the_Functional_Style.txt"/>
       <File Name="16-The_Magic_of_Lisp_Macros.txt"/>
+      <File Name="17-Domain-Specific_Languages.txt"/>
+      <File Name="18-Lazy_Programming.txt"/>
     </Category>
     <Category Name="Introduction">
       <File Name="emacs_short_cut.txt"/>
@@ -43,6 +45,6 @@
     </Category>
   </Files>
   <ClosedFiles>
-    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\16-The_Magic_of_Lisp_Macros.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\17-Domain-Specific_Languages.txt"/>
   </ClosedFiles>
 </AcroEditProject>
