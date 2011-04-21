@@ -36,15 +36,18 @@
       <File Name="16-The_Magic_of_Lisp_Macros.txt"/>
       <File Name="17-Domain-Specific_Languages.txt"/>
       <File Name="18-Lazy_Programming.txt"/>
+      <File Name="19-Creating_a_Graphical,_Web-Based_Version_of_Dice_of_Doom.txt"/>
+      <File Name="20-Making_Dice_of_Doom_More_Fun.txt"/>
     </Category>
     <Category Name="Introduction">
       <File Name="emacs_short_cut.txt"/>
       <File Name="enviroment.txt"/>
+      <File Name="Epilogue.txt"/>
       <File Name="functions.txt"/>
       <File Name="Intoruduction.txt"/>
     </Category>
   </Files>
   <ClosedFiles>
-    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\17-Domain-Specific_Languages.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\7-Going_Beyond_Basic_Lists.txt"/>
   </ClosedFiles>
 </AcroEditProject>

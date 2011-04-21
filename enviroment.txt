@@ -1,5 +1,17 @@
 Windows기준
-Emacs설치
+
+[== Clisp설치 ==]
+- lisp 구현물중 하나로 무료.
+http://clisp.sourceforge.net/접속 >> SourceForge Project Home 링크 클릭
+http://sourceforge.net/projects/clisp/에 접속이 되면서 윈도우용 설치 프로그램 다운로드
+
+[== slime설치 ==]
+- 편집, 디버깅, 문서검색, 기타등을 제공해주는 emacs 에드온.
+http://common-lisp.net/project/slime/ 접속
+>> 굵은색 downloading 검색 >> cvs_snapshot 링크클릭
+http://common-lisp.net/project/slime/snapshots/slime-current.tgz
+
+[== Emacs설치 ==]
 http://ourcomments.org/Emacs/EmacsW32.html접속
 Download latest EmacsW32 + binaries for Emacs 링크 클릭
 Download latest EmacsW32+Emacs patched
@@ -7,45 +19,58 @@ Download latest EmacsW32+Emacs unpatched
 에서 아무거나 선택해도 무관할듯 합니다.
 (저의 경우는 unpatched선택)
 
-Clisp설치
-http://clisp.sourceforge.net/접속 >> SourceForge Project Home 링크 클릭
-http://sourceforge.net/projects/clisp/에 접속이 되면서 윈도우용 설치 프로그램 다운로드
 
-slime설치
-http://common-lisp.net/project/slime/ 접속
->> 굵은색 downloading 검색 >> cvs_snapshot 링크클릭
-http://common-lisp.net/project/slime/snapshots/slime-current.tgz
+*** 환경 설정 ***
+미리 예제부터
 
-emacs설정파일
-환경변수 %HOME%설정
-내컴퓨터 우측마우스(시스템 등록정보) > 고급 > 환경변수 > 새로만들기(사용자변수인경우재부팅필요) > 변수이름 : HOME, 변수값 : 사용자지정폴더
-
-여기서 사용자 지정폴더는 저같은 경우 D:\myHome
-D:\myHome폴더에서 _emacs파일 생성
-
-
-slime설정
-;압축을 풀고 위치지정
-(add-to-list 'load-path "~/.emacs.d/slime-2010-12-21/")
-;CLisp위치 지정 Program Files하면 안되므로 Progra~1로 함
+ex) 폴더가 D:\myHome인 경우
+- 1. 환경변수 %HOME%을 D:\myHome로 설정
+- 2. D:\myHome폴더에서 _emacs파일 생성
+- 3. D:\TMP 폴더 생성
+- 4. slime 설정
 (setq inferior-lisp-program "C:/Progra~1/clisp-2.49/clisp.exe")
+(add-to-list 'load-path "~/.emacs.d/slime-2010-12-21/")
+(setq common-lisp-hyperspec-root ~/HyperSpec/")
+;(setq common-lisp-hyperspec-root "http://www.lispworks.com/documentation/HyperSpec/")
 (require 'slime)
-(slime-setup)
+(slime-setup '(slime-fancy)) 
+(setq temporary-file-directory "D:/tmp")
+(set-language-environment "Korean")
+(setq slime-net-coding-system 'utf-8-unix)
 
-요약
-C:\Program Files\clisp-2.49 - Clisp가 설치된 폴더
-c:\Program Files\Emacs - emacs가 설치된 폴더
-d:\myHome\ - 환경 변수 HOME위치
-d:\myHome\_emacs - emacs 설정파일
-d:\myHome\.emacs.d\slime-2010-12-21 - slime가 설치된 폴더
+[== emacs설정파일 ==]
+* 환경변수 %HOME%설정: 내컴퓨터 우측마우스(시스템 등록정보) > 고급 > 환경변수 > 새로만들기(사용자변수인경우재부팅필요) > 변수이름 : HOME, 변수값 : 사용자지정폴더
+
+[== slime설정 ==]
+;@@ Lisp-mode
+(setq inferior-lisp-program "Lisp실행파일 경로")
+(add-to-list 'load-path "slime 폴더경로")
+(require 'slime)
+(slime-setup '(slime-fancy)) 
+(setq temporary-file-directory "TMP폴더")
+;@@ language
+(set-language-environment "언어환경")
+(setq slime-net-coding-system '코딩포맷)
+(setq common-lisp-hyperspec-root "폴더경로 or URL")
 
 
-slime실행
-emacs 실행후 M-x slime
-M-은 Meta의 약자로.. 윈도우에서는 그냥 Alt키라 생각하면 됩니다.
-Alt를 누르시고 x를 누르면 하단부에 입력가능한 프롬프트가 뜨는데 거기에 slime을 입력하시고 enter를 누르면 됩니다.
+[== HyperSpec ==]
+- Lisp문서
+http://www.lispworks.com/documentation/common-lisp.html 접속
+1이나 2 둘중 하나로
+1. ftp://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz 다운로드
+2. download > Downloadable documentation선택 > There is a downloadable archive of the HyperSpec here.에서 다운로드 
 
 
+
+[== 연동 확인 ==]
+* emacs 실행후 M-x slime
+- M-은 Meta의 약자(윈도우에서는 그냥 Alt키)
+- 1. Alt를 누르고 x를 누르면 하단부에 입력가능한 프롬프트가 뜸
+- 2. 거기에 slime을 입력하시고 enter
+
+
+&문재해결
 slime에러 발생 해결(저의 경우)
 GNU Emacs 24.0.50.1 (i386-mingw-nt5.1.2600) of 2010-09-29 on LENNART-69DE564
 

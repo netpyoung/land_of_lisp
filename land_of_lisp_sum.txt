@@ -1,0 +1,222 @@
+Land Of Lisp
+Link #439
+Link #433
+Link #434
+Link #435
+Link #436
+Link #437
+Link #441
+1장
+Dialect
+Ansi Common Lisp
+1981 초안
+1986 표준
+멀티 페러다임 언어
+Scheme
+Gauy L.Steele
+Gerald Jay Sussman
+Guile Scheme
+:some Open Source
+Emacs Lisp
+:Emacs
+Visual-Lisp
+:Auto CAD
+Clojure
+Scrpt-Fu
+:Gimp
+Arc
+2장
+선언
+전역
+전역변수
+global variables
+defvar
+이전에 설정했던 
+전역 변수 값을 변경하지 않음
+defparameter
+같은 이름의 
+전역 변수로 다른 값을 설정하면 
+값이 바뀜
+전역함수
+global functions
+defun
+지역
+지역 함수
+local function
+flet
+labels
+지역변수
+local variables
+let
+할당
+Assignment Operator
+setf 
+setq
+Bit operator
+bit shift operator
+ash
+3장
+Cons Cells
+list
+cond
+( car . cdr)
+c*r : 4 level deeps
+MODE
+Code Mode
+Data Mode
+'
+:quote
+Symbol
+문자, 숫자, 기호, 대소문자를 구분하지 않음.
+expt
+:exponential
+4장
+Compare
+eq
+equal
+eql
+equalp
+Link #326
+Predicates
+Link #443
+oddp
+evenp
+Condition
+if
+cond
+case
+otherwise
+Ture-False
+when
+unless
+Logical
+and
+or
+None
+()
+'()
+nil
+'nil
+progn
+하나의 expression에 여러 command를 넣을 수 있고, 마지막 command의 반환값이 반환됨
+Find
+Link #397
+member
+find-if
+5장
+Link #465
+List function
+front
+push
+pop
+rear
+append
+prepend
+apply
+remove-if
+remove-if-not
+mapcar
+Link #447
+Quasiquoting
+Link #389
+'
+:quote
+,
+:comma
+`
+:backquote
+function
+'#
+find
+6장
+Read - Print
+print
+princ
+prin1
+prin1-to-string
+Link #445
+read
+read-line
+read-from-string
+Charector
+char-upcase
+char-downcase
+#\
+tab
+space
+newline
+Link #415
+fresh-line
+progn
+string-trim
+lambda
+eval
+coerce
+concatenate
+7장
+digit-char-p
+Link #449
+alphanumericp
+Exotic Lists
+Dotted Lists
+Circular Lists
+Pairs
+Association list
+assoc
+key로 alist에서 key-value를 얻어냄.
+maplist
+Link #452
+mapc
+write-to-string
+Stream
+Input
+*standard-input*
+Output
+*standard-output*,
+*error-output*
+*trace-output*
+Bidirection
+*debug-io*
+*query-io*
+*print-circle*
+with-open-file
+complement
+substitute-if
+ext:shell
+subseq
+8장
+Set
+set-difference
+intersection
+zerop
+random
+1+
+mapcan
+loop
+pushnew
+remove-duplicates
+9장
+Structure
+defstruct
+defmethod
+Hash
+make-hash-table
+gethash
+List
+nth
+Array
+aref
+make-array
+subseq
+reduce
+length
+multiple-value-bind
+incf
+decf
+dotimes
+
+
+
+http://stackoverflow.com/questions/971734/lisp-style-setq-vs-setf
+
+http://www.franz.com/support/documentation/8.2/ansicl/dictentr/debug-io.htm
