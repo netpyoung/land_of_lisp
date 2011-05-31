@@ -1,324 +1,306 @@
-
- 이것은 여러분 아버지(시대)의 WUMPUS가 아닙니다
-
- 이전 장에서, 여러분은 간단한 게임에서 수학적 그래프를 다루었습니다. 그러나, 이전 시대의 geek으로써, 이 그래프를 보고 제가 생각한 첫번째 것은 고전 게임 Hunt the Wumpus입니다. 제가 9살이였을때, TI-99/4A 앞에 앉아서 이 게임을 하는것보다 행복했던것은 없었다고 생각합니다.
+THIS AIN'T YOUR DADDY'S WUMPUS
+8장. 이것은 여러분 아버지(시대)의 WUMPUS가 아닙니다.
 
 
- 여기 실제 타이틀 화면이 있습니다: Hunt the Wumpus, 여러분은 신비한 몬스터-전설의 Wumpus를 찾아 동굴망을 뒤지는 사냥꾼입니다. 도중에 여러분은 박쥐들과 타르 연못을 거쳐야합니다. 아, 그리운 시절이였습니다!
+ 이전 장에서, 저희는 간단한 게임에서 수학적 그래프를 다루었습니다. 그러나, 이전 시대의 geek으로써, 이 그래프를 보고 제가 생각한 첫번째 것은 고전 게임 Hunt the Wumpus입니다. 제가 9살이였을때, TI-99/4A 앞에 앉아서 이 게임을 하는것보다 행복했던것은 없었다고 생각합니다.
 
- 그러나 불행히도, 좋았던 시절은 지나갔습니다. 저희는 지금 새로운 millennium에 있고, 이 못난 graphic에서 감명받을 사람은 아무도 없습니다. 그리고 스토리라인도 현대 기준에서 매우 진부합니다. 저는 Hunt the Wumpus가 개선이 필요한 심각한 상태에 있다는것에 여러분 모두 동의한다고 생각합니다. 이것은 어려운 문제이지만, 저희는 잘 해쳐나갈 거라 생각합니다.
+
+ 여기 실제 타이틀 화면이 있습니다: Hunt the Wumpus, 여러분은 신비한 몬스터-전설의 Wumpus를 찾아 동굴을 뒤지는 사냥꾼입니다. 이 과정속에서, 여러분은 박쥐와 타르 연못을 거쳐야합니다. 아, 그리운 시절이였습니다!
+[PIC]
+
+ 그러나 불행히도, 좋았던 시절은 지나갔습니다. 저희는 지금 새로운 millennium에 있고, 이 못난 그래픽에 감명받을 사람은 아무도 없습니다. 그리고 스토리라인도 현대 기준에서 매우 진부합니다. 저는 Hunt the Wumpus가 개선이 필요한 심각한 상태에 있다는것에 여러분 모두 동의한다고 생각합니다. 이것은 어려운 문제이지만, 저희는 잘 해쳐나갈 거라 생각합니다.
 
  자, 여러분에게 소개하겠습니다 . . .
+[PIC]
 
 
 The Grand Theft Wumpus Game
+ 새로운 버전의 Hunt the Wumpus에서 여러분은 Lisp 외계인입니다. 여러분과 Wumpus는 주류판매소(술가게)를 습격해서 돈을 흠쳐 달아났습니다. 그러나,  도망치는 동안, Wumpus는 여러분을 배신하고 차와 돈을 갖고 튀었습니다. 그가 떠나기 전에, 간신히 신장(kidney)을 두어번 맞췄습니다.
+[PIC]
 
- Hunt the Wumpus의 새로운 버전에서 여러분은 Lisp 외계인입니다. 여러분과 Wumpus는 술 가게(liquor store)를 습격해서 돈을 흠쳐 달아났습니다. 그러나,  도망치는 동안, Wumpus는 여러분을 배신하고 여러분의 차와 돈을 갖고 달아났습니다. 그가 떠나기 전에, 간신히 신장(kidney)을 여러번 맞추었습니다.
+ 이제 여러분은 상당히 곤란한 상황에 놓여 있습니다. 여러분은 차나 어떠한 돈도 가지고 있지 않고있으며 배신자를 찾을 방법도 없습니다. 그러나 여러분은 선택의 여지가 없습니다. 여러분은 신념을 지니고 Wumpus를 잡으러 가기로 하였습니다. 여러분은 그가 상처때문에 멀리 갈 수 없다는 것을 알고 있습니다. 그는 회복하기 위해 며칠간 숨어지낼것이고, 이것이 의미하는 것은 Congestion City(혼잡 도시)어딘가에 그가 있을 것이라는 것입니다. 문제는 여러분과 같은 외지사람에게 유달히 이 도시의 길들이 말도안되게 난해하고 주변에 사람을 찾을 수 없다는 점입니다.  어떻게 이 엄청난(impossible) 미로에서 Wumpus를 찾을까요?
+[PIC]
+
+ 다행히도, Lisp 외계인이 되면서, 여러분은 항상 충성스러운 휴대용 컴퓨터를 지니고 다녔습니다. Lisp와 그래프 유틸리티를 이용하여, Congestion City 차도와 교차로와 같은 복잡한 데이터를 분석할 만발에 준비가 되어있습니다. 분명, 여러분은 이 난해한 road system을 정복할 도구를 가졌습니다.
+[PIC]
+
+ 여러분의 동료였던 Wumpus와 지금까지 범죄를 저질러 왔기 때문에, 그의 방식(MO, modus operandi)을 매우 잘 알고있습니다. 그는 항상 조심스럽게 사용할 새로운 장소를 몰색합니다. 그리고 그는 부상당했기에, 그가 숨어있는 장소로부터 하나 혹은 두 블럭에는 숨길수 없는 단서가 있습니다: 그의 혈흔입니다.
+
+ 문제는 그가 여전히 그의 AK-47을 신뢰하고 있는데 반해, 여러분은 한발의 총알과 권총만을 지녔다는 것입니다. 만일 여러분이 그를 찾아 나선다면 여러분은 그를 찾아낼 절대적인 확신이 필요합니다. 여러분은 그의 아지터로 돌격하여 그를 재빠르게 그를 쏴야만 되며, 이것을 해낼 단 한번의 기회밖에 가지지 못했습니다.
+[PIC]
+
+ 유감스럽게도, 여러분과 Wumpus는 이 도시에서 유일한 악당이 아닙니다. Congestion City에서 가장 두려운 악의무리들은 Gruesome Glowworm Gang(섬뜩한 반딧불이 유충;;)입니다. 이 녀석들은 무자비한 유괴범들의 집단입니다. 만일 여러분이 그들을 만나기라도 한다면, 그들은 여러분을 납치하여, 마구 패고, 뺏고, 눈을 가린후, 차 밖으로 걷어차 도시 어딘가에 내버릴 것입니다.
+
+ 다행히도, 그들의 발광하는 thoraxes((곤충의) 흉부[가슴])를 살펴봐서(그들의 이름 때문에) 그들을 피할 수 있습니다. 만일 여러분이 깜빡이는 불꽃을 보게 된다면, 여러분은 이들이 여러분의 위치에서 하나의 거리만큼 떨어져 있다는 것을 알게됩니다. 또한, 여러분은 이 갱이 정확히 세 팀으로으로 나누어 이 도시의 세 구역을 관리한다는 것을 알고 있습니다.
 [pic]
 
- 이제 여러분은 상당히 곤란한 상황에 놓여 있습니다. 여러분은 차나 어떠한 돈도 가지고 있지않고 배신자를 찾을 방법도 없습니다. 그러나 여러분은 선택의 여지가 없습니다. 여러분은 신념을 지니고 Wumpus를 잡으러 갑니다. 여러분은 그가 상처때문에 멀리 갈 수 없다는 것을 알고 있습니다. 그는 회복하기 위해 며칠간 숨어지낼것이고, 이것이 의미하는 것은 Congestion City(혼잡 도시)어딘가에 그가 있을 것이라는 것입니다. 문제는 여러분과 같은 외지사람에게 유달히 이 도시의 길들이 불가능하게 난해하고 주변에 사람이 없다는 점입니다.  어떻게 이 불가능한 미로에서 Wumpus를 찾을까요?
-[pic]
+ 마지막으로, 여러분은 여전히 경찰을 조심해야 합니다. 여러분과 Wumpus를 잡기 위해 그들이 아마도 도시에 몇몇 길목 차단기(roadblock)를 설치한다는 것을 알고 있습니다. Congestion City에 위치한 어떤 지역을 방문 할 수 있지만 여러분이 이동할 거리를 주의해야할 필요가 있습니다.(다른 말로 하자면, 잘못된 edge를 따라서 간다면, 경찰이 여러분을 잡을 것입니다) 불행히도, 여러분은 얼마나 많은 이 roadblock들이 있는지 모릅니다.
 
- 다행히도, Lisp 외계인이 되면서, 여러분은 항상 충성스러운 휴대용 컴퓨터를 지니고 다녔습니다. Lisp와 graph utilities을 사용하여, 여러분은 Congestion City 차도와 교차로와 같은 복잡한 data를 분석할 만발에 준비가 되어있습니다. 분명히, 여러분은 이 난해한 road system을 정복할 도구를 가졌습니다.
-[pic]
-
- 여러분의 동료였던 Wumpus와 지금까지 범죄를 저질러 왔기 때문에, 그의 방식(MO, modus operandi)을 매우 잘 알고있습니다. 그는 항상 조심스럽게 사용할 새로운 장소를 몰색합니다. 그리고 그는 부상당했기 때문에, 그가 숨어있는 장소로부터 하나 혹은 두 블럭에는 숨길수 없는 단서가 있습니다: 그의 혈흔입니다.
-
- 문제는 그가 여전히 그의 AK-47을 신뢰하고 있는데 반해, 여러분은 한발의 총알과 권총만을 가졌다는 것입니다. 만일 여러분이 그를 찾아 나선다면 여러분은 그를 찾아낼 절대적인 확신이 필요합니다. 여러분은 그의 아지터로 돌격하여 그를 재빠르게 그를 쏴야만 되며, 이것을 해낼 단 한번의 기회밖에 가지지 못했습니다.
-[pic]
-
-
- 불행히도, 여러분과 Wumpus는 이 도시에서 유일한 악당이 아닙니다. Congestion City에서 가장 두려운 악의무리들은 Gruesome Glowworm Gang(섬뜩한 반딧불이의 유충;;)입니다. 이 녀석들은 무자비한 유괴범들의 집단입니다. 만일 여러분이 그들을 만나기라도 한다면, 그들은 여러분을 납치하여, 마구 패고, 뺏고, 눈을 가린후, 그들의 차 밖으로 걷어차 도시 어딘가에 놔두고 갈 것입니다.
-
- 다행히도, 그들의 발광하는 thoraxes((곤충의) 흉부[가슴])를 살펴봐서(그들의 이름 때문에) 그들을 피할 수 있습니다. 만일 여러분이 깜빡이는 불꽃을 보게 된다면, 여러분은 이들이 여러분의 위치에서 하나의 거리만큼 떨어져 있다는 것을 알게됩니다. 또한, 이 gang이 정확히 세 팀으로으로 나누어 이 도시의 세 구역을 관리한다는 것을 알고 있습니다.
-[pic]
-
- 마지막으로, 여러분은 여전히 경찰을 조심해야 할 필요가 있습니다. 여러분과 Wumpus를 잡기 위해 그들이 아마도 도시에 몇몇 길목 차단기(roadblock)를 설치한다는 것을 알고 있습니다. Congestion City에 위치한 어떤 지역을 방문 할 수 있지만 여러분이 이동할 거리를 주의해야할 필요가 있습니다.(다른 말로 하자면, 잘못된 edge를 따라서 간다면, 경찰이 여러분을 잡을 것입니다) 불행히도, 여러분은 얼마나 많은 이 roadblock들이 있는지 모릅니다.
-
- 보시다시피, Wumpus를 찾아 여러분의 돈과 차를 돌려받는 것은 매우 힘들 것입니다. 만일 여러분이 Wumpus를 충분히 잡을 Lisp 외계인이라고 생각한다면, 이 게임을 작성하고 그를 때려눕힙시다!
+ 보시다시피, Wumpus를 찾아 여러분의 돈과 차를 돌려받는 것은 매우 힘들 것입니다. 만일 여러분이 Wumpus를 충분히 잡을 Lisp 외계인이라고 생각한다면, 이 게임을 작성하고 그를 때려눕혀봅시다!
 
 
 Defining the Edges of Congestion City
+ Congestion City지도는 *congestion-city-nodes*변수에 저장된 각 노드에 대한 데이터를 지닌 무방향그래프(undirected graph)가 될 것입니다. 각 노드가 될만한 데이터는 Wunpus, Glowworm 팀, 다양한 위험 신호들이 있습니다.
 
- Congestion City지도는 *congestion-city-nodes*변수에 저장된 각 노드들과 연관된 data의 undirected graph가 될 것입니다. 각 노드에 가능한 data는 Wunpus, Glowworm 팀, 다양한 위험 신호들이 있습니다.
-
- *congestion-city-edges*에 저장된 edges의 설정은 node를 연결할 것이고, 이 edges에 연결된 data는 police roadblocks의 존재를 경고할 것입니다. 이것들과 다른 전역변수들을 defprameter를 사용하여 프로그램 상단에 선언하였습니다.
+ *congestion-city-edges*에 저장된 edges의 설정은 node를 연결할 것이고, 이 edges에 연결된 데이터는 경찰의 길목차단기의 존재를 경고할 것입니다. 이것들과 다른 전역변수들을 defprameter를 사용하여 프로그램 상단에 선언하였습니다.
 [source]
 
- 우선 load명령어로 (이전 장에서 만든)graph-util.lisp에 있는 모든 code들을 평가한 graph utilities를 불러와서, graph utility 함수들을 사용할 수 있습니다. Congestion City는 30개의 장소들(*node-num*으로 정의된 노드), 45개의 도로 (*edge-num*으로 정의된 간선), 3개의 벌레팀(*worm-num*으로 정의된)이 있다는 것을 알려드립니다. 각 거리(street)는 1/15 확률로 (*cop-odds*로 정의된) roadblock을 포함하고 있습니다.
+ 우선 load명령어로 그래프유틸리티를 불러와서 (이전 장에서 만든)graph-util.lisp에 있는 모든 코드들을 평가하면, 그래프유틸리티 함수들을 사용할 수 있습니다. Congestion City는 30개의 장소들(*node-num*으로 정의된 노드), 45개의 도로 (*edge-num*으로 정의된 간선), 3개의 벌레팀(*worm-num*으로 정의된)이 있다는 것을 알려드립니다. 각 거리(street)는 1/15 확률로 (*cop-odds*로 정의된) roadblock을 포함하고 있습니다.
 
 
 Generating Random Edges
+ 다음, 모든 node들을 연결시킬 edges의 무작위 list를 만듭니다.
+[SOURCE]
 
- 다음, 저희는 모든 node들을 연결시킬 edges의 무작위 list를 만듭니다.
-[source]
+ 우선, 무작위 node 식별자를 반환하는 random-node함수를 선언합니다. random 함수는 여러분이 넣은 수보다 작은 무작위 자연수를 반환합니다. 사용자 인터페이스에서 node 식별자를 보여주기 위해서 (*node-num*변수가 30으로 설정되었기 때문에) 0부터 29까지 대신에 1+함수를 사용하여 1부터 30까지 숫자를 매깁니다.
 
- 우선, 무작위 node 식별자를 반환하는 random-node함수를 선언합니다. random 함수는 여러분이 넣은 수보다 작은 무작위 자연수를 반환합니다. 사용자 interface에서 node 식별자를 보여주기 위해서 (*node-num*변수가 30으로 설정되었기 때문에) 0부터 29까지 대신에 1+함수를 사용하여 1부터 30까지 숫자를 매깁니다.
+ make-edge-list함수는 실제 무작위 edge리스트를 생성합니다. *edge-num*번만큼 순환하기 위해 loop명령어를 이용하여 필요한 edges의 수를 모읍니다. 다음 section에서 loop명령어에 대해 자세히 다룰 것입니다. 도시의 그래프는 방향을 갖지 않기에, edge-pair 함수는 무작위로 선택된 node간에 양뱡향의 edge를 생성하는 helper함수로 작용합니다. 추가로 여러분이 기억해야할것 무방향그래프는, 두 반대되는 방향 edge 각각이 무방향 edge에 대응되는 방향그래프와 같다는 것입니다. (나중에 이번장에서 edge들을 alist에 넣을때, 이 단계는 list가 적절한 형식을 지닌다는 것을 보장할 것입니다.)
+[PIC]
 
- make-edge-list함수는 실제 무작위 edge리스트를 생성합니다. *edge-num*번만큼 순환하기 위해 loop명령어를 사용하고 필요한 edges의 수를 모읍니다. 다음 section에서 loop명령어에 대해 자세히 다룰 것입니다. 도시의 graph는 undirected이기 때문에, edge-pair 함수는 무작위로 선택된 node사이에 양뱡향의 edge를 생성하는 helper함수로 작용합니다. 추가로 여러분이 기억해야할것 undirected graph는, 두 반대되는 directed edge 각각이 undirected edge에 대응되는 directed graph와 같다는 것입니다. (나중에 이 장에서 edge들을 alist에 넣을때, 이 단계는 list가 부유한 형식을 지닌다는 것을 보장할 것입니다.)
-[pic]
-
- CLISP REPL에서 make-edge-list함수를 테스트 해봅시다
-[source]
+ CLISP REPL에서 make-edge-list함수를 테스트 해봅시다.
+[REPL]
 
  edge들을 구성하는 node의 숫자쌍을 볼 수 있습니다. 이 edge 쌍의 list는 Congestion City road system의 뼈대를 형성할 것입니다.
 
 
 Looping with the loop Command
+ make-edge-list함수는 다양한 데이터형식을 순환시킬때 이용할 수 있는 강력한 loop명령어를 채용하였습니다. 10장에서 loop에 대해 더욱 자세히 살펴볼 것입니다. 하지만, 저희 게임에서 loop를 조금만 사용할 것이기에, 조금 간단한 예제로 이것이 어떻게 동작하는지 밝혀내 봅시다.
 
- make-edge-list함수는 다양한 data형식을 순환시킬때 사용할 수 있는 강력한 loop명령어를 채용하였습니다. 10장에서 loop에 대해 더욱 자세히 살펴볼 것입니다. 반면, 저희 게임에서 loop를 조금만 사용할 것이기 때문에, 조금 간단한 예제를 이것이 어떻게 동작하는지 밝혀내기 위해 살펴봅시다.
-
- loop를 가지고 할 수 있는 것은 수의 list를 생성하는 것입니다. 예를들어, 다음 명령어는 1이 10개 있는 list를 생성합니다.
-[source]
+ loop를 가지고 할 수 있는것 중 하나는 수의 list를 생성하는 것입니다. 예를들어, 다음 명령어는 1이 10개 있는 list를 생성합니다.
+[REPL]
 
  loop명령어로, 얼마나 많이 반복할지를 지정하고, 모든 loop마다  (이번 경우에서는 1) collect할 object를 지정합니다
 
- 종종, looping중에 looping count를 증가시키기를 원합니다. 다음과 같은 문법으로 이것을 할 수 있습니다:
-[source]
+ 종종, 저희는 looping중에 looping count를 증가시키기를 원할 것입니다. 다음과 같은 문법으로 이를 수행할 수 있습니다:
+[REPL]
 
  이번 예제에서, n이 1부터 10까지 loop를 돌라고 합니다. 각 n을 collect한후 이것을 list로 반환합니다.
  
- 실제로, 어떤 Lisp code를 loop의 일 부분의 collect안에 넣을 수 있습니다. 다음 예제에서, collectiong할때 100을 더합니다.
-[source]
+ 실제로, 어떤 Lisp code를 loop의 collect부분에 넣을 수 있습니다. 다음 예제에서, 저희는 collectiong할때 100을 더하였습니다.
+[REPL]
 
 
 Preventing Islands
-
  이제 저희는 무작위 edge를 생성할 수 있습니다. 물론, 단순히 무작위 노드들을 무작위 edge들로 연결 한다면, 모든것이 무작위이기 때문에 Congestion City의 모든것이 연결되었다는 보증이 없습니다. 예를들어 도시의 일부분이 main road system에 어떠한 연결이 없는 섬(island)을 형성하고 있다고 합시다.
+[PIC]
 
- 이것을 막기위해, edge의 list를 취하고 연결되지 않은 node를 찾고, 다음 code를 사용하여 이 섬을 나머지 도시망에 연결합니다:
-[source]
+ 이것을 방지하기위해, edge의 list를 취하고 연결되지 않은 node를 찾을 것이며, 다음 코드를 이용하여 이 섬을 도시망의 나머지에 연결할 것입니다:
+[SOURCE]
 
- 첫째로, 주어진 node의 시작 edge list에 있는 모든 edge를 찾는 direct-edges라 불리는 utility함수를 선언합니다. (remove-if-not을 사용하여) car 위치에 현재 node를 갖지 않은 모든 edge들을 제거한 새로운 list를 생성함으로써 이것을 할 수 있습니다.
+ 첫째로, edge list에서 주어진 node로 시작하는 모든 edge를 찾는 유틸리티함수 direct-edges를 선언하였습니다. (remove-if-not을 사용하여) car위치에 현재 node를 갖지 않은 모든 edge가 제거된 새로운 list를 생성함으로써 이를 할 수 있습니다.
 
- 섬을 찾기 위해, get-connected 함수를 작성합니다. 이 함수는 edge list와 출발지 node를 받아, 다중 edge를 가로질러 갈 필요가 있을 지라도, 그 node와 연결된 모든 node의 list를 생성합니다.
+ 섬을 찾기 위해, get-connected 함수를 작성합니다. 이 함수는 edge list와 출발지 node를 받아, 다수의 edge를 가로질러야 할 지라도 그 node와 연결된 모든 node의 list를 생성합니다.
 
- 연결된 node를 찾는 일반적인 방식으로는, 방문했던 list에서 시작하여 출발지 node에서 시작한 연결된 node들을 찾는 것입니다.
+ 연결된 node를 찾는 일반적인 방식으로는, visited list에서 시작하여, 출발지 node로 시작하는 연결된 node에 대한 탐색을 수행하는 것입니다.
 
- 새롭게 찾은 노드들은 push명령어로 방문했던 list에 추가됩니다. 또한, mapc를 사용하여 이 찾은 노드의 자식들로 이동합니다. 반면, 만약 이미 방문했던 node와 맏닥들인다면 이것을 무시할 수 있습니다. 한번 검색이 완료되면, 방문했던 list는 모두 연결된 node로 구성될 것입니다.
+ 새롭게 찾은 노드들은 push명령어로 visited list에 추가됩니다. 또한, mapc를 사용하여 이 찾은 노드의 자식들로 이동합니다. 반면, 만약 이미 방문했던 node와 맏닥들인다면 이것을 무시할 수 있습니다. 한번 검색이 완료되면, visited list는 모두 연결된 node로 구성될 것입니다.
 
- 이제 우리는 연결된 node를 찾는 함수를 가졌고, 이것을 사용하여 저희 graph에서 모든 섬을 찾는 함수를 만들 수 있습니다. find-islands함수는 우선 find-island라 불리는 지역 함수를 정의합니다. 이 함수는 connected함수를 시용하여 node의 list에서 첫번째 node와 어떤 node가 연결되었는지 확인합니다. 그다음 set-difference 함수를 사용하여 전체 node들의 list에서 이 node들을 뺍니다 (set-differnce는 두 list를 취해 두번째에 있지 않고 첫번째 list에 있는 모든 항목을 반환합니다).
+ 이제 우리는 연결된 node를 찾는 함수를 가졌고, 이것을 이용하여 저희 graph에서 모든 섬을 찾는 함수를 만들 수 있습니다. find-islands함수는 우선 find-island라 불리는 지역 함수를 정의합니다. 이 함수는 connected함수를 이용하여 node list에서 첫번째 node가 어떤 node와 연결되었는지 확인합니다. 그다음 set-difference 함수를 이용하여 전체 node list에서 이 node들을 뺍니다 (set-differnce는 두 list를 취해 두번째에 있지 않고 첫번째 list에 있는 모든 항목을 반환합니다).
 
- 남아있는 node들은 연결되지 않았다고 여겨지게됩니다. 연결되지 않은 node가 존재한다면, 추가적인 섬을 찾기위해 find-islands함수를 재귀적으로 다시 호출합니다.
+ 남아있는 node들은 연결되지 않았다고 여겨지게됩니다. 연결되지 않은 node가 존재한다면, 추가 island을 찾기위해 find-islands함수를 재귀적으로 다시 호출합니다.
 
- 모든 섬을 찾았다면, 그들을 서로 연결해줄 방법이 필요합니다. 이것이 connect-with-bridges함수의 일입니다. 이것은 모든 섬이 서로 연결된 추가적인 edges의 list를 반환합니다. 이것을 하기 위해, 이것은 섬의 list를 취한다음  list에 cdr이 있는지 확인합니다. 만약에 있다면, bridge로 연결시킬 수 있는 적어도 두개 이상의 섬이 존재한다는 것입니다. edge-pair함수를 이용하여 이 bridge를 생성하고, 섬 list의 꼬리 부분에서 재귀적으로 자기 자신을 호출하는데, 이번 경우에 추가적인 brige들이 필요합니다.
+ 모든 섬을 찾았다면, 그들을 서로 연결해줄 방법이 필요합니다. 이것이 connect-with-bridges함수의 일입니다. 이것은 모든 island가 서로 연결된 추가 edges의 list를 반환합니다. 이를 수행하기 위해, 이것은 island list를 취한다음  list에 cdr이 있는지 확인합니다. 만약에 있다면, bridge로 연결시킬 수 있는 적어도 두개 이상의 island이 존재한다는 것입니다. edge-pair함수를 이용하여 bridge를 생성하고, island list의 꼬리 부분에서 재귀적으로 자기 자신을 호출하는데, 이 경우에는 추가적인 brige가 필요합니다.
 
- 마지막으로, connect-all-islands함수를 사용하여 모든 섬 방지 함수들(island prevention functions)을 서로 묶습니다. find-islands를 사용하여 모든 땅덩이를 찾은다음, connect-with-bridges를 호출하여 적합한 bridge들을 건설합니다. 그다음, 최종적으로 모두 연결된 땅덩어리를 생성하기 위해, 이 bridge들을 초기의 edge들의 list에 더합니다(append).
+ 마지막으로, connect-all-islands함수를 사용하여 island 방지 함수(island prevention functions) 모두를 서로 묶습니다. find-islands를 사용하여 모든 땅덩이를 찾은다음, connect-with-bridges를 호출하여 적합한 bridge들을 건설합니다. 그다음, 최종적으로 모두 연결된 땅덩어리를 생성하기 위해, 이 bridge들을 초기의 edge들의 list에 더합니다(append).
 
 
 Building the Final Edges for Congestion City
+ Congestion City의 edge를 완성시키기 위해, 이 edge들을 edges list에서 alist로 변환시켜야 합니다. 또한 몇몇 edge들에서 무작위로 나타나는 police roadblock들을 추가해야만 합니다. 이 작업을 수행하기 위해, make-city-edges, edges-to-alist, 그리고 add-cops함수를 만들어야 합니다:
+[SOURCE]
 
- Congestion City의 edge들을 완성시키기 위해, 이 edge들을 하나의 edge list에서 하나의 alist로 변환시킬 필요가 있습니다. 또한 몇몇 edge들에서 무작위로 나타나는 police roadblock들을 추가해야만 합니다. 이 작업을 하기 위해, make-city-edges, edges-to-alist, 그리고 add-cops함수를 만들어야 합니다:
-[source]
-
- 이것은 Grand Theft Wumpus에서 가장 길고 복잡한 함수 입니다. 자세히 살펴 봅시다.
+ 이것은 Grand Theft Wumpus에서 가장 길고 복잡한 함수입니다. 자세히 살펴 봅시다.
 
 
 The make-city-edges Function
-
- 우선, make-city-edge함수는 loop를 사용하여 node들의 list를 생성합니다 (이것은 단순히 1부터 *node-num*까지의 수의 list입니다.) 다음으로, make-edge-list와 connect-edge-list함수를 호출함으로써 무작위(그렇지만 완전히 연결된) edge list를 생성합니다. 이 결과는 edge-list 변수에 저장됩니다. 그다음 이것은 경찰을 포함한 무작위 edge들의 list를 만듭니다. 이 변수들을 이전에 정의한 변수들을 참조할 수 있는 let*명령어로 정의합니다
+ 우선, make-city-edge함수는 loop를 이용하여 nodes list를 생성합니다 (이것은 단순히 1부터 *node-num*까지의 수의 list입니다.) 다음으로, make-edge-list와 connect-edge-list함수를 호출함으로써 무작위(그렇지만 완전히 연결된) edge list를 생성합니다. 이 결과는 edge-list 변수에 저장됩니다. 그다음 이것은 경찰을 포함한 무작위 edges list를 만듭니다. 이전에 정의한 변수들을 참조할 수 있는 let*명령어로 이 변수들을 정의합니다.
  
  다음 예제는 let과 let*으로 정의된 변수의 차이점을 보여줍니다:
-[source]
+[REPL]
 
  보시다시피, let은 다른 정의된 변수를 참조 할 수 없습니다(변수 b는 a의 값을 참조 할 수 없습니다). 반면, let*으로 변수를 정의하면, 이런 참조를 허용합니다. 저희 목적에서, let*을 사용하는 것은 edge-list를 참조를 포함하는 cops의 정의를 가능케 합니다.
 
- edge list를 만들고 경찰이 어디에 있는지 결정하였다면, edge list를 alist로 변환하고 경찰을 이것에 추가할 필요가 있습니다. 이 edge들은 edges-to-alist함수로 alist로 변환되고, 경찰들을 add-cops함수로 추가합니다.
+ edge list를 만들고 경찰이 어디에 있는지 결정하였다면, edge list를 alist로 변환하고 경찰을 이에 추가해야 합니다. 이 edge들은 edges-to-alist함수로 alist로 변환되었고, 경찰들은 add-cops함수로 추가되었습니다.
 
 
 The edges-to-alist Function
-
- edge-to-alist함수는 edge들의 list를 edge들의 alist로 변환시킵니다. 예를들어, 다음과 같은 오직 세개의 장소와 이 장소들에 연결된 두개의 edge를 가진 도시를 가졌다고 가정해 봅시다:
+ edge-to-alist함수는 edges list를 edges alist로 변환시킵니다. 예를들어, 다음과 같은 오직 세개의 장소와 이 장소에 연결된 두개의 edge를 지닌 도시를 가졌다고 가정해 봅시다:
 [pic]
 
- 이것을 edge list를 이용하여 '((1 . 2) (2 . 1) (2 . 3) (3 . 2))로 기술할 수 있습니다. edge들은 undirected이며 동시에 방향으로 사용할 수 도 있기 때문에, 각 edge들이 반복해서 나타나는 것을 명심하기 바랍니다. 만일 이와 같은 도시를 alist로 기술한다면, 어떻게 보여질까요?
+ 이를 edge list를 이용하여 '((1 . 2) (2 . 1) (2 . 3) (3 . 2))로 기술할 수 있습니다. edge들은 무방향이며 양방향으로도 사용할 수 있기에, 각 edge들이 반복해서 나타나는 것을 주목하시기 바랍니다. 만일 이와 같은 도시를 alist로 기술한다면, 어떻게 보여질까요?
 
  alist는 key(이번 예제에서, 도시의 세개의 노드중 하나)를 살펴봐서 그 key(이번 경우에, 이것과 연결된 road의 list)와 연관된 정보를 찾는 list라는 것을 기억하시기바랍니다. 이 작은 도시의 alist는 '((1 (2)) (2 (1) (3)) (3 (2)))가 될 것입니다.
 
- 이 alist를 만들기 위해, edges-to-list함수는 우선 edge list에서 찾은 node들을 mapcar합니다. node들의 list를 만들기 위해선, list에서 중복된 항목을 없에주는 remove-duplicates함수를 사용합니다. 기본적으로, remove-duplicates는 동일한지 확인 하기 위해 eql함수를 사용하며, 또한 여러분이 :test keyword 인자를 이용하여 다른 test함수를 사용하도록 허용합니다. make-city-edges 함수에서 cons 쌍이 동일한지 확인하기 때문에, :test를 #'equal로 설정했습니다.
+ 이 alist를 만들기 위해, edges-to-list함수는 우선 edge list에서 찾은 node들을 mapcar합니다. nodes list를 만들기 위해선, list에서 중복된 항목을 없에주는 remove-duplicates함수를 사용합니다. 기본적으로, remove-duplicates는 동일한지 확인하기 위해 eql함수를 사용하지만, 또한 :test keyword 인자를 이용하여 다른 test함수를 이용하는 것을 허용합니다. make-city-edges 함수에서 cons 쌍이 동일한지 확인해야 하기에, :test를 #'equal로 설정하였습니다.
 
- 이 바깥 mapcar에서 이 노드에 모든 direct-edges에 걸쳐 map하기 위해 또다른 mapcar를 사용합니다. 이 중첩된 mapcar 함수들이 함께 edge-to-alist를 도시의 edges을 alist로 변환하도록 합니다.
+ 외부 mapcar에서 이 노드에 대한 모든 direct-edges를 map하기 위해 또다른 mapcar를 사용하였습니다. 이 중첩된 mapcar함수들이 뭉처 edge-to-alist를 도시의 edges을 alist로 변환시킵니다.
 
 
 The add-cops Function
+ make-city-edges함수를 작성할때, 그곳에 경찰이 있다는 것을 보여주기 위해 무작위로 몇몇 edges를 표시해야합니다. 이제 cop edges list를 이용하여 alist에 cops을 포함하는 edge들을 표시할 수 있습니다. 이것이 add-cops함수의 일입니다.
 
- make-city-edges함수를 작성할때, 그곳에 경찰이 있다는 것을 보여주기 위해 무작위로 몇몇 edges를 표시해야합니다. 이제 cop edges의 list를 사용하여 cops를 포함하는 alist에 있는 edge들을 표시할 수 있습니다. 이것은 add-cops함수의 일입니다.
+ 이 일을 수행하기 위해, 각 node에 대응하는 edges들을 map을 하기 위해 중첩된 mapcar 명령어를 사용합니다. 그다음 intersection함수를 사용해서, 주어진 edge에 경찰이 있는지를 확인합니다.(intersection함수는 두 list간에 어떤 항목 공유되었는지 알려줍니다)
 
- 이 일을 하기 위해, 각 node에 대응하는 edges들을 map을 하기 위해 중첩된 mapcar 명령어를 사용합니다. 그다음 intersection함수를 사용해서, 주어진 edge에 경찰이 있는지를 확인합니다.(intersection함수는 두 list간에 어떤 항목 공유되었는지 알려줍니다)
+ add-cops함수가 하는 일을 정확히 이해하기 위해, 세개의 장소와 두 거리를 지닌 도시를 다시금 상상해 보는 것이 도움이 될 것입니다. 이번 예제에서, 거리중 하나에 경찰이 있습니다:
+[PIC]
 
- add-cops함수가 하는 일을 정확히 이해하기 위해, 오직 세개의 장소와 두 거리를 지닌 도시를 다시금 상상해 보는 것이 도움이 될 것입니다. 이번 예제에서, 거리중 하나는 경찰이 있습니다:
-[pic]
+ add-cops에 의해 생성된 이 도시의 alist는 이와 같을 것입니다:
+[SOURCE]
 
- add-cops에 의해 만들어진 이 도시의 생성된 alist는 이와 같을 것입니다:
-[source]
+ 이는 실제로 중첩된 alist입니다. 바깥 alist는 첫번째 node에 기반하여 구성되었고, 안쪽 alist는 두번째 node에 기반하여 구성되었습니다.
 
- 이것은 실제로 중첩된 alist입니다. 바깥 alist는 첫번째 node에 기반하여 구성되었고, 안쪽 alist는 두번째 node에 기반하여 구성되었습니다.
-
- 이러한 형식의 edges로, (cdr (assoc node1 edges))를 호출함으로써, 주어진 node에 연결된 모든 edges를 쉽게 찾을수 있습니다. 주어진 edge가 경찰을 포함하는지 보려면, (cdr (assoc node2 (cdr (assoc node1 edges))))를 호출 할 수 있습니다. 두 노드 사이에 특정 edge와 연결된 실제 data를 잡기 위해  두 단계 아레로 내려갈 수 있습니다. 주어진 edge가 cops를 포함하는지를 보기 위해서, 두 노드 사이의 특정 edge에 연결된 실제 data를 잡기 위해 두 단계 아래로 가는 (cdr (assoc node2 (cdr (assoc node1 edges))))를 호출 할 수 있습니다. 이 중첩된 alist 형식을 사용하는 것의 추가적인 이점으로는 저희 graph libraries와 완벽하게 호환성 있습니다.
+ 이러한 형식의 edges로, (cdr (assoc node1 edges))를 호출함으로써, 주어진 node에 연결된 모든 edges를 쉽게 찾을수 있습니다. 주어진 edge가 cops를 포함하는지를 보기 위해서, 두 노드 사이의 특정 edge에 연결된 실제 데이터를 얻기위해 두 단계 아래로 가는 (cdr (assoc node2 (cdr (assoc node1 edges))))를 호출 할 수 있습니다. (이 중첩된 alist 형식을 사용하는 것의 추가적인 이점으로는 저희 그래프라이브러리와 완벽하게 호환성 있습다는 것입니다.)
 
 
 Building the Nodes for Congestion City
+ 이제 저희는 도시 nodes에 대한 alist를 만들 것입니다. 이 노드들은 Wumpus 나 Glowworms, 혹은 혈흔, 불빛, 싸이렌과 같은 다양한 단서들을 포함합니다.
 
- 이제 저희는 도시의 node들을 위한 alist를 만들 것입니다. 이 노드들은 Wumpus 나 Glowworms, 혹은 혈흔, 불빛, 싸이렌과 같은 다양한 단서들을 포함합니다.
+ 게임에서의 대부분의 단서들은 다른 node와 가까움에 기반하며, 따라서 도시 그래프에서 두 node가 얼마만큼의 node만큼 떨어졌는지를 알려주는 몇몇 함수들 작성해야 합니다. neighbors함수는 edges alist를 이용하여 node의 이웃을 살펴봅니다. 만일 두번째 node가 그 list안에 있다면, 하나만큼 떨어져 있다는 것을 알게될 것입니다.
+[SOURCE]
 
- 게임에서의 대부분의 단서들은 다른 node와 가까움에 기반하며, 따라서 두 node들이 도시 graph에서 한 node떨어졌는지를 알려주는 몇몇 함수들 작성할 필요가 있습니다. neighbors함수는 edges의 alist를 사용하여 node의 이웃을 살펴봅니다. 만일 두번째 node가 그 list안에 있다면, 하나만큼 떨어져 있다는 것을 알게됩니다.
+ 우선, 이 함수는 edges alist와 neighbors에 있는 첫번째 node (a)를 살펴봅니다. 그후 만일 다른 node (b)가 이 node들을 경유하는지 보려고 member를 사용합니다.
+
+ 두 node만큼 떨어진 곳에서 Wumpus의 혈흔단서 또한 나타날 수 있습니다. 이와 같이 두 노드를 확인하기 위한 두번째 함수를 작성 할 수 있습니다.
 [source]
 
- 우선, 이 함수는 neighbors와 edges의 alist에 있는 첫번째 node (a)를 살펴봅니다. 그후 만일 다른 node (b)가 이 node들을 경유하는지 보려고 member를 사용합니다.
+ 하나만큼 떨어져 있거나 둘만큼 떨어져 있을 수 있기에, 우선 목표 node로부터 하나만큼 떨어져 있는지 확인합니다. 다음으로, 하나만큼 떨어진 모든 node들을 추출합니다 (within-one 함수에서 행했던 것과 유사합니다) 마지막으로, 본래 node로부터 둘만큼 떨어져 있는 것들로 만든, 이 새로운 node들 중에 어떤 것이 하나만큼 떨어졌는지를 확인합니다.
 
- 두 node 떨어진 곳에서 Wumpus의 혈흔 단서 또한 보여 질 수 있습니다. 이와 같이 두 노드들을 확인하기 위해 두번째 함수를 작성 할 수 있습니다
-[source]
+ 이제 저희는 유틸리티 함수들을 지니게 되었으며, 마지막으로 node alist(본질적으로, 도시의 최종 지도)를 만드는 함수를 작성해 봅시다. 여기에 나와있습니다:
+[SOURCE]
 
- 하나만큼 떨어져 있거나 둘만큼 떨어져 있을 수 도 있기 때문에, 우선 목표 node로부터 하나만큼 떨어져 있는지 확인합니다. 다음으로, 하나만큼 떨어진 모든 node들을 추출합니다 (within-one 함수에서 행했던 것과 유사합니다) 마지막으로, 본래 node로부터 둘만큼 떨어져 있는 것들로 만든 이 새로운 node들 중에 어떤 것이 하나만큼 떨어졌는지를 확인합니다.
+  make-city-nodes함수는 우선 무작위 Wumpus와 Glowworms의 nodes을 집어서, node번호를 통해 동작하도록 loop를 이용합니다. nodes를 통해 동작하며, 이는 다양한 출발지로금 하여 서로 append하여 도시의 각 node를 기술하는 alist를 생성합니다. append를 사용함으로써 이 node들을 기술하는 코드의 각 부분은, 자식 list에 다양한 항목을 생성함으로, 설명하기 위한 다양한 항목을 고를 수 있습니다.
 
- 이제 utility 함수들을 가지게 되었으며, 마지막으로 node alist(본질적으로, 도시의 최종 지도)를 만드는 함수를 작성해 봅시다. 여기에 나와있습니다:
-[source]
+ list앞 부분에, node이름 n을 넣습니다. Wumpus가 현재 node에 있다면, Wumpus라는 단어를 추가합니다. Wumpus로부터 두 node안에 있으면, blood를 보여줍니다. node가 Glowworm game을 가졌다면, 다음에 이를 볼 수 있을 것이며, Glowworm gang이 node하나만큼 떨어져 있다면, lights를 보여줍니다. 마지막으로, node의 edge에 cops가 있다면, sirens이 들리도록 합니다.
 
-  make-city-nodes함수는 우선 무작위 Wumpus와 Glowworms의 node들을 집어서, node번호를 통해 동작하도록 loop를 이용합니다. node들을 넣어서, 다양한 목적지가 추가된 도시의 각 node를 기술하는 alist를 만듭니다. append를 사용함으로써 이 node들을 설명하는 code의 각 부분은, 자식 list에 다양한 항목을 생성함으로, 설명하기 위한 다양한 항목을 고를 수 있습니다.
-
- list앞 부분에, node이름 n을 넣습니다. Wumpus가 현재 node에 있다면, Wumpus라는 단어를 추가합니다. Wumpus로부터 두 node안에 있으면, blood를 보여줍니다. node가 Glowworm game을 가졌다면, 이것을 다음에서 볼 수 있고, Glowworm gang이 node하나만큼 떨어져 있다면, lights를 보여줍니다. 마지막으로, node의 edge에 cops가 있다면, sirens이 들리도록 합니다.
-
- sirens 단서를 확인하기 위해, 간단히 edge에 (cdr (assoc n edges))을 잡아서 이 node가 cdr에 값을 가졌는지 봅니다. cops symbol은 edges의 cdr에 추가될 것입니다. 게임에서 edges에 관한 오직 하나의 data point만 갖기 때문에, cdr의 존재를 살펴보는 것은 cops의 존재를 확인하기에 적합합니다. 예를들어, cops가 있는 예전의 alist 예제를 이용해본다면:
-[source]
+ sirens 단서를 확인하기 위해, 간단히 edge에 (cdr (assoc n edges))을 잡아서 이 node가 cdr에 값을 가졌는지 봅니다. cops symbol은 edges의 cdr에 추가될 것입니다. 게임에서 edges에 관한 오직 하나의 데이터 지점만을 지니기에, cdr의 존재를 살펴보는 것은 cops의 존재를 확인하기에 적합합니다. 예를들어, cops가 있는 예전의 alist 예제를 이용해본다면:
+[REPL]
 
  list에 있는 edge가 cop을 포함한다면, cdr은  nil이 아닌 값이 될 것이라는 것을 볼 수 있을 것입니다. cops가 없는 edge는 cdr에 nil이 오게 될 것입니다.
 [pic]
 
 
 Initializing a New Game of Grand Theft Wumpus
-
- graph를 생성하는 것이 끝났으며, 새로운 Grand Theft Wumpus게임을 초기화하는 간단한 함수를 작성할 수 있습니다:
+ 그래프를 생성하는 것이 끝났으며, 새로운 Grand Theft Wumpus게임을 초기화하는 간단한 함수를 작성할 수 있습니다:
 [source]
 
- 여기 새로운 두 함수가 있습니다.
-
- find-empty-node함수는 게이머가 게임 시작시에 나쁜놈들 위에 놓여지지 않는다는 것을 보장합니다
- 여기 그 함수의 code가 있습니다:
-[source]
+ 여기 새로운 두 함수가 있습니다. find-empty-node함수는 게이머가 게임 시작시에 나쁜놈들 위에 놓여지지 않는다는 것을 보장합니다. 여기 이 함수의 코드가 있습니다:
+[SOURCE]
 
  find-empty-node함수는 매우 간단합니다. 우선, 게이머의 시작 지점을 결정할 무작위 node를 집습니다. 그후, 이것이 완전히 비어있는 node인지 확인합니다. 그 node가 무언가가 있다면, 단순히 자신을 다시한번 호출하고, 다른 무작위 지점에서 시도해봅니다.
 
 WARNING  
-나쁜놈들로 가득 차게 게임을 수정하도록 결정하였다면 비어 있는 노드가 어디에도 없는 상황에 처할 수 있습니다. 이러한 상황을 감지하는 어떤 검사도 넣지 않았기 때문에, 그 경우에는, 이 함수는 영원히 찾게되고 REPL은 닫힐 것입니다
+ 나쁜놈들로 가득 차게 게임을 수정하도록 결정하였다면, 비어 있는 노드가 어디에도 없는 상황에 처할 수 있습니다. 그러한 경우에는, 이러한 상황을 감지하는 어떤 검사도 넣지 않았기에, 이 함수는 영원히 찾게되고 REPL은 잠길것입니다.
 
  새로운-게임 명령어의 또 다른 새로운 함수는 다음에 작성할 draw-city입니다.
 
 
 Drawing a Map of Our City
+ 마침내 저희는 도시의 지도를 그릴 준비가 되었습니다. 저희는 그래프데이터위한 표준 형식을 이용하였으며, 따라서 이 함수를 작성하는 것은 식은죽 먹기입니다.
+[SOURCE]
 
- 마침내 저희는 도시의 지도를 그릴 준비가 되었습니다. graph data를 위한 표준 형식 사용하였고, 이 함수를 작성하는 것은 식은죽 먹기였습니다.
-[source]
-
- 이전 장에서 graph library 일부로써 ugraph-png함수 만들었습니다. 이제 REPL에서 (new-game)을 호출하고, city.dot.png 그림을 여러분의 웹 브라우저에서 열어보시기 바랍니다:
-[pic]
+ 이전 장에서 그래프라이브러리의 일부로써 ugraph-png함수 만들었습니다. 이제 REPL에서 (new-game)을 호출하고, city.dot.png 그림을 여러분의 웹 브라우저에서 열어보시기 바랍니다:
+[PIC]
 
 NOTE 
- 저희 code에 의해 생성된 모든 도시 지도들은 고유함으로, 여러준의 지도는 이 그림에 나온 것과는 완전히 다르게 보일것입니다.
+ 저희 code에 의해 생성된 모든 도시 지도들은 고유하기에, 여러준의 지도는 이 그림에 나온 것과는 완전히 다르게 보일것입니다.
 
- Finally, we can marvel at the results of our unban planning!
+ 마침네, 저희는 도시 계획 결과에 놀라게 될 것입니다.
 
 
 Drawing a City from Partial Knowledge
+ 물론, 사냥을 시작하기 전에 누군가가 있는 곳을 이미 알고 있다면 사냥하는 것은 정말 지루할 것입니다. 이 문제를 해결하기 위해, 오직 전에 방문하였던 node만 보여주는 도시 지도를 원합니다. 이를 마치기 위해, 처음에는 게이머의 위치를 설정하는 전역리스트 *visited-nodes*를 이용하였습니다. 이 *visited-nodes*변수를 이용하는 것은, 저희가 알고 있는 도시의 일부분만을 포함하는 작은 그래프를 계산 할 수 있도록 해줍니다.
 
- 물론, 사냥을 시작하기 전에 이곳이 있는 곳을 여러분이 이미 알고 있다면 누군가를 사냥하는 것은 정말 지루합니다. 이 문제를 해결하기 위해, 오직 전에 방문하였던 node만 보여주는 도시 지도를 원합니다. 그것을 마치기 위해 전역 list, 처음에는 게이머의 위치를 설정하는 *visited-nodes*를 사용하였습니다. 이 *visited-nodes*변수를 사용하는 것은, 우리가 알고 있는 도시의 부분 만을 포함하는 작은 graph를 계산 할 수 있게 합니다.
 
 Known Nodes
+ 우선, 저희는 알려진 nodes alist를 만들어야 합니다.
+[SOURCE]
 
- 우선, 알려진 node들의 alist를 만들어야 합니다.
-[source]
+ known-city-nodes 아레부분에서, 우리가 위치한 곳에 기반하여 "볼" 수 있는 node가 어떤 것인지 밝혀내야합니다. 모든 visited node들을 확인하고자 하며, 또한 방문했던 노드중 하나로부터 모든 노드들을 찾아갈 수 있기를 원합니다. (mapcan 함수를 짥게 다룰 것입니다.) 이전에 within-one함수에서 다루었던것과 유사한 코드를 이용하여 누가 "그것을 가졌는지(within one)"를 계산합니다.
 
- known-city-nodes 아레부분에서, 우리가 위치한 곳에 기반하여 "볼" 수 있는 node가 어떤 것인지 밝혀낼 필요가 있습니다. 방문했던 모든 node들을 볼 수 있지만, 방문했던 노드중 하나로부터 모든 노드들을 찾아갈 수 있기 또한 원합니다. (mapcan 함수를 짥게 다룰 것입니다.) 이전에 within-one함수에서 다루었던것과 유사한 code를 사용하는 "within one"을 계산합니다.
+ 다음으로, 연관 nodes list 전체에 걸쳐 각각 처리하는 mapcar를 합니다. 현재 node에 플레이어가 있다면, 별표로 표시할 것입니다. 만약 node가 아직 방문하지 않았다면, 물음표로 표시할 것입니다.
 
- 다음으로, 연관 node들의 list 전체에 걸쳐 각각 처리하는 mapcar를 합니다. 현재 node가 게이머에 의해 점령되었다면, 별표로 표시할 것입니다. 만약 node가 아직 방문하지 않았다면, 물음표로 표시할 것입니다.
 
 Known Edges
+ 이제, 경찰의 사이렌이 노출된 alist를 생성할 필요가 있습니다:
+[SOURCE]
 
- 이제, 경찰 사이렌이 strip된 alist를 생성할 필요가 있습니다:
-[source]
-
- 이 함수는 known-city-nodes함수와 유사합니다. 주목할만한 code 라인은 edge들을 위한 edge list로부터 cdr을 strip하는 부분이며 경찰을 포함하는 edge의 node들을 방문한다면 cops는 지도 node에 표시될 것입니다.
+ 이 함수는 known-city-nodes함수와 유사합니다. 주목할만한 코드라인은 edges에 대한 edge list로부터 cdr을 노출시키는 부분이며, edge의 양끝이 경찰을 포함하는  node를 방문한다면 cops는 지도 node에 나타나게될 것입니다.
 
 The mapcan Function
-
- known-city-nodes에서 사용한 mapcan함수는 mapcar의 변종입니다. 그러나, mapcar와는 달리, mapcan은 mapping 함수에 의해 생성된 값들이 모두  서로 덧붙일수 있는 list라고 가정합니다. 이것은 list에 있는 항목과 여러분이 생성하기 원하는 결과가 일-대-일 대응이 아닐때 유용합니다
+ known-city-nodes에서 사용한 mapcan함수는 mapcar의 변종입니다. 그러나, mapcar와는 달리, mapcan은 mapping 함수에 의해 생성된 값들이 모두 서로 덧붙일수 있는 list라고 가정합니다. 이것은 list에 있는 항목과 여러분이 생성하기 원하는 결과가 일-대-일 대응이 아닐때에 유용합니다.
 
  예를들어, 햄버거 가게로 달려가서 세가지 종류의 버거를 판매한다고 가정해봅시다: 싱글, 더블, 더블치즈. 햄버거의 list를 패티와 치즈 슬라이스 list로 변환하기 위해 다음에 나오는 함수를 작성 할 수 있습니다.
-[source]
+[REPL]
 
 
 Drawing Only the Known Parts of the City
-
- node와 edge에 관한 알려진 정보를 생성할 수 있는 함수를 가졌기 때문에, 다음과 같이 이 정보를 그림으로 바꾸어주는 함수를 작성 할 수 있습니다.
-[source]
+ node와 edge에 관한 알려진 정보를 생성할 수 있는 함수를 가졌기에, 다음과 같이 이 정보를 그림으로 바꾸어주는 함수를 작성 할 수 있습니다.
+[SOURCE]
 
  게임이 시작할때 알려진 도시를 그리기 위해 new-game함수를 재정의 해봅시다!
-[source]
+[SOURCE]
 
- 이 함수는 오직 도시의 알려진 부분만으로 구성된 그림을 생성한다는 점을 빼면 거의 정확하게 이전 버전 new-game과 일치합니다.
+ 이 함수는 오직 도시의 알려진 부분만으로 구성된 그림을 생성한다는 점을 빼면 이전 버전 new-game과 거의 정확하게 일치합니다.
 
- 이제 여러분이 REPL에서 new-game함수를  호출한다면 브라우저에서 볼 수 있는 known-city.dot.png라 이름붙은 새로운 그림을 얻을 것입니다. 이것은 이와 비슷하게 보여집니다.
-[pic]
+ 이제 여러분이 REPL에서 new-game함수를 호출한다면 브라우저에서 볼 수 있는 known-city.dot.png라 이름붙은 새로운 그림을 얻을 것입니다. 이것은 이와 비슷하게 보여집니다.
+[PIC]
 
  이제 저희는 Congestion City의 지도를 돌아다닐 준비가 되었습니다.
 
 
 Walking Around Town
+ 도시의 노드 사이를 탐험할 두 함수가 필요합니다: 평범한 walk함수와 Wumpus를 찾았다고 생각했을때 마지막 총알로 그 장소를 charge하는 함수. 이 두 함수가 매우 유사하기에, 작업의 대부분의 대변하는 일반적인 handle-directon 함수를 지닐 것입니다:
+[SOURCE]
 
- 도시와 노드 사이를 탐험할 두 함수가 필요합니다: 보통 walk함수와 Wumpus를 찾았다고 생각했을때 마지막 총알로 공격하기 원하는 지점.  이 두 함수가 매우 유사하기 때문에, 작업의 대부분의 대변하는 일반적인 handle-directon 함수를 가져야 합니다:
-[source]
-
- 이 두 함수의 유일한 차이점은 이동의 종류에 달려있는 handle-direction를 통과하는 nil이나 t로 설정되는 flag입니다.
+ 이 두 함수의 유일한 차이점은 이동의 종류에 달려있는 handle-direction에 넣을 nil이나 t로 설정되는 flag입니다.
 
  handle-direction함수의 주요한 일은 도시의 edges를 확인해봄으로써 이동이 합법적인지 확인하는것 입니다:
-[source]
+[SOURCE]
 
- 우선, 이 함수는 게이머가 현재 장소에서 이동할 수 있는 합법적인 방향을 찾습니다. 게이머가 이동하기 원하는 위치를 사용하여 가능한 방향의 list에 있는지 살펴봅니다. (게이머의 현재 위치의 edge를 공유하는 node번호)방향이 적법하다고 결정되면, 이 새로운 장소로 이동하는 동안 다음에 만들 handle-new-place함수를 사용하여 어떠한 놀랄만한 것들이 기다리고 있는지 밝혀낼 필요가 있습니다.
-그렇지 않으면, 에러 메시지를 보여줍니다.
+ 우선, 이 함수는 플레이어가 현재 장소에서 이동할 수 있는 합법적인 방향을 찾습니다. 플레이어가 이동하기 원하는 위치를 이용하여 가능한 방향의 list에 있는지 살펴봅니다. (플레이어의 현재 위치의 edge를 공유하는 node번호)방향이 적법하다고 결정되면, 이 새로운 장소로 이동하는 동안 다음에 만들 handle-new-place함수를 사용하여 어떠한 놀랄만한 것들이 기다리고 있는지 밝혀내야 합니다. 그렇지 않으면, 에러 메시지를 보여줍니다.
 
- 이제 게이머가 새로운 장소로 이동했을때 호출되어지는 handle-new-place함수를 만들어 봅시다:
-[source]
+ 이제 플레이어가 새로운 장소로 이동했을때 호출되어지는 handle-new-place함수를 만들어 봅시다:
+[SOURCE]
 
- 우선, 저희는 node의 alist로부터 이동하려는 node를 받아야합니다. 다음, 노드가 Glowworm gang을 포함하는지 밝혀내야 합니다. 그들은 한번만 공격하기 때문에, 이미 방문했던 node였다면 gang을 무시합니다
+ 우선, 저희는 nodes alist로부터 이동하려는 node를 받아야합니다. 다음, 노드가 Glowworm gang을 포함하는지 밝혀내야 합니다. 그들은 한번만 공격하기 때문에, 이미 방문했던 node였다면 gang을 무시합니다.
 
  다음으로, handle-new-place함수는 (list에 새로운 지점을 추가하는)*visited-nodes*와 *player-pos*를 갱신합니다. 이제 새로운 장소를 알게 되었음으로 draw-known-city를 다시 호출합니다.
 
- 다음으로 edge에 경찰이 있는지 Wumpus가 지점에 있는지를 확인합니다. 만일 게이머가 Wumpus와 마주친다면, handle-new-place함수는 저희가 공격할 지점을 알아야할 필요가 있습니다. 만일 저희가 Wumpus를 공격한다면, 게임에서 이길것입니다. 그렇지 않으면, Wumpus는 저희를 죽일 것이며 게임은 끝이납니다.
+ 다음으로 edge에 경찰이 있는지 Wumpus가 지점에 있는지를 확인합니다. 만일 플레이어가 Wumpus와 마주친다면, handle-new-place함수는 저희가 공격할 지점을 알아야할 필요가 있습니다. 만일 저희가 Wumpus를 공격한다면, 게임에서 이길것입니다. 그렇지 않으면, Wumpus는 저희를 죽일 것이며 게임은 끝납니다.
 
- 반면, 만일 Wumpus가 있지 않은 장소를 공격한다면, 한발의 총알을 낭비하게 될것이며 게임에서 또한 지게 됩니다. 마지막으로, Glowworm gang을 만나지 않은 장소라면, handle-new-place 재귀적으로 호출함으로써, 새로운 장소로 가게 될 것입니다.
+ 반면, 만일 Wumpus가 있지 않은 장소를 공격한다면, 한발의 총알을 낭비하게 될것이며 게임에서 또한 패배하게 됩니다. 마지막으로, 이전에 Glowworm gang을 만나지 않은 장소라면, handle-new-place 재귀적으로 호출하여, 새로운 장소로 넘어가게 될것입니다.
 
  이제 저희의 게임을 완성하였습니다!
 
 
 Let’s Hunt Some Wumpus!
-
- 게임을 하기위해, 단순히 우리가 만든 탐험하는 명령어 (walk and charge)를 REPL에 입력하고, 브라우저로 전환후 다음 이동을 계획하기 위해 known-city.dot.png를 갱신합니다.
+ 게임을 플레이하기 위해, 단순히 우리가 만든 탐험하는 명령어 (walk and charge)를 REPL에 입력하고, 브라우저로 전환후 다음 이동을 계획하기 위해 known-city.dot.png를 갱신합니다.
 
  예를들어, 여기 샘플 게임의 일부분이 있습니다:
-[pic]
+[PIC]
 
- 단서가 없기 때문에, 이 노드들이 방문하기에 안전한지를 알 수 있습니다.(walk 20)이라 해 봅시다:
-[pic]
+ 어떠한 단서도 없으므로, 이 노드들이 방문하기에 안전하다는 것을 알 수 있습니다.(walk 20)이라 해 봅시다:
+[PIC]
 
  우 오! 여기에 피가 있습니다. 이것이 의미하는 것은 Wumpus가 두 노드 떨어진 곳에 있다는 것입니다! (walk 11)로 이동하는것은 여전히 안전한데, 왜냐하면 오직 하나의 노드가 있기 때문입니다:
-[pic]
+[PIC]
 
- 오 안돼! 이 거리중 하나에 police roadblock이 있습니다. (walk 20) (walk 19)로 되돌아가고나서, (walk 7)을 할 수 있습니다.
+ 오 안돼! 이 거리중 하나에 police roadblock이 있습니다. (walk 20) (walk 19)로 되돌아가고 가면, 저희는 (walk 7)을 할 수 있습니다.
 [pic]
 
  이런! 이제 Wumpus와 Glowworms가 가까이 있습니다. 모험을 해봅시다 (walk 10):
-[pic]
+[PIC]
 
  흠, 이 길의 아레에 경찰들이 있으므로, 이것은 유용하지 않습니다. 그러나, node 10은 오직 하나의 탐험하지 않은 거리를 가지고 있기 때문에, 1과 10사이에 경찰이 있다고 확실하게 말할 수 있습니다.
 
  Grand Theft Wumpus에서 master가 되기 위해서 심오한 생각을 해야한다는 것을 알 수 있습니다. new-game함수를 이용해서 항상 새로운 맵에 새로운 게임을 시작할 수 있다는 것을 기억하시기 바랍니다. 여러분이 Wumpus를 따라잡았으면, 그를 공격하기 위해 charge함수를 사용합니다.
 
- 기본 version 게임을 master한다면, 더 어려운 게임을 위해 nodes, edges, cops, 그리고 Glowworms수를 늘립니다.
+ 기본 version 게임을 master하였다면, 더 어려운 게임을 위해 nodes, edges, cops, 그리고 Glowworms수를 늘려봅시다.
 
 
 What You’ve Learned
- 이번 장에서, 저희는 더욱 정교한 게임을 만들기 위해 graph utilities를 사용하였습니다. 이러한 과정을 거치며, 다음과 같은 것들을 배웠습니다:
+ 이번 장에서, 저희는 더욱 정교한 게임을 만들기 위해 그래프유틸리티를 이용하였습니다. 이러한 과정을 거치며, 다음과 같은 것들을 배웠습니다:
 
-z loop함수는 다양한 data형식을 순환을 허용한다. 이것은 10장에서 더욱 자세히 다뤄질 것입니다.
+z loop함수는 다양한 데이터형식의 순환을 허용한다. 이것은 10장에서 더욱 자세히 다룰것입니다.
 z set-difference함수는 특정 list에서 어떤 항목이 다른 list에 존재하지 않는지 알려준다.
 z intersection함수는 list들이 공유하는 항목들을 알려준다.
 z remove-duplicates함수는 list에서 중복되는 항목을 지운다.

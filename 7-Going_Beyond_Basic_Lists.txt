@@ -350,7 +350,7 @@ Creating Undirected Graphs
  여기, 우리가 만들기 원한 "uwizard.dot"파일이 있습니다. *wizard-nodes*와 *wizard-deges*변수는 마법사 세계의 지도의 노드와 간선들을 서술하는 데이터를 포함하고 있습니다. 이 코드는, 이와 같이, uwizard.dot.png파일을 생성합니다:
 [PIC]
 
- 이제 여러분은 directed와 undirected graph에 적합한 유틸리티를 지녔고, 이 함수를 graph-util.lisp로 작성하여, 여러분은 다른 프로그램으로부터 이것에 접근 할 수 있습니다.
+ 이제 여러분은 directed와 undirected graph에 적합한 유틸리티를 가졌으며, 이 함수를 graph-util.lisp로 작성하여, 다른 프로그램에서 이에 접근 할 수 있게 되었습니다.
 
 
 What You’ve Learned

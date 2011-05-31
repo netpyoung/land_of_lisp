@@ -40,14 +40,9 @@
       <File Name="20-Making_Dice_of_Doom_More_Fun.txt"/>
     </Category>
     <Category Name="Introduction">
-      <File Name="emacs_short_cut.txt"/>
       <File Name="enviroment.txt"/>
-      <File Name="Epilogue.txt"/>
-      <File Name="functions.txt"/>
       <File Name="Intoruduction.txt"/>
     </Category>
   </Files>
-  <ClosedFiles>
-    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\7-Going_Beyond_Basic_Lists.txt"/>
-  </ClosedFiles>
+  <ClosedFiles/>
 </AcroEditProject>
