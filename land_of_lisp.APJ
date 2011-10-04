@@ -2,7 +2,7 @@
 <AcroEditProject Version="1.0">
   <Options>
     <UserTools Value=""/>
-    <BaseFolder Value="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp"/>
+    <BaseFolder Value="D:\Center\@@HOT\Lisp\Doc_lisp\land_of_lisp"/>
     <GenerateFunctionList Value="False"/>
     <CodePage Value="949"/>
     <ExcludeDir Value=""/>
@@ -44,5 +44,11 @@
       <File Name="Intoruduction.txt"/>
     </Category>
   </Files>
-  <ClosedFiles/>
+  <ClosedFiles>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\1-Getting_Started_with_Lisp.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\2-Create_Your_First_Lisp_Program.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\3-Exploring_the_Syntax_of_Lisp_Code.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\4-Making_Decisions_with_Conditions.txt"/>
+    <File Name="D:\Center\Language[script]\Lisp\Doc_lisp\land_of_lisp\5-Bulding_a_Text_Game_Engine.txt"/>
+  </ClosedFiles>
 </AcroEditProject>
